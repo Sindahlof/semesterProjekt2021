@@ -1,19 +1,20 @@
 package worldofzuul;
 
-public class Game 
+public class Game //her "skabes" klassen Game
 {
+    //der laves 2 attributter, deres datatyper er taget fra andre klasser
     private Parser parser;
     private Room currentRoom;
         
 
-    public Game() 
+    public Game()  //constructoren Game defineres
     {
         createRooms();
-        parser = new Parser();
+        parser = new Parser(); //attributten parser sættes til at være klassen Parser
     }
 
 
-    private void createRooms()
+    private void createRooms() //en constructor til at lave rum
     {
         Room outside, theatre, pub, lab, office;
       
@@ -39,7 +40,7 @@ public class Game
         currentRoom = outside;
     }
 
-    public void play() 
+    public void play() //metode, der sætter exit-conditionen
     {            
         printWelcome();
 
@@ -49,7 +50,7 @@ public class Game
             Command command = parser.getCommand();
             finished = processCommand(command);
         }
-        System.out.println("Thank you for playing.  Good bye.");
+        System.out.println("Thank you for playing.  Goodbye.");
     }
 
     private void printWelcome()
@@ -62,7 +63,7 @@ public class Game
         System.out.println(currentRoom.getLongDescription());
     }
 
-    private boolean processCommand(Command command) 
+    private boolean processCommand(Command command) //den tjekker konsol-inputsene og tjekker, om de passer med dem i enum'et
     {
         boolean wantToQuit = false;
 
@@ -96,16 +97,16 @@ public class Game
 
     private void goRoom(Command command) 
     {
-        if(!command.hasSecondWord()) {
+        if(!command.hasSecondWord()) { //hvis der ikke er et secondWord, printes "Go where?"
             System.out.println("Go where?");
             return;
         }
 
         String direction = command.getSecondWord();
 
-        Room nextRoom = currentRoom.getExit(direction);
+        Room nextRoom = currentRoom.getExit(direction); //henter det rum, der er i den givne direction
 
-        if (nextRoom == null) {
+        if (nextRoom == null) { //tjekker, om der er rum i den givne direction
             System.out.println("There is no door!");
         }
         else {
@@ -114,13 +115,13 @@ public class Game
         }
     }
 
-    private boolean quit(Command command) 
+    private boolean quit(Command command)  //metode til at stoppe spillet
     {
-        if(command.hasSecondWord()) {
+        if(command.hasSecondWord()) { //tjekker, om der er et ord efter.
             System.out.println("Quit what?");
             return false;
         }
-        else {
+        else { //returnerer "true", som stopper spillet via de andre metoder
             return true;
         }
     }

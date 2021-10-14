@@ -21,31 +21,31 @@ package worldofzuul;
 
 public class Command
 {
-    private CommandWord commandWord;
-    private String secondWord;
+    private CommandWord commandWord; //attribut
+    private String secondWord; //attribut
 
-    public Command(CommandWord commandWord, String secondWord)
+    public Command(CommandWord commandWord, String secondWord) //constructor initialiserer commandWord eller secondWord
     {
         this.commandWord = commandWord;
         this.secondWord = secondWord;
     }
 
-    public CommandWord getCommandWord()
+    public CommandWord getCommandWord() //metode returnerer commandWord
     {
         return commandWord;
     }
 
-    public String getSecondWord()
+    public String getSecondWord() //metode returnerer secondWord
     {
         return secondWord;
     }
 
-    public boolean isUnknown()
+    public boolean isUnknown() //metode returnerer, om commandWord er det samme som "?" (CommandWord.UNKNOWN)
     {
         return (commandWord == CommandWord.UNKNOWN);
     }
 
-    public boolean hasSecondWord()
+    public boolean hasSecondWord() //metode returnerer, om secondWord ikke er lige med null
     {
         return (secondWord != null);
     }

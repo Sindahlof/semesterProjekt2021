@@ -6,12 +6,13 @@ public enum CommandWord
     
     private String commandString;
     
-    CommandWord(String commandString)
+    CommandWord(String commandString) //constructor der intialiserer atributterne/methoder ovenover
     {
         this.commandString = commandString;
     }
-    
-    public String toString()
+
+    @Override
+    public String toString() //methode retunerer commandString, toString methoden overrides her
     {
         return commandString;
     }

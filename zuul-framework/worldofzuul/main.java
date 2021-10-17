@@ -9,7 +9,6 @@ public class main {
         // newGame.play(); //kalder en construcotr som hedder play fra klassen Game
 
 
-
         /*
         Hvis man vil se alle keys i HashMap'et
         CommandWords obj1 = new CommandWords();
@@ -22,9 +21,7 @@ public class main {
         System.out.println(text);
 
 
-
     }
-
 
 
 }

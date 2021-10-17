@@ -3,8 +3,7 @@ package worldofzuul;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-public class Parser 
-{
+public class Parser {
     private CommandWords commands; //attribut
     private Scanner reader; //attribut
 
@@ -25,9 +24,9 @@ public class Parser
         inputLine = reader.nextLine(); //en metode, hvor der læses, hvad der står på reader. Den returnerer, hvad der står på reader til inputLine
 
         Scanner tokenizer = new Scanner(inputLine); //skaber et objekt, som er et scanner input, der deler input op i Strings
-        if(tokenizer.hasNext()) { //tjekker, om der er en String, den kan scannes efterfølgende
+        if (tokenizer.hasNext()) { //tjekker, om der er en String, den kan scannes efterfølgende
             word1 = tokenizer.next(); // word1 bliver fjernet fra Scanneren og peger på den String
-            if(tokenizer.hasNext()) { // tjekker, om der er et mellemrum efter word1
+            if (tokenizer.hasNext()) { // tjekker, om der er et mellemrum efter word1
                 word2 = tokenizer.next(); //hvis der er et mellemrum efter word1, bliver word2 fjernet fra Scanneren og peger på den String
             }
         }

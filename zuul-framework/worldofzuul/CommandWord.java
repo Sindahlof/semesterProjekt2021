@@ -1,11 +1,10 @@
 package worldofzuul;
 
-public enum CommandWord
-{
+public enum CommandWord {
     GO("go"), QUIT("quit"), HELP("help"), UNKNOWN("?");
-    
+
     private String commandString;
-    
+
     CommandWord(String commandString) //constructor der intialiserer atributterne/methoder ovenover
     {
         this.commandString = commandString;

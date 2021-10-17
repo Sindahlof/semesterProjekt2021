@@ -1,22 +1,22 @@
 package worldofzuul;
+
 import java.util.HashMap;
 
 
-public class CommandWords
-{
+public class CommandWords {
     private HashMap<String, CommandWord> validCommands; //atribut af data typen HashMap og med variable navnet vaildCoammands
 
     public CommandWords() //consrtuctor, intialsierer vailCommands som et hashmap
     {
         validCommands = new HashMap<String, CommandWord>();
-        for(CommandWord command : CommandWord.values()) { //et for each loop der traveserer HashMap'et
+        for (CommandWord command : CommandWord.values()) { //et for each loop der traveserer HashMap'et
 
             /*
             if statement der chekker om inputet fra brugeren ikke er det samme som UNKNOWN fra CommandWord enum'et
             vil programmet bruge toString methoden og retunerer stringen så programmet chekker hvilken commando
             du har inputet
              */
-            if(command != CommandWord.UNKNOWN) {
+            if (command != CommandWord.UNKNOWN) {
                 validCommands.put(command.toString(), command);
             }
         }
@@ -29,14 +29,13 @@ public class CommandWords
         den retunerer hvad der står i HashMap'ets bestemte plads
          */
         CommandWord command = validCommands.get(commandWord);
-        if(command != null) { //if statement der sørge for at brugeren har skrevet noget
+        if (command != null) { //if statement der sørge for at brugeren har skrevet noget
             return command;
-        }
-        else {
+        } else {
             return CommandWord.UNKNOWN; //else retunerer unknown hvis der ikke står noget på input scanner
         }
     }
-    
+
     public boolean isCommand(String aString) //methode der chekker om en bestemt key findes i hashmappet
     {
         return validCommands.containsKey(aString);
@@ -49,7 +48,7 @@ public class CommandWords
         //for each loop, der løber gennem alle keys, og printer dem ud.
          */
 
-        for(String command : validCommands.keySet()) {
+        for (String command : validCommands.keySet()) {
             System.out.print(command + "  ");
         }
         System.out.println();

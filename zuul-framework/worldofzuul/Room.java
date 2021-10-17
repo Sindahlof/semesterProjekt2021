@@ -47,7 +47,7 @@ public class Room // laver en ny klasse ved navn room
         står på retunrString
          */
 
-        for(String exit : keys) {
+        for (String exit : keys) {
             returnString += " " + exit;
         }
         return returnString; //retuner returnString

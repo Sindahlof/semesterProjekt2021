@@ -1,3 +1,5 @@
+package worldofzuul
+
 public class WindMillPart extends Item {
 
     private String description;

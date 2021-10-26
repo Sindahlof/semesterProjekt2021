@@ -15,7 +15,7 @@ public class main {
         obj1.showAll();
         */
 
-        /*
+
         String question = "asdasdasdasda";
         String[] questions = {"A) asdasdas", "B) asdasdasd", "C) asdasdasda"};
         String answerKey = "A";
@@ -23,7 +23,5 @@ public class main {
         Quiz room1 = new Quiz(question, questions, answerKey);
 
         room1.getQuiz();
-
-         */
     }
 }

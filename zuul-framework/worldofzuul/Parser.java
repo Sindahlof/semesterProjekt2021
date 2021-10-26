@@ -25,7 +25,7 @@ public class Parser {
 
         Scanner tokenizer = new Scanner(inputLine); //skaber et objekt, som er et scanner input, der deler input op i Strings
         if (tokenizer.hasNext()) { //tjekker, om der er en String, den kan scannes efterfølgende
-            word1 = tokenizer.next(); // word1 bliver fjernet fra Scanneren og peger på den String
+            word1 = tokenizer.next().toLowerCase(); // word1 bliver fjernet fra Scanneren og peger på den String
             if (tokenizer.hasNext()) { // tjekker, om der er et mellemrum efter word1
                 word2 = tokenizer.next(); //hvis der er et mellemrum efter word1, bliver word2 fjernet fra Scanneren og peger på den String
             }

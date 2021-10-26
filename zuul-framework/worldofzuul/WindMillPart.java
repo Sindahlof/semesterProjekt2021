@@ -1,23 +1,21 @@
-package worldofzuul
+package worldofzuul;
 
 public class WindMillPart extends Item {
 
     private String description;
     private int id;
 
-    public WindMillPart(String description)
+    public WindMillPart(String description, String itemName, int id)
     {
+        super(itemName);
         this.description = description;
-    }
-
-    public WindMillPart(int id)
-    {
         this.id = id;
     }
 
     public String getWindMillPart()
     {
-        return this.description;
+        String text = this.getItemName() + "\n" + this.description;
+        return text;
     }
 
     public int getId()

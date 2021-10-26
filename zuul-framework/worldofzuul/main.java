@@ -17,14 +17,11 @@ public class main {
 
 
         String question = "asdasdasdasda";
-        String[] questions = {"A) asdasdas","B) asdasdasd","C) asdasdasda"};
+        String[] questions = {"A) asdasdas", "B) asdasdasd", "C) asdasdasda"};
         String answerKey = "A";
 
-        Quiz room1 = new Quiz(question,questions,answerKey);
+        Quiz room1 = new Quiz(question, questions, answerKey);
 
-        room1.doQuiz();
-
-        Item test = new WindMillPart("Part 1","Windmill Wing",1);
-        test.print();
+        room1.getQuiz();
     }
 }

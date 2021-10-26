@@ -11,7 +11,7 @@ public class Inventory {
     }
 
     // A getter for slots
-    public ArrayList<Item> getSlots() {
+    public ArrayList<Item> getInventory() {
         return this.slots;
     }
 

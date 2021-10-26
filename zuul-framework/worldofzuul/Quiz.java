@@ -39,7 +39,7 @@ public class Quiz {
 
     }
 
-    public boolean doQuiz() {
+    private boolean doQuiz() {
         printQuestion();
         printAnswers();
         boolean check = true; //der bruges en boolean til at kører while loopet
@@ -65,7 +65,8 @@ public class Quiz {
         return true;
     }
 
-    public boolean getQuizCompletion() { //en metode man kan kalde for at chekke om quizzen er klaret
+    public boolean getQuiz() { //en metode man kan kalde for at chekke om quizzen er klaret
+        doQuiz();
         return this.completion;
     }
 

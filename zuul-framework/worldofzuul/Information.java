@@ -13,7 +13,8 @@ public class Information extends Item {
         return this.content;
     }
 
-    public void printContent() {
+    @Override
+    public void print() {
         String text = this.getItemName() + "\n" + this.content;
 
         System.out.println(text);

@@ -13,4 +13,6 @@ public abstract class Item {
     public String getItemName() {
         return this.itemName;
     }
+
+    public abstract void print();
 }

@@ -24,9 +24,7 @@ public class main {
 
         room1.doQuiz();
 
-        Item test = new Information("Cake","Fuck dig sindahl");
-        System.out.println(test.getItemName());
-
-
+        Item test = new WindMillPart("Part 1","Windmill Wing",1);
+        test.print();
     }
 }

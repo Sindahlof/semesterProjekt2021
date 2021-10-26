@@ -22,7 +22,8 @@ public class WindMillPart extends Item {
         return this.id;
     }
 
-    public void printWindMillPart()
+    @Override
+    public void print()
     {
         String text = this.getItemName() + "\n" + this.description;
         System.out.println(text);

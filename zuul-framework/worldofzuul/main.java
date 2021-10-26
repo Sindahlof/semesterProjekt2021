@@ -15,6 +15,7 @@ public class main {
         obj1.showAll();
         */
 
+
         String question = "asdasdasdasda";
         String[] questions = {"A) asdasdas","B) asdasdasd","C) asdasdasda"};
         String answerKey = "A";
@@ -23,6 +24,8 @@ public class main {
 
         room1.doQuiz();
 
+        Item test = new Information("Cake","Fuck dig sindahl");
+        System.out.println(test.getItemName());
 
 
     }

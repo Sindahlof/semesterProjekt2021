@@ -13,12 +13,4 @@ public abstract class Item {
     public String getItemName() {
         return this.itemName;
     }
-
-    //Overrideing toString for itemName
-    @Override
-    public String toString() {
-        return this.itemName;
-    }
-
-
 }

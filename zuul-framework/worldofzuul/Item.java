@@ -5,8 +5,8 @@ public abstract class Item {
 
     public Item(String itemDescription) {
         this.itemDescription = itemDescription;
-
     }
+
 
     public void printDescription() {
         System.out.println(itemDescription);
@@ -15,6 +15,5 @@ public abstract class Item {
     public String getItemDescription() {
         return this.itemDescription;
     }
-
 
 }

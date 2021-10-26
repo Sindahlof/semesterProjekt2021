@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bd5d9d06-3587-4549-8e40-89e18f9f724e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Start.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/worldofzuul/worldofzuul/Start.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/worldofzuul/worldofzuul/worldofzuul.iml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/worldofzuul/worldofzuul/worldofzuul.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/worldofzuul.iml" beforeDir="false" afterPath="$PROJECT_DIR$/worldofzuul.iml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1yXZdWcGFqNeIStRYYkkP4xTRQM" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RunManager" selected="Application.gStart">
+    <configuration name="Start" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="worldofzuul.Start" />
+      <module name="worldofzuul" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="worldofzuul.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="gStart" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="worldofzuul.gStart" />
+      <module name="worldofzuul" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="worldofzuul.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.gStart" />
+        <item itemvalue="Application.Start" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bd5d9d06-3587-4549-8e40-89e18f9f724e" name="Changes" comment="" />
+      <created>1632399981234</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1632399981234</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>

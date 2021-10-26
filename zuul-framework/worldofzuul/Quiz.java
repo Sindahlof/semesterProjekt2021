@@ -33,7 +33,7 @@ public class Quiz {
     }
 
     public void printAnswes() {
-        for(int i = 0; i<this.answers.length; i++)
+        for (int i = 0; i < this.answers.length; i++)
             System.out.println(this.answers[i]);
 
     }
@@ -52,9 +52,7 @@ public class Quiz {
                 System.out.println("Your answer was correct!");
                 this.memory++; //tæller memoryen en op så der kan holdes styr på om quizen er klaret
                 break;
-            }
-
-            else if (this.quit.equals(answer)) { //chekkero m man skriver quit og vil så stoppe quizen
+            } else if (this.quit.equals(answer)) { //chekkero m man skriver quit og vil så stoppe quizen
                 System.out.println("remember you can always return to this quiz later");
                 return false;
             }
@@ -72,7 +70,7 @@ public class Quiz {
         }
     }
 
-    public String getAnswer(){ //kalder det man har sat som det rigtige svar i answers arrayed
+    public String getAnswer() { //kalder det man har sat som det rigtige svar i answers arrayed
         return this.answers[this.answerKey];
     }
 }

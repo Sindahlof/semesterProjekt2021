@@ -25,6 +25,6 @@ public class WindMillPart extends Item {
 
     public void printWindMillPart()
     {
-        System.out.println(description);
+        System.out.println(this.description);
     }
 }

@@ -15,20 +15,13 @@ public class main {
         obj1.showAll();
         */
 
-        Scanner test = new Scanner(System.in);
-        System.out.print("input: ");
-        String text = test.nextLine();
-        System.out.println(text);
-
         String question = "asdasdasdasda";
         String[] questions = {"A) asdasdas","B) asdasdasd","C) asdasdasda"};
         String answerKey = "A";
 
         Quiz room1 = new Quiz(question,questions,answerKey);
 
-        room1.printQuestion();
-        room1.printAnswers();
-        room1.checkAnswer();
+        room1.doQuiz();
 
 
 

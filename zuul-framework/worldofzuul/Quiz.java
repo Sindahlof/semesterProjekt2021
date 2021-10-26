@@ -29,22 +29,24 @@ public class Quiz {
         this.quit = "QUIT";
     }
 
-    public void printQuestion() {
+    private void printQuestion() {
         System.out.println(this.question);
     }
 
-    public void printAnswers() {
+    private void printAnswers() {
         for (int i = 0; i < this.answers.length; i++)
             System.out.println(this.answers[i]);
 
     }
 
-    public boolean checkAnswer() {
+    public boolean doQuiz() {
+        printQuestion();
+        printAnswers();
         boolean check = true; //der bruges en boolean til at kører while loopet
 
         while (check) {
             Scanner input = new Scanner(System.in); //laver en ny scanner
-            String answer = input.nextLine().toUpperCase(); //chekker hvad der er blevet skrevet på input og læse
+            String answer = input.next().toUpperCase(); //chekker hvad der er blevet skrevet på input og læse
             // dette som en String
 
             if (answer.equals(this.answerKey)) { //hvis in put passer med answerkey
@@ -63,7 +65,7 @@ public class Quiz {
         return true;
     }
 
-    public boolean getQuiz() { //en metode man kan kalde for at chekke om quizzen er klaret
+    public boolean getQuizCompletion() { //en metode man kan kalde for at chekke om quizzen er klaret
         return this.completion;
     }
 

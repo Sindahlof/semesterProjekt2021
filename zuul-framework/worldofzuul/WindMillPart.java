@@ -14,8 +14,7 @@ public class WindMillPart extends Item {
 
     public String getWindMillPart()
     {
-        String text = this.getItemName() + "\n" + this.description;
-        return text;
+        return this.description;
     }
 
     public int getId()
@@ -25,6 +24,7 @@ public class WindMillPart extends Item {
 
     public void printWindMillPart()
     {
-        System.out.println(this.description);
+        String text = this.getItemName() + "\n" + this.description;
+        System.out.println(text);
     }
 }

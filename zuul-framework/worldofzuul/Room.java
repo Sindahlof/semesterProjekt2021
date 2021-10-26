@@ -23,6 +23,28 @@ public class Room // laver en ny klasse ved navn room
         exits = new HashMap<String, Room>(); //Hash mappet fra oven over intialiserers
     }
 
+    public Room(String description,ArrayList<Item> itemsInRoom)  //Constructor der bruger en string ved navn description som data input
+    {
+        this.itemsInRoom = itemsInRoom;
+        this.description = description; //descripiton attrubuten sættes til at være det samme som constructor inpute
+        exits = new HashMap<String, Room>(); //Hash mappet fra oven over intialiserers
+    }
+
+    public Room(String description,Quiz quizInRoom)  //Constructor der bruger en string ved navn description som data input
+    {
+        this.description = description; //descripiton attrubuten sættes til at være det samme som constructor inpute
+        this.quizInRoom=quizInRoom;
+        exits = new HashMap<String, Room>(); //Hash mappet fra oven over intialiserers
+    }
+
+    public Room(String description,Quiz quizInRoom, ArrayList<Item> itemsInRoom)  //Constructor der bruger en string ved navn description som data input
+    {
+        this.itemsInRoom = itemsInRoom;
+        this.description = description; //descripiton attrubuten sættes til at være det samme som constructor inpute
+        this.quizInRoom=quizInRoom;
+        exits = new HashMap<String, Room>(); //Hash mappet fra oven over intialiserers
+    }
+
     public void setExit(String direction, Room neighbor) //methode
     {
         exits.put(direction, neighbor);

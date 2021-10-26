@@ -1,6 +1,6 @@
 package worldofzuul;
 
-public class Item {
+public abstract class Item {
     private String itemName;
 
     //Constructor for Item which just sets the value of the String itemName

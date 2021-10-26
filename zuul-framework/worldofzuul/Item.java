@@ -1,19 +1,23 @@
 package worldofzuul;
 
 public abstract class Item {
-    private String itemDescription;
+    private String itemName;
 
-    public Item(String itemDescription) {
-        this.itemDescription = itemDescription;
+    //Constructor for Item which just sets the value of the String itemName
+    public Item(String itemName) {
+        this.itemName = itemName;
 
     }
 
-    public void printDescription() {
-        System.out.println(itemDescription);
+    //Getter for getting itemName
+    public String getItemName() {
+        return this.itemName;
     }
 
-    public String getItemDescription() {
-        return this.itemDescription;
+    //Overrideing toString for itemName
+    @Override
+    public String toString() {
+        return this.itemName;
     }
 
 

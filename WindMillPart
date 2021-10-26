@@ -1,0 +1,32 @@
+package worldofzuul
+
+public class WindMillPart extends Item {
+
+    private String description;
+    private int id;
+
+    public WindMillPart(String description)
+    {
+        this.description = description;
+    }
+
+    public WindMillPart(int id)
+    {
+        this.id = id;
+    }
+
+    public String getWindMillPart()
+    {
+        return this.description;
+    }
+
+    public int getId()
+    {
+        return this.id;
+    }
+
+    public void printWindMillPart()
+    {
+        System.out.println(description);
+    }
+}

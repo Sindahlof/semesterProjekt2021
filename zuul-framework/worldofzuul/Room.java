@@ -11,6 +11,10 @@ public class Room // laver en ny klasse ved navn room
     //2 atributter intialiseres
     private String description;
     private HashMap<String, Room> exits; //laver et HashMap af key datatypen String og value datatypen Room (referer til sig selv)
+    // Hashmap of items in the room
+    private HashMap<String, Room> itemsInRoom;
+    // Quiz atribute initialising
+    private Quiz quizInRoom;
 
     public Room(String description)  //Constructor der bruger en string ved navn description som data input
     {

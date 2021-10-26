@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class main {
     public static void main(String[] args) {
 
-        // Game newGame = new Game(); //laver et nyt objekt der herdder game
-        // newGame.play(); //kalder en construcotr som hedder play fra klassen Game
+        Game newGame = new Game(); //laver et nyt objekt der herdder game
+        newGame.play(); //kalder en construcotr som hedder play fra klassen Game
 
 
         /*
@@ -15,7 +15,7 @@ public class main {
         obj1.showAll();
         */
 
-
+        /*
         String question = "asdasdasdasda";
         String[] questions = {"A) asdasdas", "B) asdasdasd", "C) asdasdasda"};
         String answerKey = "A";
@@ -23,5 +23,7 @@ public class main {
         Quiz room1 = new Quiz(question, questions, answerKey);
 
         room1.getQuiz();
+
+         */
     }
 }

@@ -79,6 +79,8 @@ public class Game //her "skabes" klassen Game
             goRoom(command);
         } else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);
+        }else if(commandWord == commandWord.PICKUP){
+            System.out.println("Fuck dig marcus");
         }
         return wantToQuit;
     }

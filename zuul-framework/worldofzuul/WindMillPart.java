@@ -1,14 +1,14 @@
 package worldofzuul;
 
-public class WindMillPart extends Item {
+public class WindMillPart extends PlaceableObject {
 
     private String description;
     private int id;
 
-    public WindMillPart(String description, String itemName, int id) {
+    public WindMillPart(String itemName,int id, String description) {
         super(itemName);
-        this.description = description;
         this.id = id;
+        this.description = description;
     }
 
     public String getWindMillPart() {
@@ -21,7 +21,7 @@ public class WindMillPart extends Item {
 
     @Override
     public void print() {
-        String text = this.getItemName() + "\n" + this.description;
+        String text = this.getItemName() +" With the ID: "+ this.id + "\n" + this.description;
         System.out.println(text);
     }
 }

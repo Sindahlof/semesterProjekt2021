@@ -1,8 +1,9 @@
 package worldofzuul;
 
-public class Information extends Item {
+public class Information extends PlaceableObject {
 
-    public String content;
+    private String content;
+    private int id;
 
     public Information(String itemName, String content) {
         super(itemName);
@@ -16,7 +17,6 @@ public class Information extends Item {
     @Override
     public void print() {
         String text = this.getItemName() + "\n" + this.content;
-
         System.out.println(text);
     }
 

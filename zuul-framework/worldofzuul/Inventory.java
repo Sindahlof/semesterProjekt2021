@@ -3,34 +3,66 @@ package worldofzuul;
 import java.util.ArrayList;
 
 public class Inventory {
-    private ArrayList<Item> slots;
+    private ArrayList<PlaceableObject> slots;
 
     //No arg constructor to initialise item Arraylist slots.
     Inventory() {
-        this.slots = new ArrayList<Item>();
+        this.slots = new ArrayList<PlaceableObject>();
     }
 
     // A getter for slots
-    public ArrayList<Item> getInventory() {
+    public ArrayList<PlaceableObject> getInventory() {
         return this.slots;
     }
 
     // Method to add items to the inventory
-    public void addItem(Item item) {
-        this.slots.add(item);
-    }
-
-    // Method to remove items from the inventory
-    public void removeItem(Item item) {
-        this.slots.remove(item);
+    public void addItem(PlaceableObject placeableObject) {
+        this.slots.add(placeableObject);
     }
 
     //Method to print the contents of inventory
     public void printInventory() {
-        System.out.println("Inventory:");
-        for (Item item : this.slots) {
-            System.out.println(item + ", ");
+        if (!(this.slots.isEmpty())) {
+            System.out.println("You have the following item(s) in your inventory:");
+            for (PlaceableObject placeableObject : this.slots) {
+                System.out.print(placeableObject.getItemName() + ", ");
+            }
+            System.out.println();
+        } else {
+            System.out.println("There are no items in your inventory LOOSER");
         }
     }
+
+    public void inspectItem(Command command) {
+        if (!(command.hasSecondWord())) {
+            System.out.println("Inspect what item?");
+            return;
+        } else {
+            for (PlaceableObject placeableObject : this.slots) {
+                if (placeableObject.getItemName().toUpperCase().equals(command.getSecondWord().toUpperCase())) {
+                    placeableObject.print();
+                    return;
+                }
+            }
+        }
+        System.out.println("You dont have that item in your inventory");
+    }
+
+    public boolean collectedAllWindmillParts(){
+        int collectiveId = 0;
+
+        for (PlaceableObject items : this.slots){
+            if (items instanceof WindMillPart){
+                collectiveId += ((WindMillPart) items).getId();
+            }
+        }
+        if (collectiveId == 21){
+            return true;
+        }
+        return false;
+    }
+
+
+
 
 }

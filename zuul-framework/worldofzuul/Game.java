@@ -1,32 +1,53 @@
 package worldofzuul;
 
+import java.util.ArrayList;
+
 public class Game //her "skabes" klassen Game
 {
     //der laves 2 attributter, deres datatyper er taget fra andre klasser
     private Parser parser;
     private Room currentRoom;
+    private final Inventory playerInventory;
+    private boolean gameCompleted;
+    private Room assembleRoom;
+    private Player player1;
 
 
     public Game()  //constructoren Game defineres
     {
         createRooms();
-        parser = new Parser(); //attributten parser sættes til at være klassen Parser
+        this.gameCompleted = false;
+        this.parser = new Parser(); //attributten parser sættes til at være klassen Parser
+        this.playerInventory = new Inventory(); //Initializer player's inventory
+
     }
 
 
     private void createRooms() //en metode til at lave rum
     {
         Room outside, theatre, pub, lab, office;
+        String[] answers1 = {"A. Fordi ingen kan lide ham", "B. Fordi kage ", "C. Fordi all elsker ham"};
+        Quiz quiz1 = new Quiz("Hvorfor er Sindahl adoptered", answers1, "C","Sindahl");
+        PlaceableObject placeableObject1 = new Information("test1", "Tasdasdasdasd asdasd asd as dasd as dasd asd adad as");
+        PlaceableObject placeableObject2 = new WindMillPart("Windmill-Wing", 21, "This is one of the windmill wings");
+        ArrayList<PlaceableObject> itemsInOutside = new ArrayList<PlaceableObject>();
+        itemsInOutside.add(placeableObject1);
+        itemsInOutside.add(placeableObject2);
 
-        outside = new Room("outside the main entrance of the university");
+
+        outside = new Room("outside the main entrance of the university", itemsInOutside);
         theatre = new Room("in a lecture theatre");
         pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
+        lab = new Room("in a computing lab", quiz1);
         office = new Room("in the computing admin office");
+        this.assembleRoom = new Room("in the room where you assemble your windmill");
 
         outside.setExit("east", theatre);
         outside.setExit("south", lab);
         outside.setExit("west", pub);
+        outside.setExit("north", this.assembleRoom);
+
+        this.assembleRoom.setExit("south", outside);
 
         theatre.setExit("west", outside);
 
@@ -37,7 +58,7 @@ public class Game //her "skabes" klassen Game
 
         office.setExit("west", lab);
 
-        currentRoom = outside;
+        this.currentRoom = outside;
     }
 
     public void play() //metode, der sætter exit-conditionen
@@ -46,10 +67,15 @@ public class Game //her "skabes" klassen Game
 
 
         boolean finished = false;
+
         while (!finished) {
-            Command command = parser.getCommand();
+            Command command = this.parser.getCommand();
             finished = processCommand(command);
         }
+        if (this.gameCompleted) {
+            System.out.println("Congratulations you have successfully completed the game and therefore you are smarter than Sindahl");
+        }
+
         System.out.println("Thank you for playing.  Goodbye.");
     }
 
@@ -59,7 +85,7 @@ public class Game //her "skabes" klassen Game
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
-        System.out.println(currentRoom.getLongDescription());
+        System.out.println(this.currentRoom.getLongDescription());
     }
 
     private boolean processCommand(Command command) //den tjekker konsol-inputsene og tjekker, om de passer med dem i enum'et
@@ -79,8 +105,20 @@ public class Game //her "skabes" klassen Game
             goRoom(command);
         } else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);
-        }else if(commandWord == CommandWord.COLLECT){
-            System.out.println("Fuck dig marcus");
+        } else if (commandWord == CommandWord.COLLECT) {
+            this.currentRoom.collectItem(command, this.playerInventory);
+        } else if (commandWord == CommandWord.INSPECT) {
+            this.playerInventory.inspectItem(command);
+        } else if (commandWord == CommandWord.INVENTORY) {
+            this.playerInventory.printInventory();
+        } else if (commandWord == CommandWord.DoQUIZ) {
+            this.currentRoom.doQuizInRoom();
+        } else if (commandWord == CommandWord.ASSEMBLE) {
+            if (successfulAssemble()) {
+                this.gameCompleted = true;
+                return true;
+            }
+            return false;
         }
         return wantToQuit;
     }
@@ -101,14 +139,27 @@ public class Game //her "skabes" klassen Game
 
         String direction = command.getSecondWord();
 
-        Room nextRoom = currentRoom.getExit(direction); //henter det rum, der er i den givne direction
+        Room nextRoom = this.currentRoom.getExit(direction); //henter det rum, der er i den givne direction
 
         if (nextRoom == null) { //tjekker, om der er rum i den givne direction
             System.out.println("There is no door!");
         } else {
-            currentRoom = nextRoom;
-            System.out.println(currentRoom.getLongDescription());
+            this.currentRoom = nextRoom;
+            System.out.println(this.currentRoom.getLongDescription());
         }
+    }
+
+    private boolean successfulAssemble() {
+        if (this.currentRoom == this.assembleRoom) {
+            if (this.playerInventory.collectedAllWindmillParts()) {
+                return true;
+            } else {
+                System.out.println("You have not collected all windmill-parts");
+            }
+        } else {
+            System.out.println("You are in the wrong room head to the assemble room");
+        }
+        return false;
     }
 
     private boolean quit(Command command)  //metode til at stoppe spillet

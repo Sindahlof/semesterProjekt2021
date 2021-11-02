@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Quiz {
 
+    private String description;
     private String question;
 
     //husk i filen hvor du bruger denne atribut at oprette arrayed
@@ -21,12 +22,14 @@ public class Quiz {
     //en String som der bruges .equals på længere nede
     private String quit;
 
-    Quiz(String question, String[] answers, String answerKey) {
+    Quiz(String question, String[] answers, String answerKey,String description) {
         this.question = question;
         this.answers = answers;
         this.answerKey = answerKey;
         this.completion = false;
+        this.description = description;
         this.quit = "QUIT";
+
     }
 
     private void printQuestion() {
@@ -34,8 +37,7 @@ public class Quiz {
     }
 
     private void printAnswers() {
-        for (int i = 0; i < this.answers.length; i++)
-            System.out.println(this.answers[i]);
+        for (String answer : this.answers) System.out.println(answer);
 
     }
 
@@ -46,6 +48,7 @@ public class Quiz {
 
         while (check) {
             Scanner input = new Scanner(System.in); //laver en ny scanner
+            System.out.print("Your answer: \n>");
             String answer = input.next().toUpperCase(); //chekker hvad der er blevet skrevet på input og læse
             // dette som en String
 
@@ -65,12 +68,20 @@ public class Quiz {
         return true;
     }
 
-    public boolean getQuiz() { //en metode man kan kalde for at chekke om quizzen er klaret
+    public boolean getQuiz() { //A metod to execute the quiz
         doQuiz();
         return this.completion;
     }
 
     public String getAnswer() { //kalder det man har sat som det rigtige svar i answers arrayed
         return this.answerKey;
+    }
+
+    public boolean isCompletion() {
+        return this.completion;
+    }
+
+    public String getDescription() {
+        return this.description;
     }
 }

@@ -19,44 +19,51 @@ public class Game //her "skabes" klassen Game
         this.gameCompleted = false;
         this.parser = new Parser(); //attributten parser sættes til at være klassen Parser
         this.playerInventory = new Inventory(); //Initializer player's inventory
-
     }
-
 
     private void createRooms() //en metode til at lave rum
     {
         Room outside, theatre, pub, lab, office;
         String[] answers1 = {"A. Fordi ingen kan lide ham", "B. Fordi kage ", "C. Fordi all elsker ham"};
-        Quiz quiz1 = new Quiz("Hvorfor er Sindahl adoptered", answers1, "C","Sindahl");
-        PlaceableObject placeableObject1 = new Information("test1", "Tasdasdasdasd asdasd asd as dasd as dasd asd adad as");
-        PlaceableObject placeableObject2 = new WindMillPart("Windmill-Wing", 21, "This is one of the windmill wings");
+        Quiz quiz1 = new Quiz("Hvorfor er Sindahl adoptered", answers1, "C", "Sindahl");
+        PlaceableObject placeableObject1 = new Information("Article", "This Artical is about Sindahl. \n Sindahl is a student at SDU and studying Software Engineering." +
+                "\n Some would argue that he is even good at it. :) ", 1, 2);
+        PlaceableObject placeableObject2 = new WindMillPart("Windmill-Wing", 21, "This is one of the windmill wings", 2, 1);
         ArrayList<PlaceableObject> itemsInOutside = new ArrayList<PlaceableObject>();
         itemsInOutside.add(placeableObject1);
         itemsInOutside.add(placeableObject2);
+        this.player1 = new Player("Player 1", 1, 2);
 
 
-        outside = new Room("outside the main entrance of the university", itemsInOutside);
-        theatre = new Room("in a lecture theatre");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab", quiz1);
-        office = new Room("in the computing admin office");
-        this.assembleRoom = new Room("in the room where you assemble your windmill");
+        outside = new Room("outside the main entrance of the university", itemsInOutside, 5, 5);
+        theatre = new Room("in a lecture theatre", 3, 3);
+        pub = new Room("in the campus pub", 3, 3);
+        lab = new Room("in a computing lab", quiz1, 3, 3);
+        office = new Room("in the computing admin office", 3, 3);
+        this.assembleRoom = new Room("in the room where you assemble your windmill", 3, 3);
 
         outside.setExit("east", theatre);
         outside.setExit("south", lab);
         outside.setExit("west", pub);
         outside.setExit("north", this.assembleRoom);
+        outside.addObjectsInRoom(player1);
+        outside.contructGrid();
 
         this.assembleRoom.setExit("south", outside);
+        assembleRoom.contructGrid();
 
         theatre.setExit("west", outside);
+        theatre.contructGrid();
 
         pub.setExit("east", outside);
+        pub.contructGrid();
 
         lab.setExit("north", outside);
         lab.setExit("east", office);
+        lab.contructGrid();
 
         office.setExit("west", lab);
+        office.contructGrid();
 
         this.currentRoom = outside;
     }
@@ -99,28 +106,62 @@ public class Game //her "skabes" klassen Game
             return false;
         }
 
-        if (commandWord == CommandWord.HELP) {
-            printHelp();
-        } else if (commandWord == CommandWord.GO) {
-            goRoom(command);
-        } else if (commandWord == CommandWord.QUIT) {
-            wantToQuit = quit(command);
-        } else if (commandWord == CommandWord.COLLECT) {
-            this.currentRoom.collectItem(command, this.playerInventory);
-        } else if (commandWord == CommandWord.INSPECT) {
-            this.playerInventory.inspectItem(command);
-        } else if (commandWord == CommandWord.INVENTORY) {
-            this.playerInventory.printInventory();
-        } else if (commandWord == CommandWord.DoQUIZ) {
-            this.currentRoom.doQuizInRoom();
-        } else if (commandWord == CommandWord.ASSEMBLE) {
-            if (successfulAssemble()) {
-                this.gameCompleted = true;
-                return true;
-            }
-            return false;
+        //Switch case for processing the command.
+        switch (commandWord) {
+            case HELP:
+                this.printHelp();
+                break;
+            case GO:
+                this.goRoom(command);
+                break;
+            case QUIT:
+                wantToQuit = this.quit(command);
+                break;
+            case DoQUIZ:
+                this.currentRoom.doQuizInRoom();
+                break;
+            case COLLECT:
+                this.currentRoom.collectItem(command, this.playerInventory);
+                break;
+            case INSPECT:
+                this.playerInventory.inspectItem(command);
+                break;
+            case ASSEMBLE:
+                if (successfulAssemble()) {
+                    this.gameCompleted = true;
+                    return true;
+                }
+                break;
+            case INVENTORY:
+                this.playerInventory.printInventory();
+                return wantToQuit;
+            default:
+                System.out.println("I don't know what you mean...");
+                return false;
         }
+
         return wantToQuit;
+//        if (commandWord == CommandWord.HELP) {
+//            printHelp();
+//        } else if (commandWord == CommandWord.GO) {
+//            goRoom(command);
+//        } else if (commandWord == CommandWord.QUIT) {
+//            wantToQuit = quit(command);
+//        } else if (commandWord == CommandWord.COLLECT) {
+//            this.currentRoom.collectItem(command, this.playerInventory);
+//        } else if (commandWord == CommandWord.INSPECT) {
+//            this.playerInventory.inspectItem(command);
+//        } else if (commandWord == CommandWord.INVENTORY) {
+//            this.playerInventory.printInventory();
+//        } else if (commandWord == CommandWord.DoQUIZ) {
+//            this.currentRoom.doQuizInRoom();
+//        } else if (commandWord == CommandWord.ASSEMBLE) {
+//            if (successfulAssemble()) {
+//                this.gameCompleted = true;
+//                return true;
+//            }
+//            return false;
+//        }
     }
 
     private void printHelp() {

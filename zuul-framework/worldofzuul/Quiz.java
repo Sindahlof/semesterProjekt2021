@@ -41,31 +41,28 @@ public class Quiz {
 
     }
 
-    private boolean doQuiz() {
+    private void doQuiz() {
         printQuestion();
         printAnswers();
-        boolean check = true; //der bruges en boolean til at kører while loopet
 
-        while (check) {
-            Scanner input = new Scanner(System.in); //laver en ny scanner
+        while (true) {
             System.out.print("Your answer: \n>");
-            String answer = input.next().toUpperCase(); //chekker hvad der er blevet skrevet på input og læse
+            Scanner input = new Scanner(System.in); //Making a Scanner
+            String answer = input.next(); //chekker hvad der er blevet skrevet på input og læse
             // dette som en String
 
-            if (answer.equals(this.answerKey)) { //hvis in put passer med answerkey
+            if (answer.equalsIgnoreCase(this.answerKey)) { //hvis in put passer med answerkey
                 // array pladsen vil dette være true
-                check = false;
                 System.out.println("Your answer was correct!");
                 this.completion = true; //tæller memoryen en op så der kan holdes styr på om quizen er klaret
                 break;
-            } else if (this.quit.equals(answer)) { //chekkero m man skriver quit og vil så stoppe quizen
+            } else if (this.quit.equalsIgnoreCase(answer)) { //chekkero m man skriver quit og vil så stoppe quizen
                 System.out.println("remember you can always return to this quiz later");
-                return false;
+                break;
             }
 
             System.out.println("Your answer was wrong");
         }
-        return true;
     }
 
     public boolean getQuiz() { //A metod to execute the quiz

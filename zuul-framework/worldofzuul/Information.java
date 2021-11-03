@@ -3,10 +3,9 @@ package worldofzuul;
 public class Information extends PlaceableObject {
 
     private String content;
-    private int id;
 
-    public Information(String itemName, String content) {
-        super(itemName);
+    public Information(String itemName, String content, int y, int x) {
+        super(itemName,y,x);
         this.content = content;
     }
 

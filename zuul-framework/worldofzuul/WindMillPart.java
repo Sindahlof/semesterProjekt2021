@@ -5,8 +5,8 @@ public class WindMillPart extends PlaceableObject {
     private String description;
     private int id;
 
-    public WindMillPart(String itemName,int id, String description) {
-        super(itemName);
+    public WindMillPart(String itemName,int id, String description,int y,int x) {
+        super(itemName,y,x);
         this.id = id;
         this.description = description;
     }

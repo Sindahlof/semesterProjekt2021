@@ -1,10 +1,8 @@
 package worldofzuul;
 
 public class Player extends PlaceableObject {
-    private int[][] location;
-    public Player(String playerName, int[][] location) {
-        super(playerName);
-        this.location = location;
+    public Player(String playerName,int y,int x) {
+        super(playerName,y,x);
     }
 
     @Override

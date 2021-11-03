@@ -6,7 +6,6 @@ import java.util.HashMap;
 
 
 public class Room // laver en ny klasse ved navn room
-
 {
     //2 atributter intialiseres
     private String description;
@@ -15,51 +14,38 @@ public class Room // laver en ny klasse ved navn room
     private ArrayList<PlaceableObject> placeableObjectsInRoom;
     // Quiz atribute initialising
     private Quiz quizInRoom;
-    private String[][] grid;
+    private Grid gridForRoom;
 
-    public Room(String description)  //Constructor der bruger en string ved navn description som data input
+    public Room(String description, int y, int x)  //Constructor der bruger en string ved navn description som data input
     {
-        this.grid = new String[3][3];
+        this.gridForRoom = new Grid(y, x);
         this.description = description; //descripiton attrubuten sættes til at være det samme som constructor inpute
         this.exits = new HashMap<String, Room>(); //Hash mappet fra oven over intialiserers
     }
 
-    public Room(String description, ArrayList<PlaceableObject> placeableObjectsInRoom)  //Constructor der bruger en string ved navn description som data input
+    public Room(String description, ArrayList<PlaceableObject> placeableObjectsInRoom, int y, int x)  //Constructor der bruger en string ved navn description som data input
     {
-        this.grid = new String[3][3];
+        this.gridForRoom = new Grid(y, x);
         this.placeableObjectsInRoom = placeableObjectsInRoom;
         this.description = description; //descripiton attrubuten sættes til at være det samme som constructor inpute
         this.exits = new HashMap<String, Room>(); //Hash mappet fra oven over intialiserers
     }
 
-    public Room(String description, Quiz quizInRoom)  //Constructor der bruger en string ved navn description som data input
+    public Room(String description, Quiz quizInRoom, int y, int x)  //Constructor der bruger en string ved navn description som data input
     {
-        this.grid = new String[3][3];
+        this.gridForRoom = new Grid(y, x);
         this.description = description; //descripiton attrubuten sættes til at være det samme som constructor inpute
         this.quizInRoom = quizInRoom;
         this.exits = new HashMap<String, Room>(); //Hash mappet fra oven over intialiserers
     }
 
-    public Room(String description, Quiz quizInRoom, ArrayList<PlaceableObject> placeableObjectsInRoom)  //Constructor der bruger en string ved navn description som data input
+    public Room(String description, Quiz quizInRoom, ArrayList<PlaceableObject> placeableObjectsInRoom, int y, int x)  //Constructor der bruger en string ved navn description som data input
     {
-        this.grid = new String[3][3];
+        this.gridForRoom = new Grid(y, x);
         this.placeableObjectsInRoom = placeableObjectsInRoom;
         this.description = description; //descripiton attrubuten sættes til at være det samme som constructor inpute
         this.quizInRoom = quizInRoom;
         this.exits = new HashMap<String, Room>(); //Hash mappet fra oven over intialiserers
-    }
-
-    private void setPlaceableObjectLocation(){
-        for (PlaceableObject placeableObject : placeableObjectsInRoom){
-            int x = numberBetween1n3();
-            int y = numberBetween1n3();
-
-            if (placeableObject instanceof Information){
-                this.grid[x][y] = "I";
-            }else if (placeableObject instanceof WindMillPart){
-                this.grid[x][y] = "W";
-            }
-        }
     }
 
     public void setExit(String direction, Room neighbor) //methode
@@ -72,9 +58,45 @@ public class Room // laver en ny klasse ved navn room
         return this.description;
     }
 
+    public void contructGrid() {
+        this.gridForRoom.addExits(exits);
+        if (checkForObjectsInRoom()) {
+            for (PlaceableObject object : this.placeableObjectsInRoom) {
+                this.gridForRoom.addObject(object);
+            }
+        }
+    }
+
+    public String checkPlayerPosistion() {
+        String txt = "";
+        if (checkForObjectsInRoom()) {
+                for (PlaceableObject playerInRoom : this.placeableObjectsInRoom) {
+                    if (playerInRoom instanceof Player) {
+                        for (PlaceableObject placeableObject : this.placeableObjectsInRoom) {
+                            if (placeableObject.getX() == playerInRoom.getX() & placeableObject.getY() == playerInRoom.getY()) {
+                                if (placeableObject instanceof Information || placeableObject instanceof WindMillPart) {
+                                    txt = "\nYou are standing on a(n) " + placeableObject.getItemName();
+                                }
+                        }
+                    }
+                }
+            }
+        }
+        return txt;
+    }
+
     public String getLongDescription() //methode der retunerer diskriptonen af ruene og fortlæler hvor udgangene er
     {
-        return "You are " + this.description + "\n" + getExitString() + "." + printItemsInRoom() + printQuizInRoom();
+        return "You are " + this.description + "\n" + getExitString() + "." + /*printItemsInRoom() + */ printQuizInRoom() + this.gridForRoom.getGrid() + checkPlayerPosistion();
+    }
+
+    private boolean checkForObjectsInRoom(){
+        if (!(this.placeableObjectsInRoom == null)) {
+            if (!(this.placeableObjectsInRoom.isEmpty())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private String getExitString() //methode
@@ -106,20 +128,23 @@ public class Room // laver en ny klasse ved navn room
         return this.placeableObjectsInRoom;
     }
 
-    private String printItemsInRoom() {
-        if (this.placeableObjectsInRoom == null) {
-            return "";
-        }
-        if (this.placeableObjectsInRoom.isEmpty()) {
-            return "";
-        } else {
-            String text = "\nYou can see the following item(s): ";
-            for (PlaceableObject placeableObject : this.placeableObjectsInRoom) {
-                text += placeableObject.getItemName() + " ";
-            }
-            return text;
-        }
-    }
+    //Relevant now that there is a grapical view instead??
+//    private String printItemsInRoom() {
+//        if (this.placeableObjectsInRoom == null) {
+//            return "";
+//        }
+//        if (this.placeableObjectsInRoom.isEmpty()) {
+//            return "";
+//        } else {
+//            String text = "\nYou can see the following item(s): ";
+//            for (PlaceableObject placeableObject : this.placeableObjectsInRoom) {
+//                if (!(placeableObject instanceof Player)) {
+//                    text += placeableObject.getItemName() + " ";
+//                }
+//            }
+//            return text;
+//        }
+//    }
 
     private String printQuizInRoom() {
         if (this.quizInRoom == null) {
@@ -145,27 +170,17 @@ public class Room // laver en ny klasse ved navn room
         }
         return;
     }
-    private String printRoomLayout(){
-        String roomLayout = "";
-
-        roomLayout = "________________________\n";
-
-        for (int y = 0; y<grid.length; y++){
-
-            for (int x = 0; x<grid[y].length; x++){
-
-            }
-        }
-
-        return roomLayout;
-    }
 
     public Quiz getQuizInRoom() {
         return this.quizInRoom;
     }
 
-    public void removeItemsInRoom(PlaceableObject placeableObject) {
+    public void removeObjectsInRoom(PlaceableObject placeableObject) {
         this.placeableObjectsInRoom.remove(placeableObject);
+    }
+
+    public void addObjectsInRoom(PlaceableObject placeableObject) {
+        this.placeableObjectsInRoom.add(placeableObject);
     }
 
     public void collectItem(Command command, Inventory playerInventory) {
@@ -176,18 +191,13 @@ public class Room // laver en ny klasse ved navn room
             for (PlaceableObject placeableObject : this.placeableObjectsInRoom) {
                 if (placeableObject.getItemName().toUpperCase().equals(command.getSecondWord().toUpperCase())) {
                     playerInventory.addItem(placeableObject);
-                    removeItemsInRoom(placeableObject);
-                    System.out.println("You have collected: " + placeableObject.getItemName() + printItemsInRoom());
+                    removeObjectsInRoom(placeableObject);
+                    System.out.println("You have collected: " + placeableObject.getItemName()); //+ printItemsInRoom());
                     return;
                 }
             }
         }
         System.out.println("That item doesn't exist in this room");
-    }
-
-    private int numberBetween1n3(){
-        int range = (3-1)*1;
-        return (int)(Math.random()*range)+1;
     }
 }
 

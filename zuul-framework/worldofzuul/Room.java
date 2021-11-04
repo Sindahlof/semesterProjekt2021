@@ -143,13 +143,17 @@ public class Room // laver en ny klasse ved navn room
         return line + "-";
     }
 
+    // Metod to move the player
     public Player movePlayer(Player player, Command command) {
-        if (!(command.hasSecondWord())) {
+        if (!(command.hasSecondWord())) { //First of all check if we have given a direction to move in
             System.out.println("Move player where?");
         } else {
+            // if true then checks which direction
             if (command.getSecondWord().equalsIgnoreCase("up")) {
+                //Checks whether the player can move in the wanted direction. Which it does by checking if the player standing within the allowed area.
                 if (player.getPosistion().getY() < this.grid.length && player.getPosistion().getY() > 0) {
                     player.getPosistion().setY(player.getPosistion().getY() - 1);
+                    //Since we changed the player's location we'll need to update the Copy of player object that is in the array with object in the room
                     for (PlaceableObject object : this.placeableObjectsInRoom) {
                         if (object instanceof Player) {
                             this.placeableObjectsInRoom.remove(object);
@@ -161,7 +165,7 @@ public class Room // laver en ny klasse ved navn room
                     System.out.println("You cannot move there");
                 }
             } else if (command.getSecondWord().equalsIgnoreCase("down")) {
-                if (player.getPosistion().getY() < this.grid.length-1 && player.getPosistion().getY() >= 0) {
+                if (player.getPosistion().getY() < this.grid.length - 1 && player.getPosistion().getY() >= 0) {
                     player.getPosistion().setY(player.getPosistion().getY() + 1);
                     for (PlaceableObject object : this.placeableObjectsInRoom) {
                         if (object instanceof Player) {
@@ -170,7 +174,33 @@ public class Room // laver en ny klasse ved navn room
                             System.out.println(printGrid());
                         }
                     }
-                }else {
+                } else {
+                    System.out.println("You cannot move there");
+                }
+            } else if (command.getSecondWord().equalsIgnoreCase("right")) {
+                if (player.getPosistion().getX() < this.grid[0].length - 1 && player.getPosistion().getX() >= 0) {
+                    player.getPosistion().setX(player.getPosistion().getX() + 1);
+                    for (PlaceableObject object : this.placeableObjectsInRoom) {
+                        if (object instanceof Player) {
+                            this.placeableObjectsInRoom.remove(object);
+                            this.placeableObjectsInRoom.add(player);
+                            System.out.println(printGrid());
+                        }
+                    }
+                } else {
+                    System.out.println("You cannot move there");
+                }
+            } else if (command.getSecondWord().equalsIgnoreCase("left")) {
+                if (player.getPosistion().getX() < this.grid[0].length && player.getPosistion().getX() > 0) {
+                    player.getPosistion().setX(player.getPosistion().getX() - 1);
+                    for (PlaceableObject object : this.placeableObjectsInRoom) {
+                        if (object instanceof Player) {
+                            this.placeableObjectsInRoom.remove(object);
+                            this.placeableObjectsInRoom.add(player);
+                            System.out.println(printGrid());
+                        }
+                    }
+                } else {
                     System.out.println("You cannot move there");
                 }
             } else {
@@ -186,7 +216,7 @@ public class Room // laver en ny klasse ved navn room
             for (PlaceableObject playerInRoom : this.placeableObjectsInRoom) {
                 if (playerInRoom instanceof Player) {
                     for (PlaceableObject placeableObject : this.placeableObjectsInRoom) {
-                        if (placeableObject.getPosistion().getX() == playerInRoom.getPosistion().getX() & placeableObject.getPosistion().getY() == playerInRoom.getPosistion().getY()) {
+                        if (placeableObject.getPosistion().getX() == playerInRoom.getPosistion().getX() && placeableObject.getPosistion().getY() == playerInRoom.getPosistion().getY()) {
                             if (placeableObject instanceof Information || placeableObject instanceof WindMillPart) {
                                 txt = "\nYou are standing on a(n) " + placeableObject.getObjectName();
                             }
@@ -314,7 +344,11 @@ public class Room // laver en ny klasse ved navn room
             return;
         } else {
             for (PlaceableObject placeableObject : this.placeableObjectsInRoom) {
-                if (placeableObject.getObjectName().toUpperCase().equals(command.getSecondWord().toUpperCase())) {
+                if (placeableObject.getObjectName().equalsIgnoreCase(command.getSecondWord())) {
+                    if (checkPlayerPosition().equals("")) {
+                        System.out.println("You are not close enough to that item");
+                        return;
+                    }
                     playerInventory.addItem(placeableObject);
                     removeObjectsInRoom(placeableObject);
                     System.out.println("You have collected: " + placeableObject.getObjectName()); //+ printItemsInRoom());

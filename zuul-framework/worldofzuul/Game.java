@@ -32,7 +32,7 @@ public class Game //her "skabes" klassen Game
                 "\n Some would argue that he is even good at it. :) ", 1, 2);
         PlaceableObject placeableObject2 = new WindMillPart("Windmill-Wing", 21, "This is one of the windmill wings", 2, 1);
 
-        placeableObject1.getPosistion().updatePosistion(1,2);
+        placeableObject1.getPosistion().updatePosistion(1, 2);
 
         ArrayList<PlaceableObject> itemsInOutside = new ArrayList<PlaceableObject>();
         itemsInOutside.add(placeableObject1);
@@ -117,7 +117,7 @@ public class Game //her "skabes" klassen Game
                 this.goRoom(command);
                 break;
             case MOVE:
-                this.player1=this.currentRoom.movePlayer(this.player1, command);
+                this.player1 = this.currentRoom.movePlayer(this.player1, command);
                 break;
             case QUIT:
                 wantToQuit = this.quit(command);

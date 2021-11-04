@@ -8,91 +8,59 @@ import java.util.HashMap;
 public class Room // laver en ny klasse ved navn room
 {
     //2 atributter intialiseres
-    private String description;
-    private HashMap<String, Room> exits; //laver et HashMap af key datatypen String og value datatypen Room (referer til sig selv)
-    private HashMap<String, Posistion> doorLocationsInRoom;
+    private final String description;
+    private final HashMap<String, Room> exits; //laver et HashMap af key datatypen String og value datatypen Room (referer til sig selv)
+    private final HashMap<String, Position> doorLocationsInRoom;
     // Hashmap of items in the room
     private ArrayList<PlaceableObject> placeableObjectsInRoom;
     // Quiz atribute initialising
     private Quiz quizInRoom;
     private String[][] grid;
-    private int y, x;
+    private final int y;
+    private final int x;
 
-    public Room(String description, int y, int x)  //Constructor der bruger en string ved navn description som data input
-    {
+    public Room(String description, int y, int x) { //Constructor der bruger en string ved navn description som data input
         this.y = y;
         this.x = x;
         this.description = description; //descripiton attrubuten sættes til at være det samme som constructor inpute
-        this.exits = new HashMap<String, Room>(); //Hash mappet fra oven over intialiserers
-        doorLocationsInRoom = new HashMap<String, Posistion>();
-    }
-//
-//    public Room(String description, ArrayList<PlaceableObject> placeableObjectsInRoom, int y, int x)  //Constructor der bruger en string ved navn description som data input
-//    {
-//        this.y = y;
-//        this.x = x;
-//        this.placeableObjectsInRoom = placeableObjectsInRoom;
-//        this.description = description; //descripiton attrubuten sættes til at være det samme som constructor inpute
-//        this.exits = new HashMap<String, Room>(); //Hash mappet fra oven over intialiserers
-//        doorLocationsInRoom = new HashMap<String, Posistion>();
-//
-//    }
-//
-//    public Room(String description, Quiz quizInRoom, int y, int x)  //Constructor der bruger en string ved navn description som data input
-//    {
-//        this.y = y;
-//        this.x = x;
-//        this.description = description; //descripiton attrubuten sættes til at være det samme som constructor inpute
-//        this.quizInRoom = quizInRoom;
-//        this.exits = new HashMap<String, Room>(); //Hash mappet fra oven over intialiserers
-//        doorLocationsInRoom = new HashMap<String, Posistion>();
-//
-//    }
-//
-//    public Room(String description, Quiz quizInRoom, ArrayList<PlaceableObject> placeableObjectsInRoom, int y, int x)  //Constructor der bruger en string ved navn description som data input
-//    {
-//        this.y = y;
-//        this.x = x;
-//        this.placeableObjectsInRoom = placeableObjectsInRoom;
-//        this.description = description; //descripiton attrubuten sættes til at være det samme som constructor inpute
-//        this.quizInRoom = quizInRoom;
-//        this.exits = new HashMap<String, Room>(); //Hash mappet fra oven over intialiserers
-//        doorLocationsInRoom = new HashMap<String, Posistion>();
-//
-//    }
-
-    public void setExit(String direction, Room neighbor) //methode
-    {
-        this.exits.put(direction, neighbor);
-    } //Hashmappets key Strings sættes til at være dirctein variablen og valuesne sættes til at være variablen neighbor
-
-    public String getShortDescription() //En metode som retunerer atrubuten descriptinon fra oven over
-    {
-        return this.description;
+        this.exits = new HashMap<>(); //Hash mappet fra oven over intialiserers
+        this.doorLocationsInRoom = new HashMap<>();
+        this.placeableObjectsInRoom = new ArrayList<>();
     }
 
     //Metod to place symbols representing different objects into the multidimensional array called grid.
-    private void constructGrid() {
+    public void constructGrid() {
         this.grid = new String[this.y][this.x];
-        //For loop to add exits to the grid, It also makes a new Hashmap which saved the position where each exit was placed
-        for (String exits : exits.keySet()) {
-            if (exits.equals("north")) {
-                Posistion posistion = new Posistion(0, Math.round(this.grid[0].length / 2));
-                this.doorLocationsInRoom.put("north", posistion);
-                this.grid[0][Math.round(this.grid[0].length / 2)] = "E";
-            } else if (exits.equals("south")) {
-                Posistion posistion = new Posistion(this.grid.length - 1, Math.round(this.grid[0].length / 2));
-                this.doorLocationsInRoom.put("south", posistion);
-                this.grid[this.grid.length - 1][Math.round(this.grid[0].length / 2)] = "E";
-            } else if (exits.equals("west")) {
-                Posistion posistion = new Posistion(Math.round(this.grid.length / 2), 0);
-                this.doorLocationsInRoom.put("west", posistion);
-                this.grid[Math.round(this.grid.length / 2)][0] = "E";
-            } else if (exits.equals("east")) {
-                Posistion posistion = new Posistion(Math.round(this.grid.length / 2), this.grid.length - 1);
-                this.doorLocationsInRoom.put("east", posistion);
-                this.grid[Math.round(this.grid.length / 2)][this.grid.length - 1] = "E";
-
+        //For loop to add exits to the grid, It also adds their position to a new Hashmap.
+        for (String directions : this.exits.keySet()) {
+            switch (directions) {
+                case "north": {
+                    Position position = new Position(0, Math.round(this.grid[0].length / 2));
+                    this.doorLocationsInRoom.put("north", position);
+                    this.grid[0][Math.round(this.grid[0].length / 2)] = "E";
+                    break;
+                }
+                case "south": {
+                    Position position = new Position(this.grid.length - 1, Math.round(this.grid[0].length / 2));
+                    this.doorLocationsInRoom.put("south", position);
+                    this.grid[this.grid.length - 1][Math.round(this.grid[0].length / 2)] = "E";
+                    break;
+                }
+                case "west": {
+                    Position position = new Position(Math.round(this.grid.length / 2), 0);
+                    this.doorLocationsInRoom.put("west", position);
+                    this.grid[Math.round(this.grid.length / 2)][0] = "E";
+                    break;
+                }
+                case "east": {
+                    Position position = new Position(Math.round(this.grid.length / 2), this.grid[0].length - 1);
+                    this.doorLocationsInRoom.put("east", position);
+                    this.grid[Math.round(this.grid.length / 2)][this.grid[0].length - 1] = "E";
+                    break;
+                }
+                default: {
+                    break;
+                }
             }
         }
 
@@ -130,7 +98,6 @@ public class Room // laver en ny klasse ved navn room
             }
             print += "\n" + verticalLine() + "\n";
         }
-        print += checkPlayerPosition();
         return print;
     }
 
@@ -143,68 +110,74 @@ public class Room // laver en ny klasse ved navn room
         return line + "-";
     }
 
+    public String[][] getGrid() {
+        return this.grid;
+    }
+
     // Metod to move the player
     public Player movePlayer(Player player, Command command) {
         if (!(command.hasSecondWord())) { //First of all check if we have given a direction to move in
             System.out.println("Move player where?");
         } else {
-            // if true then checks which direction
-            if (command.getSecondWord().equalsIgnoreCase("up")) {
-                //Checks whether the player can move in the wanted direction. Which it does by checking if the player standing within the allowed area.
-                if (player.getPosistion().getY() < this.grid.length && player.getPosistion().getY() > 0) {
-                    player.getPosistion().setY(player.getPosistion().getY() - 1);
-                    //Since we changed the player's location we'll need to update the Copy of player object that is in the array with object in the room
-                    for (PlaceableObject object : this.placeableObjectsInRoom) {
-                        if (object instanceof Player) {
-                            this.placeableObjectsInRoom.remove(object);
-                            this.placeableObjectsInRoom.add(player);
-                            System.out.println(printGrid());
+            if (checkForObjectsInRoom()) {
+                // if true then checks which direction
+                if (command.getSecondWord().equalsIgnoreCase("up")) {
+                    //Checks whether the player can move in the wanted direction. Which it does by checking if the player standing within the allowed area.
+                    if (player.getPosistion().getY() < this.grid.length && player.getPosistion().getY() > 0) {
+                        player.getPosistion().setY(player.getPosistion().getY() - 1);
+                        //Since we changed the player's location we'll need to update the Copy of player object that is in the array with object in the room
+                        for (PlaceableObject object : this.placeableObjectsInRoom) {
+                            if (object instanceof Player) {
+                                this.placeableObjectsInRoom.remove(object);
+                                this.placeableObjectsInRoom.add(player);
+                                System.out.println(printGrid() + checkPlayerPosition());
+                            }
                         }
+                    } else {
+                        System.out.println("You cannot move there");
+                    }
+                } else if (command.getSecondWord().equalsIgnoreCase("down")) {
+                    if (player.getPosistion().getY() < this.grid.length - 1 && player.getPosistion().getY() >= 0) {
+                        player.getPosistion().setY(player.getPosistion().getY() + 1);
+                        for (PlaceableObject object : this.placeableObjectsInRoom) {
+                            if (object instanceof Player) {
+                                this.placeableObjectsInRoom.remove(object);
+                                this.placeableObjectsInRoom.add(player);
+                                System.out.println(printGrid() + checkPlayerPosition());
+                            }
+                        }
+                    } else {
+                        System.out.println("You cannot move there");
+                    }
+                } else if (command.getSecondWord().equalsIgnoreCase("right")) {
+                    if (player.getPosistion().getX() < this.grid[0].length - 1 && player.getPosistion().getX() >= 0) {
+                        player.getPosistion().setX(player.getPosistion().getX() + 1);
+                        for (PlaceableObject object : this.placeableObjectsInRoom) {
+                            if (object instanceof Player) {
+                                this.placeableObjectsInRoom.remove(object);
+                                this.placeableObjectsInRoom.add(player);
+                                System.out.println(printGrid() + checkPlayerPosition());
+                            }
+                        }
+                    } else {
+                        System.out.println("You cannot move there");
+                    }
+                } else if (command.getSecondWord().equalsIgnoreCase("left")) {
+                    if (player.getPosistion().getX() < this.grid[0].length && player.getPosistion().getX() > 0) {
+                        player.getPosistion().setX(player.getPosistion().getX() - 1);
+                        for (PlaceableObject object : this.placeableObjectsInRoom) {
+                            if (object instanceof Player) {
+                                this.placeableObjectsInRoom.remove(object);
+                                this.placeableObjectsInRoom.add(player);
+                                System.out.println(printGrid() + checkPlayerPosition());
+                            }
+                        }
+                    } else {
+                        System.out.println("You cannot move there");
                     }
                 } else {
-                    System.out.println("You cannot move there");
+                    System.out.println("Unknown direction");
                 }
-            } else if (command.getSecondWord().equalsIgnoreCase("down")) {
-                if (player.getPosistion().getY() < this.grid.length - 1 && player.getPosistion().getY() >= 0) {
-                    player.getPosistion().setY(player.getPosistion().getY() + 1);
-                    for (PlaceableObject object : this.placeableObjectsInRoom) {
-                        if (object instanceof Player) {
-                            this.placeableObjectsInRoom.remove(object);
-                            this.placeableObjectsInRoom.add(player);
-                            System.out.println(printGrid());
-                        }
-                    }
-                } else {
-                    System.out.println("You cannot move there");
-                }
-            } else if (command.getSecondWord().equalsIgnoreCase("right")) {
-                if (player.getPosistion().getX() < this.grid[0].length - 1 && player.getPosistion().getX() >= 0) {
-                    player.getPosistion().setX(player.getPosistion().getX() + 1);
-                    for (PlaceableObject object : this.placeableObjectsInRoom) {
-                        if (object instanceof Player) {
-                            this.placeableObjectsInRoom.remove(object);
-                            this.placeableObjectsInRoom.add(player);
-                            System.out.println(printGrid());
-                        }
-                    }
-                } else {
-                    System.out.println("You cannot move there");
-                }
-            } else if (command.getSecondWord().equalsIgnoreCase("left")) {
-                if (player.getPosistion().getX() < this.grid[0].length && player.getPosistion().getX() > 0) {
-                    player.getPosistion().setX(player.getPosistion().getX() - 1);
-                    for (PlaceableObject object : this.placeableObjectsInRoom) {
-                        if (object instanceof Player) {
-                            this.placeableObjectsInRoom.remove(object);
-                            this.placeableObjectsInRoom.add(player);
-                            System.out.println(printGrid());
-                        }
-                    }
-                } else {
-                    System.out.println("You cannot move there");
-                }
-            } else {
-                System.out.println("Unknown direction");
             }
         }
         return player;
@@ -215,10 +188,15 @@ public class Room // laver en ny klasse ved navn room
         if (checkForObjectsInRoom()) {
             for (PlaceableObject playerInRoom : this.placeableObjectsInRoom) {
                 if (playerInRoom instanceof Player) {
+                    if (!(atWhichExit((Player) playerInRoom) == null)) {
+                        txt = "\nYou are standing at the " + atWhichExit((Player) playerInRoom) + " exit";
+                        break;
+                    }
                     for (PlaceableObject placeableObject : this.placeableObjectsInRoom) {
-                        if (placeableObject.getPosistion().getX() == playerInRoom.getPosistion().getX() && placeableObject.getPosistion().getY() == playerInRoom.getPosistion().getY()) {
+                        if (placeableObject.getPosistion().equals(playerInRoom.getPosistion())) {
                             if (placeableObject instanceof Information || placeableObject instanceof WindMillPart) {
                                 txt = "\nYou are standing on a(n) " + placeableObject.getObjectName();
+                                break;
                             }
                         }
                     }
@@ -228,22 +206,47 @@ public class Room // laver en ny klasse ved navn room
         return txt;
     }
 
-    public String getLongDescription() //methode der retunerer diskriptonen af ruene og fortlæler hvor udgangene er
-    {
-        return "You are " + this.description + "\n" + getExitString() + "." + /*printItemsInRoom() + */ printQuizInRoom() + printGrid();
-    }
-
     private boolean checkForObjectsInRoom() {
         if (!(this.placeableObjectsInRoom == null)) {
-            if (!(this.placeableObjectsInRoom.isEmpty())) {
-                return true;
-            }
+            return !(this.placeableObjectsInRoom.isEmpty());
         }
         return false;
     }
 
-    private String getExitString() //methode
-    {
+    public String getLongDescription() {//methode der retunerer diskriptonen af ruene og fortlæler hvor udgangene er{
+        return "You are " + this.description + "\n" + getExitString() + "." + /*printItemsInRoom() + */ printQuizInRoom() + printGrid() + checkPlayerPosition();
+    }
+
+    public void setExit(String direction, Room neighbor) {
+        this.exits.put(direction, neighbor);
+        constructGrid();
+    } //Hashmappets key Strings sættes til at være dirctein variablen og valuesne sættes til at være variablen neighbor
+
+    public String atWhichExit(Player player) {
+        for (String direction : doorLocationsInRoom.keySet()) {
+            switch (direction) {
+                case "north":
+                    if (doorLocationsInRoom.get(direction).equals(player.getPosistion())) {
+                        return "north";
+                    }
+                case "south":
+                    if (doorLocationsInRoom.get(direction).equals(player.getPosistion())) {
+                        return "south";
+                    }
+                case "east":
+                    if (doorLocationsInRoom.get(direction).equals(player.getPosistion())) {
+                        return "east";
+                    }
+                case "west":
+                    if (doorLocationsInRoom.get(direction).equals(player.getPosistion())) {
+                        return "west";
+                    }
+            }
+        }
+        return null;
+    }
+
+    private String getExitString() {//methode
         String returnString = "These are the possible exits:"; //variable ærkleres
 
         /*
@@ -262,32 +265,23 @@ public class Room // laver en ny klasse ved navn room
         return returnString; //retuner returnString
     }
 
-    public Room getExit(String direction) //methode med return datatypen Room
-    {
+    public Room getExit(String direction) {//methode med return datatypen Room
         return this.exits.get(direction); //retunerer valuen på den key som direction peger på
     }
 
-    public ArrayList<PlaceableObject> getPlaceableObjectsInRoom() {
-        return this.placeableObjectsInRoom;
+    public Position getExitPosition(String direction){
+        switch (direction){
+            case "south":
+                return this.doorLocationsInRoom.get("north");
+            case "north":
+                return this.doorLocationsInRoom.get("south");
+            case "east":
+                return this.doorLocationsInRoom.get("west");
+            case "west":
+                return this.doorLocationsInRoom.get("east");
+        }
+        return this.doorLocationsInRoom.get(direction);
     }
-
-    //Relevant now that there is a grapical view instead??
-//    private String printItemsInRoom() {
-//        if (this.placeableObjectsInRoom == null) {
-//            return "";
-//        }
-//        if (this.placeableObjectsInRoom.isEmpty()) {
-//            return "";
-//        } else {
-//            String text = "\nYou can see the following item(s): ";
-//            for (PlaceableObject placeableObject : this.placeableObjectsInRoom) {
-//                if (!(placeableObject instanceof Player)) {
-//                    text += placeableObject.getItemName() + " ";
-//                }
-//            }
-//            return text;
-//        }
-//    }
 
     private String printQuizInRoom() {
         if (this.quizInRoom == null) {
@@ -318,6 +312,10 @@ public class Room // laver en ny klasse ved navn room
         return this.quizInRoom;
     }
 
+    public void addQuizToRoom(Quiz quizInRoom) {
+        this.quizInRoom = quizInRoom;
+    }
+
     public void removeObjectsInRoom(PlaceableObject placeableObject) {
         this.placeableObjectsInRoom.remove(placeableObject);
         this.placeableObjectsInRoom.trimToSize();
@@ -334,11 +332,7 @@ public class Room // laver en ny klasse ved navn room
         this.placeableObjectsInRoom = placeableObjectsInRoom;
     }
 
-    public void addQuizInRoom(Quiz quizInRoom) {
-        this.quizInRoom = quizInRoom;
-    }
-
-    public void collectItem(Command command, Inventory playerInventory) {
+    public void collectObject(Command command, Inventory playerInventory) {
         if (!(command.hasSecondWord())) {
             System.out.println("Which item would you like to collect?");
             return;
@@ -357,10 +351,6 @@ public class Room // laver en ny klasse ved navn room
             }
         }
         System.out.println("That item doesn't exist in this room");
-    }
-
-    public String[][] getGrid() {
-        return this.grid;
     }
 }
 

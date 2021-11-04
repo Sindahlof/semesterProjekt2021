@@ -1,12 +1,12 @@
 package worldofzuul;
 
 public abstract class PlaceableObject {
-    private Posistion posistion;
+    private Position position;
     private String objectName;
 
     //Constructor for Item which just sets the value of the String itemName
     public PlaceableObject(String objectName, int y, int x) {
-        this.posistion = new Posistion(y,x);
+        this.position = new Position(y,x);
         this.objectName = objectName;
 
     }
@@ -18,7 +18,7 @@ public abstract class PlaceableObject {
 
     public abstract void print();
 
-    public Posistion getPosistion(){
-        return this.posistion;
+    public Position getPosistion(){
+        return this.position;
     }
 }

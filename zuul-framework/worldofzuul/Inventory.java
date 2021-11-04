@@ -25,7 +25,7 @@ public class Inventory {
         if (!(this.slots.isEmpty())) {
             System.out.println("You have the following item(s) in your inventory:");
             for (PlaceableObject placeableObject : this.slots) {
-                System.out.print(placeableObject.getItemName() + ", ");
+                System.out.print(placeableObject.getObjectName() + ", ");
             }
             System.out.println();
         } else {
@@ -39,7 +39,7 @@ public class Inventory {
             return;
         } else {
             for (PlaceableObject placeableObject : this.slots) {
-                if (placeableObject.getItemName().toUpperCase().equals(command.getSecondWord().toUpperCase())) {
+                if (placeableObject.getObjectName().toUpperCase().equals(command.getSecondWord().toUpperCase())) {
                     placeableObject.print();
                     return;
                 }

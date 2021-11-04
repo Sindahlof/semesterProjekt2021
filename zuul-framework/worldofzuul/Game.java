@@ -25,20 +25,26 @@ public class Game //her "skabes" klassen Game
     {
         Room outside, theatre, pub, lab, office;
         String[] answers1 = {"A. Fordi ingen kan lide ham", "B. Fordi kage ", "C. Fordi all elsker ham"};
+
         Quiz quiz1 = new Quiz("Hvorfor er Sindahl adoptered", answers1, "C", "Sindahl");
+
         PlaceableObject placeableObject1 = new Information("Article", "This Artical is about Sindahl. \n Sindahl is a student at SDU and studying Software Engineering." +
                 "\n Some would argue that he is even good at it. :) ", 1, 2);
         PlaceableObject placeableObject2 = new WindMillPart("Windmill-Wing", 21, "This is one of the windmill wings", 2, 1);
+
+        placeableObject1.getPosistion().updatePosistion(1,2);
+
         ArrayList<PlaceableObject> itemsInOutside = new ArrayList<PlaceableObject>();
         itemsInOutside.add(placeableObject1);
         itemsInOutside.add(placeableObject2);
-        this.player1 = new Player("Player 1", 1, 2);
+
+        this.player1 = new Player("Player 1", 3, 2);
 
 
-        outside = new Room("outside the main entrance of the university", itemsInOutside, 5, 5);
+        outside = new Room("outside the main entrance of the university", 5, 5);
         theatre = new Room("in a lecture theatre", 3, 3);
         pub = new Room("in the campus pub", 3, 3);
-        lab = new Room("in a computing lab", quiz1, 3, 3);
+        lab = new Room("in a computing lab", 3, 3);
         office = new Room("in the computing admin office", 3, 3);
         this.assembleRoom = new Room("in the room where you assemble your windmill", 3, 3);
 
@@ -46,26 +52,22 @@ public class Game //her "skabes" klassen Game
         outside.setExit("south", lab);
         outside.setExit("west", pub);
         outside.setExit("north", this.assembleRoom);
-        outside.addObjectsInRoom(player1);
-        outside.contructGrid();
+        outside.addObjectsInRoom(itemsInOutside);
 
         this.assembleRoom.setExit("south", outside);
-        assembleRoom.contructGrid();
 
         theatre.setExit("west", outside);
-        theatre.contructGrid();
 
         pub.setExit("east", outside);
-        pub.contructGrid();
 
         lab.setExit("north", outside);
         lab.setExit("east", office);
-        lab.contructGrid();
+        lab.addQuizInRoom(quiz1);
 
         office.setExit("west", lab);
-        office.contructGrid();
 
         this.currentRoom = outside;
+        outside.addObjectsInRoom(this.player1);
     }
 
     public void play() //metode, der sætter exit-conditionen
@@ -113,6 +115,9 @@ public class Game //her "skabes" klassen Game
                 break;
             case GO:
                 this.goRoom(command);
+                break;
+            case MOVE:
+                this.player1=this.currentRoom.movePlayer(this.player1, command);
                 break;
             case QUIT:
                 wantToQuit = this.quit(command);

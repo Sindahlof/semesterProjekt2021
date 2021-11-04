@@ -21,7 +21,7 @@ public class WindMillPart extends PlaceableObject {
 
     @Override
     public void print() {
-        String text = this.getItemName() +" With the ID: "+ this.id + "\n" + this.description;
+        String text = this.getObjectName() +" With the ID: "+ this.id + "\n" + this.description;
         System.out.println(text);
     }
 }

@@ -8,7 +8,7 @@ public class main {
         Game newGame = new Game(); //laver et nyt objekt der herdder game
         newGame.play(); //kalder en construcotr som hedder play fra klassen Game
 
-        System.out.println("Make a way to move faster");
+        System.out.println("\n krav - Make a way to move faster - C");
 
         /*
         Hvis man vil se alle keys i HashMap'et

@@ -11,9 +11,9 @@ public class Room // laver en ny klasse ved navn room
     private final String description;
     private final HashMap<String, Room> exits; //laver et HashMap af key datatypen String og value datatypen Room (referer til sig selv)
     private final HashMap<String, Position> doorLocationsInRoom;
-    // Hashmap of items in the room
+
     private ArrayList<PlaceableObject> placeableObjectsInRoom;
-    // Quiz atribute initialising
+
     private Quiz quizInRoom;
     private String[][] grid;
     private final int y;
@@ -22,7 +22,7 @@ public class Room // laver en ny klasse ved navn room
     public Room(String description, int y, int x) { //Constructor der bruger en string ved navn description som data input
         this.y = y;
         this.x = x;
-        this.description = description; //descripiton attrubuten sættes til at være det samme som constructor inpute
+        this.description = description; //descripiton attributen sættes til at være det samme som constructor inpute
         this.exits = new HashMap<>(); //Hash mappet fra oven over intialiserers
         this.doorLocationsInRoom = new HashMap<>();
         this.placeableObjectsInRoom = new ArrayList<>();
@@ -108,10 +108,6 @@ public class Room // laver en ny klasse ved navn room
             line += "----";
         }
         return line + "-";
-    }
-
-    public String[][] getGrid() {
-        return this.grid;
     }
 
     // Metod to move the player
@@ -269,8 +265,8 @@ public class Room // laver en ny klasse ved navn room
         return this.exits.get(direction); //retunerer valuen på den key som direction peger på
     }
 
-    public Position getExitPosition(String direction){
-        switch (direction){
+    public Position getExitPosition(String direction) {
+        switch (direction) {
             case "south":
                 return this.doorLocationsInRoom.get("north");
             case "north":
@@ -290,22 +286,21 @@ public class Room // laver en ny klasse ved navn room
         if (this.quizInRoom.isCompletion()) {
             return "";
         } else {
-            String text = "\nThere is a quiz about: " + this.quizInRoom.getDescription();
-            return text;
+            return "\nThere is a quiz about: " + this.quizInRoom.getDescription();
         }
     }
 
-    public void doQuizInRoom() {
+    public Player doQuizInRoom(Player player) {
         if (this.quizInRoom == null) {
             System.out.println("There is no quiz in this room.");
-            return;
+            return player;
         }
         if (this.quizInRoom.isCompletion()) {
             System.out.println("The quiz in this room has already been completed.");
-        } else {
-            this.quizInRoom.getQuiz();
+            return player;
         }
-        return;
+        this.quizInRoom.getQuiz(player);
+        return player;
     }
 
     public Quiz getQuizInRoom() {

@@ -16,6 +16,6 @@ public enum CommandWord {
     @Override
     public String toString() //methode retunerer commandString, toString methoden overrides her
     {
-        return commandString;
+        return this.commandString;
     }
 }

@@ -41,7 +41,7 @@ public class Quiz {
 
     }
 
-    private void doQuiz() {
+    private void doQuiz(Player player) {
         printQuestion();
         printAnswers();
 
@@ -62,11 +62,15 @@ public class Quiz {
             }
 
             System.out.println("Your answer was wrong");
+            player.setHealth(player.getHealth()-1);
+            if (player.getHealth()==0){
+                break;
+            }
         }
     }
 
-    public boolean getQuiz() { //A metod to execute the quiz
-        doQuiz();
+    public boolean getQuiz(Player player) { //A metod to execute the quiz
+        doQuiz(player);
         return this.completion;
     }
 

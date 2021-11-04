@@ -1,6 +1,8 @@
 package worldofzuul;
 
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.Scanner;
 
 public class Game //her "skabes" klassen Game
 {
@@ -8,14 +10,15 @@ public class Game //her "skabes" klassen Game
     private Parser parser;
     private Room currentRoom;
     private final Inventory playerInventory;
-    private boolean gameCompleted;
+    private boolean gameCompleted, dead;
     private Room assembleRoom;
     private Player player1;
 
 
-    public Game() { //constructoren Game defineres
+    public Game() { //constructor Game defineres
         createRooms();
         this.gameCompleted = false;
+        this.dead=false;
         this.parser = new Parser(); //attributten parser sættes til at være klassen Parser
         this.playerInventory = new Inventory(); //Initializer player's inventory
     }
@@ -26,13 +29,15 @@ public class Game //her "skabes" klassen Game
 
         Quiz quiz1 = new Quiz("Hvorfor er Sindahl adoptered", answers1, "C", "Sindahl");
 
-        PlaceableObject placeableObject1 = new Information("Article", "This Artical is about Sindahl. \n Sindahl is a student at SDU and studying Software Engineering." +
-                "\n Some would argue that he is even good at it. :) ", 1, 2);
-        PlaceableObject placeableObject2 = new WindMillPart("Windmill-Wing", 21, "This is one of the windmill wings", 2, 1);
+        PlaceableObject placeableObject1 = new Information("Article", """
+                \sThis Artical is about Sindahl.
+                Sindahl is a student at SDU and studying Software Engineering.
+                Some would argue that he is even good at it. :)\s""", 1, 2);
+        PlaceableObject placeableObject2 = new WindMillPart("Windmill-Wing", 4, "This is one of the windmill wings", 2, 1);
 
         placeableObject1.getPosistion().updatePosition(1, 2);
 
-        ArrayList<PlaceableObject> itemsInOutside = new ArrayList<PlaceableObject>();
+        ArrayList<PlaceableObject> itemsInOutside = new ArrayList<>();
         itemsInOutside.add(placeableObject1);
         itemsInOutside.add(placeableObject2);
 
@@ -73,8 +78,39 @@ public class Game //her "skabes" klassen Game
     }
 
     public void play() {//metode, der sætter exit-conditionen
-        printWelcome();
 
+        System.out.println("Welcome to the World of Zuul!");
+        System.out.println("World of Zuul is a new, incredibly boring adventure game.");
+
+        System.out.print("Please select your difficulty: \n>");
+
+        boolean difficultySelected = true;
+
+        while(difficultySelected){
+            Scanner input = new Scanner(System.in);
+            String answer = input.next().toLowerCase();
+            switch (answer){
+                case "easy":
+                    System.out.println("You have selected the easy difficulty, you have 10 health.");
+                    this.player1.setHealth(10);
+                    difficultySelected = false;
+                    break;
+                case "medium":
+                    System.out.println("You have selected the medium difficulty, you have 5 health.");
+                    this.player1.setHealth(5);
+                    difficultySelected = false;
+                    break;
+                case "hard":
+                    System.out.println("You have selected the hard difficulty, you have 2 health.");
+                    this.player1.setHealth(2);
+                    difficultySelected = false;
+                    break;
+                default:
+                    System.out.println("Unknown difficulty, try again. \n>");
+            }
+        }
+
+        printWelcome();
 
         boolean finished = false;
 
@@ -83,7 +119,10 @@ public class Game //her "skabes" klassen Game
             finished = processCommand(command);
         }
         if (this.gameCompleted) {
-            System.out.println("Congratulations you have successfully completed the game and therefore you are smarter than Sindahl");
+            System.out.println("Congratulations you have successfully completed the game and therefore you are smarter than Sindahl.");
+        }
+        if (this.dead){
+            System.out.println("You have lost all your health and therefore died.");
         }
 
         System.out.println("Thank you for playing.  Goodbye.");
@@ -91,8 +130,7 @@ public class Game //her "skabes" klassen Game
 
     private void printWelcome() {
         System.out.println();
-        System.out.println("Welcome to the World of Zuul!");
-        System.out.println("World of Zuul is a new, incredibly boring adventure game.");
+        System.out.println("P = Player, E = Exit, A = Article, W = Windmill-part");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
         System.out.println(this.currentRoom.getLongDescription());
@@ -114,7 +152,7 @@ public class Game //her "skabes" klassen Game
                 this.printHelp();
                 break;
             case EXIT:
-                this.goRoom(command);
+                this.exitRoom();
                 break;
             case MOVE:
                 this.player1 = this.currentRoom.movePlayer(this.player1, command);
@@ -123,7 +161,11 @@ public class Game //her "skabes" klassen Game
                 wantToQuit = this.quit(command);
                 break;
             case DoQUIZ:
-                this.currentRoom.doQuizInRoom();
+                this.player1 = this.currentRoom.doQuizInRoom(this.player1);
+                if (this.player1.getHealth()==0){
+                    this.dead = true;
+                    return true;
+                }
                 break;
             case COLLECT:
                 this.currentRoom.collectObject(command, this.playerInventory);
@@ -139,7 +181,7 @@ public class Game //her "skabes" klassen Game
                 break;
             case INVENTORY:
                 this.playerInventory.printInventory();
-                return wantToQuit;
+                return false;
             default:
                 System.out.println("I don't know what you mean...");
                 return false;
@@ -153,10 +195,10 @@ public class Game //her "skabes" klassen Game
         System.out.println("around at the university.");
         System.out.println();
         System.out.println("Your command words are:");
-        parser.showCommands();
+        this.parser.showCommands();
     }
 
-    private void goRoom(Command command) {
+    private void exitRoom() {
         String direction = this.currentRoom.atWhichExit(this.player1);
         if (direction== null){
             System.out.println("You are not at an exit");
@@ -168,10 +210,10 @@ public class Game //her "skabes" klassen Game
         if (nextRoom == null) { //tjekker, om der er rum i den givne direction
             System.out.println("There is no door!");
         } else {
-            this.currentRoom.removeObjectsInRoom(player1);
+            this.currentRoom.removeObjectsInRoom(this.player1);
             this.currentRoom = nextRoom;
-            player1.getPosistion().updatePosition(this.currentRoom.getExitPosition(direction));
-            this.currentRoom.addObjectsInRoom(player1);
+            this.player1.getPosistion().updatePosition(this.currentRoom.getExitPosition(direction));
+            this.currentRoom.addObjectsInRoom(this.player1);
             System.out.println(this.currentRoom.getLongDescription());
         }
     }

@@ -1,9 +1,9 @@
 package worldofzuul;
 
 public enum CommandWord {
-    GO("go"), QUIT("quit"), HELP("help"), COLLECT("collect"),
-    ASSEMBLE("assemble"),INSPECT("inspect"),INVENTORY("inventory"),UNKNOWN("?"),
-    DoQUIZ("do-quiz");
+    EXIT("exit"), QUIT("quit"), HELP("help"), COLLECT("collect"),
+    INSPECT("inspect"),INVENTORY("inventory"),UNKNOWN("?"),HEALTH("health"),
+    DoQUIZ("do-quiz"),ASSEMBLE("assemble"),MOVE("move");
 
 
     private String commandString;
@@ -16,6 +16,6 @@ public enum CommandWord {
     @Override
     public String toString() //methode retunerer commandString, toString methoden overrides her
     {
-        return commandString;
+        return this.commandString;
     }
 }

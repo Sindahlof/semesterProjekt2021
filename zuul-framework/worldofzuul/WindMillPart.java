@@ -5,8 +5,8 @@ public class WindMillPart extends PlaceableObject {
     private String description;
     private int id;
 
-    public WindMillPart(String itemName,int id, String description,int y,int x) {
-        super(itemName,y,x);
+    public WindMillPart(String objectName,int id, String description,int y,int x) {
+        super(objectName,y,x);
         this.id = id;
         this.description = description;
     }
@@ -21,7 +21,6 @@ public class WindMillPart extends PlaceableObject {
 
     @Override
     public void print() {
-        String text = this.getObjectName() +" With the ID: "+ this.id + "\n" + this.description;
-        System.out.println(text);
+        System.out.println(this.getObjectName() +" With the ID: "+ this.id + "\n" + this.description);
     }
 }

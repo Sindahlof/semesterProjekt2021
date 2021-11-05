@@ -4,14 +4,13 @@ public abstract class PlaceableObject {
     private Position position;
     private String objectName;
 
-    //Constructor for Item which just sets the value of the String itemName
+    //Constructor for placeableobject which just sets the value of the String objectName and the position attribut
     public PlaceableObject(String objectName, int y, int x) {
         this.position = new Position(y,x);
         this.objectName = objectName;
 
     }
 
-    //Getter for getting itemName
     public String getObjectName() {
         return this.objectName;
     }
@@ -20,5 +19,13 @@ public abstract class PlaceableObject {
 
     public Position getPosistion(){
         return this.position;
+    }
+
+    @Override
+    public String toString() {
+        return "PlaceableObject{" +
+                "position=" + position +
+                ", objectName='" + objectName + '\'' +
+                '}';
     }
 }

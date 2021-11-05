@@ -19,6 +19,6 @@ public class Player extends PlaceableObject {
 
     @Override
     public void print() {
-        System.out.println("The player is located at: " + getPosistion());
+        System.out.println("The player is located at: " + getPosistion() +" and has "+getHealth()+" Health");
     }
 }

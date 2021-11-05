@@ -3,6 +3,9 @@ package worldofzuul;
 import java.util.Objects;
 
 public class Position {
+
+    //Class to keep track of an objects position
+
     private int y,x;
     public Position(int y, int x){
         this.y=y;
@@ -44,11 +47,12 @@ public class Position {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
+    public boolean equals(Object o) { //Overrides the equals' method to instead of comparing the datatypes location in the memory to,
+        //compare its y position and x position
+        if (this == o) { //checks if the object you are trying to compare is the same object
             return true;
         }
-        if (!(o instanceof Position)) {
+        if (!(o instanceof Position)) { //Checks if the object is a position type object
             return false;
         }
         Position position = (Position) o;

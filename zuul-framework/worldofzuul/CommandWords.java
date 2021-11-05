@@ -49,7 +49,7 @@ public class CommandWords {
          */
 
         for (String command : validCommands.keySet()) {
-            switch (command) {
+            switch (command) { //To get a more specific description for each command
                 case "move":
                     System.out.println("Type \"" + command + "\" to move around inside a room");
                     break;
@@ -84,6 +84,9 @@ public class CommandWords {
 
                 case "assemble":
                     System.out.println("Type \"" + command + "\" to assemble the windmill");
+                    break;
+                case "health":
+                    System.out.println("Type \"" + command + "\" to get the player health");
                     break;
             }
         }

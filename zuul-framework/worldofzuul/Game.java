@@ -18,7 +18,7 @@ public class Game //her "skabes" klassen Game
     public Game() { //constructor Game defineres
         createRooms();
         this.gameCompleted = false;
-        this.dead=false;
+        this.dead = false;
         this.parser = new Parser(); //attributten parser sættes til at være klassen Parser
         this.playerInventory = new Inventory(); //Initializer player's inventory
     }
@@ -47,7 +47,7 @@ public class Game //her "skabes" klassen Game
         pub = new Room("in the campus pub", 3, 10);
         lab = new Room("in a computing lab", 5, 5);
         office = new Room("in the computing admin office", 3, 3);
-        getRekt = new Room("Imagine actually moving all the way here",1,1);
+        getRekt = new Room("Imagine actually moving all the way here", 1, 1);
         this.assembleRoom = new Room("in the room where you assemble your windmill", 3, 3);
 
         outside.setExit("north", this.assembleRoom);
@@ -65,7 +65,7 @@ public class Game //her "skabes" klassen Game
         pub.setExit("east", outside);
         pub.setExit("west", getRekt);
 
-        getRekt.setExit("east",pub);
+        getRekt.setExit("east", pub);
 
         lab.setExit("north", outside);
         lab.setExit("east", office);
@@ -87,10 +87,10 @@ public class Game //her "skabes" klassen Game
 
         boolean difficultySelected = true;
 
-        while(difficultySelected){
+        while (difficultySelected) {
             Scanner input = new Scanner(System.in);
             String answer = input.next().toLowerCase();
-            switch (answer){
+            switch (answer) {
                 case "easy":
                     System.out.println("You have selected the easy difficulty, you have 10 health.");
                     this.player1.setHealth(10);
@@ -122,7 +122,7 @@ public class Game //her "skabes" klassen Game
         if (this.gameCompleted) {
             System.out.println("Congratulations you have successfully collected all windmill parts and thereby completed the game!");
         }
-        if (this.dead){
+        if (this.dead) {
             System.out.println("You have lost all your health and therefore died.");
         }
 
@@ -138,7 +138,7 @@ public class Game //her "skabes" klassen Game
         System.out.println(this.currentRoom.getLongDescription());
     }
 
-    private boolean processCommand(Command command){ //den tjekker konsol-inputsene og tjekker, om de passer med dem i enum'et
+    private boolean processCommand(Command command) { //den tjekker konsol-inputsene og tjekker, om de passer med dem i enum'et
         boolean wantToQuit = false;
 
         CommandWord commandWord = command.getCommandWord();
@@ -163,16 +163,20 @@ public class Game //her "skabes" klassen Game
                 wantToQuit = this.quit(command);
                 break;
             case DoQUIZ:
-                if (this.currentRoom.getQuizInRoom().isCompletion()){
+                if (this.currentRoom.getQuizInRoom() == null) {
+                    System.out.println("There is no quiz in this room.");
+                    break;
+                }
+                if (this.currentRoom.getQuizInRoom().isCompletion()) {
                     this.player1 = this.currentRoom.doQuizInRoom(this.player1);
                     break;
                 }
                 this.player1 = this.currentRoom.doQuizInRoom(this.player1);
-                if (this.currentRoom.getQuizInRoom().isCompletion()){
+                if (this.currentRoom.getQuizInRoom().isCompletion()) {
                     System.out.println(this.currentRoom.printGrid() + this.currentRoom.checkPlayerPosition());
                     System.out.println("Congratulations you have completed the quiz, a windmill part has been unlocked.");
                 }
-                if (this.player1.getHealth()==0){
+                if (this.player1.getHealth() == 0) {
                     this.dead = true;
                     return true;
                 }
@@ -207,7 +211,7 @@ public class Game //her "skabes" klassen Game
 
     private void exitRoom() {
         String direction = this.currentRoom.atWhichExit(this.player1);
-        if (direction== null){
+        if (direction == null) {
             System.out.println("You are not at an exit");
             return;
         }
@@ -238,7 +242,7 @@ public class Game //her "skabes" klassen Game
         return false;
     }
 
-    private boolean quit(Command command){  //metode til at stoppe spillet
+    private boolean quit(Command command) {  //metode til at stoppe spillet
         if (command.hasSecondWord()) { //tjekker, om der er et ord efter.
             System.out.println("Quit what?");
             return false;

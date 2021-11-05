@@ -56,7 +56,7 @@ public class Quiz {
                 System.out.println("Your answer was correct!");
                 this.completion = true; //tæller memoryen en op så der kan holdes styr på om quizen er klaret
                 break;
-            } else if (this.quit.equalsIgnoreCase(answer)) { //chekkero m man skriver quit og vil så stoppe quizen
+            } else if (answer.equalsIgnoreCase(this.quit)) { //chekkero m man skriver quit og vil så stoppe quizen
                 System.out.println("remember you can always return to this quiz later");
                 break;
             }

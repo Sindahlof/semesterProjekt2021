@@ -28,7 +28,7 @@ public class Room // laver en ny klasse ved navn room
         this.placeableObjectsInRoom = new ArrayList<>();
     }
 
-    //Metod to place symbols representing different objects into the multidimensional array called grid.
+    //Method to place symbols representing different objects into the multidimensional array called grid.
     public void constructGrid() {
         this.grid = new String[this.y][this.x];
         //For loop to add exits to the grid, It also adds their position to a new Hashmap.
@@ -36,26 +36,26 @@ public class Room // laver en ny klasse ved navn room
             switch (directions) {
                 case "north": {
                     Position position = new Position(0, Math.round(this.grid[0].length / 2));
+                    this.grid[position.getY()][position.getX()] = "E";
                     this.doorLocationsInRoom.put("north", position);
-                    this.grid[0][Math.round(this.grid[0].length / 2)] = "E";
                     break;
                 }
                 case "south": {
                     Position position = new Position(this.grid.length - 1, Math.round(this.grid[0].length / 2));
+                    this.grid[position.getY()][position.getX()] = "E";
                     this.doorLocationsInRoom.put("south", position);
-                    this.grid[this.grid.length - 1][Math.round(this.grid[0].length / 2)] = "E";
                     break;
                 }
                 case "west": {
                     Position position = new Position(Math.round(this.grid.length / 2), 0);
                     this.doorLocationsInRoom.put("west", position);
-                    this.grid[Math.round(this.grid.length / 2)][0] = "E";
+                    this.grid[position.getY()][position.getX()] = "E";
                     break;
                 }
                 case "east": {
                     Position position = new Position(Math.round(this.grid.length / 2), this.grid[0].length - 1);
                     this.doorLocationsInRoom.put("east", position);
-                    this.grid[Math.round(this.grid.length / 2)][this.grid[0].length - 1] = "E";
+                    this.grid[position.getY()][position.getX()] = "E";
                     break;
                 }
                 default: {
@@ -70,7 +70,14 @@ public class Room // laver en ny klasse ved navn room
                 if (object instanceof Information) {
                     this.grid[object.getPosistion().getY()][object.getPosistion().getX()] = "A";
                 } else if (object instanceof WindMillPart) {
-                    this.grid[object.getPosistion().getY()][object.getPosistion().getX()] = "W";
+                    if (!(this.quizInRoom ==null)){
+                        if (this.quizInRoom.isCompletion()) {
+                            this.grid[object.getPosistion().getY()][object.getPosistion().getX()] = "W";
+                        }
+                    }else{
+                        this.grid[object.getPosistion().getY()][object.getPosistion().getX()] = "W";
+                    }
+
                 } else {
                     this.grid[object.getPosistion().getY()][object.getPosistion().getX()] = "P";
                 }
@@ -190,9 +197,20 @@ public class Room // laver en ny klasse ved navn room
                     }
                     for (PlaceableObject placeableObject : this.placeableObjectsInRoom) {
                         if (placeableObject.getPosistion().equals(playerInRoom.getPosistion())) {
-                            if (placeableObject instanceof Information || placeableObject instanceof WindMillPart) {
+                            if (placeableObject instanceof Information) {
                                 txt = "\nYou are standing on a(n) " + placeableObject.getObjectName();
                                 break;
+                            }
+                            if (placeableObject instanceof WindMillPart){
+                                if (!(this.quizInRoom == null)){
+                                    if (this.quizInRoom.isCompletion()){
+                                        txt = "\nYou are standing on a " + placeableObject.getObjectName();
+                                        break;
+                                    }
+                                }else{
+                                    txt = "\nYou are standing on a " + placeableObject.getObjectName();
+                                    break;
+                                }
                             }
                         }
                     }
@@ -219,22 +237,22 @@ public class Room // laver en ny klasse ved navn room
     } //Hashmappets key Strings sættes til at være dirctein variablen og valuesne sættes til at være variablen neighbor
 
     public String atWhichExit(Player player) {
-        for (String direction : doorLocationsInRoom.keySet()) {
+        for (String direction : this.doorLocationsInRoom.keySet()) {
             switch (direction) {
                 case "north":
-                    if (doorLocationsInRoom.get(direction).equals(player.getPosistion())) {
+                    if (this.doorLocationsInRoom.get(direction).equals(player.getPosistion())) {
                         return "north";
                     }
                 case "south":
-                    if (doorLocationsInRoom.get(direction).equals(player.getPosistion())) {
+                    if (this.doorLocationsInRoom.get(direction).equals(player.getPosistion())) {
                         return "south";
                     }
                 case "east":
-                    if (doorLocationsInRoom.get(direction).equals(player.getPosistion())) {
+                    if (this.doorLocationsInRoom.get(direction).equals(player.getPosistion())) {
                         return "east";
                     }
                 case "west":
-                    if (doorLocationsInRoom.get(direction).equals(player.getPosistion())) {
+                    if (this.doorLocationsInRoom.get(direction).equals(player.getPosistion())) {
                         return "west";
                     }
             }

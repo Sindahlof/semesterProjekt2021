@@ -39,7 +39,7 @@ public class Inventory {
             return;
         } else {
             for (PlaceableObject placeableObject : this.slots) {
-                if (placeableObject.getObjectName().toUpperCase().equals(command.getSecondWord().toUpperCase())) {
+                if (placeableObject.getObjectName().equalsIgnoreCase(command.getSecondWord())) {
                     placeableObject.print();
                     return;
                 }
@@ -56,7 +56,7 @@ public class Inventory {
                 collectiveId += ((WindMillPart) items).getId();
             }
         }
-        if (collectiveId == 21){
+        if (collectiveId >= 21){
             return true;
         }
         return false;

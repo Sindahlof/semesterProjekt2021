@@ -49,7 +49,43 @@ public class CommandWords {
          */
 
         for (String command : validCommands.keySet()) {
-            System.out.print(" | " + command + " | ");
+            switch (command) {
+                case "move":
+                    System.out.println("Type \"" + command + "\" to move around inside a room");
+                    break;
+
+                case "exit":
+                    System.out.println("Type \"" + command + "\" to exit the room");
+                    break;
+
+                case "quit":
+                    System.out.println("Type \"" + command + "\" to quit the game");
+                    break;
+
+                case "collect":
+                    System.out.println("Type \"" + command + "\" to collect an object");
+                    break;
+
+                case "inventory":
+                    System.out.println("Type \"" + command + "\" to view your inventory");
+                    break;
+
+                case "inspect":
+                    System.out.println("Type \"" + command + "\" to inspect an item in your inventory");
+                    break;
+
+                case "help":
+                    System.out.println("Type \"" + command + "\" to get this menu");
+                    break;
+
+                case "do-quiz":
+                    System.out.println("Type \"" + command + "\" to start the quiz in a room");
+                    break;
+
+                case "assemble":
+                    System.out.println("Type \"" + command + "\" to assemble the windmill");
+                    break;
+            }
         }
         System.out.println();
     }

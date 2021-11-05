@@ -2,8 +2,8 @@ package worldofzuul;
 
 public enum CommandWord {
     EXIT("exit"), QUIT("quit"), HELP("help"), COLLECT("collect"),
-    ASSEMBLE("assemble"),INSPECT("inspect"),INVENTORY("inventory"),UNKNOWN("?"),
-    DoQUIZ("do-quiz"),MOVE("move");
+    INSPECT("inspect"),INVENTORY("inventory"),UNKNOWN("?"),
+    DoQUIZ("do-quiz"),ASSEMBLE("assemble"),MOVE("move");
 
 
     private String commandString;

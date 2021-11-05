@@ -3,7 +3,7 @@ package worldofzuul;
 import java.util.Objects;
 
 public class Position {
-    int y,x;
+    private int y,x;
     public Position(int y, int x){
         this.y=y;
         this.x=x;

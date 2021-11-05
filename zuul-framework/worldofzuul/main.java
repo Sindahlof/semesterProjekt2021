@@ -9,6 +9,7 @@ public class main {
         newGame.play(); //kalder en construcotr som hedder play fra klassen Game
 
         System.out.println("\n krav - Make a way to move faster - C");
+        System.out.println("\n krav - Lock rooms until a quiz has been completed - C");
 
         /*
         Hvis man vil se alle keys i HashMap'et

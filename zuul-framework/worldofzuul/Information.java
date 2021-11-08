@@ -15,7 +15,7 @@ public class Information extends PlaceableObject {
 
     @Override
     public void print() {
-        System.out.println(this.getObjectName() + "\n" + this.content);
+        System.out.println(this.content);
     }
 
 }

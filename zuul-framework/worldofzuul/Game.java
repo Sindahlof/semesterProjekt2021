@@ -23,21 +23,52 @@ public class Game //her "skabes" klassen Game
 
     private void createRooms() {//en metode til at lave rum
         Room outside, theatre, pub, lab, office, getRekt;
-        String[] answers1 = {"A. Fordi ingen kan lide ham", "B. Fordi kage ", "C. Fordi all elsker ham"};
+        String[] answers1 = {"A. 31%", "B. 20%", "C. 29%"};
+        String[] answers2 = {"A. 4-10%", "B. 11-17%", "C. 18-24%"};
+        String[] answers3 = {"A. 26-30 billion kroner", "B. 21-25 billion kroner", "C. 16-20 billion kroner"};
+        String[] answers4 = {"A. Global warming, rising water levels and more violent climate", "B. Better conditions for animal and plant life", "C. Better air quality"};
+        String[] answers5 = {"A. 320 GW", "B. 280 GW", "C. 240 GW"};
+        String[] answers6 = {"A. 2 million", "B. 2,5 million", "C. 3 million"};
 
-        Quiz quiz1 = new Quiz("Hvorfor er Sindahl adoptered", answers1, "C", "Sindahl");
-        Quiz quiz2 = new Quiz("Hvorfor er Sindahl adoptered", answers1, "A", "Sindahl");
+        Quiz quiz1 = new Quiz("What percentage of global electricity production came from green energy sources in 2020? ", answers1, "C", "Electricity production");
+        Quiz quiz2 = new Quiz("How much CO2 does a person in Denmark emit on average in a year?", answers2, "B", "CO2 Emissions");
+        Quiz quiz3 = new Quiz("How much will the green transition cost in Denmark?", answers3, "A", "Green transition cost");
+        Quiz quiz4 = new Quiz("What consequences does CO2 emissions have, among other things?", answers4, "A", "Consequences of CO2 emissions");
+        Quiz quiz5 = new Quiz("How much did green energy production increase globally in 2020?", answers5, "B", "Green energy production");
+        Quiz quiz6 = new Quiz("How many people die annually due to air pollution on a global basis?", answers6, "B", "Air pollution");
 
-        PlaceableObject placeableObject1 = new Information("Article", """
-                \sThis Artical is about Sindahl.
-                Sindahl is a student at SDU and studying Software Engineering.
-                Some would argue that he is even good at it. :)\s""", 1, 2);
-        PlaceableObject placeableObject2 = new WindMillPart("Windmill-Wing", 11, "This is one of the windmill wings", 2, 1);
+        PlaceableObject information1 = new Information("Article1", "" +
+                "This article is about green energy sources in 2020." +
+                "\nOnly 29% of the global energy production came from green energy sources in 2020. That rose from 27% in 2019.", 1, 2);
+        PlaceableObject information2 = new Information("Article2", "" +
+                "This article is about how much CO2 a person in general releases." +
+                "\nNew studies show that a regular person in Denmark releases somewhere between 11-17% CO2 in a span of 1 year." +
+                "The CO2 released is from food-production, transportation etc.", 1, 2);
+        PlaceableObject information3 = new Information("Article3", "" +
+                "This article is about how much a green conversion will cost." +
+                "\nIt is estimated that a 70% green conversion by 2030 in Denmark will cost around 26-30 billion kroner. " +
+                "The calculations are made by a think tank Cepos and in collaboration with Dansk Energi.", 1, 2);
+        PlaceableObject information4 = new Information("Article4", "" +
+                "This article is about the consequences of CO2 emissions." +
+                "\nSeveral reports and analyzes demonstrate the link between CO2 emissions and other greenhouse gases in the atmosphere, " +
+                "along with the depletion of the ozone layer, rising temperatures, the clearing of rainforests, the melting of ice caps, " +
+                "elevated water levels and the critical consequences of global warming.", 1, 2);
+        PlaceableObject information5 = new Information("Article5", "" +
+                "This article is about how many deaths pollution causes." +
+                "\nEvery year, 2.5 million people worldwide die as a result of air pollution. " +
+                "This makes pollution in particularly large cities from traffic and industry one of the most important environmental risk factors when it comes to human health. " +
+                "This is how it sounds from 30 researchers from the USA, England, Italy, Japan and New Zealand, who are behind a new study. ", 1, 2);
+        PlaceableObject information6 = new Information("Article6", "" +
+                "This article is about the expansion of green energy." +
+                "\nGlobally, green energy production increased by 280GW in 2020. This is the largest increase in the last 20 years.", 1, 2);
+        PlaceableObject windMillPart1 = new WindMillPart("Windmill-wing", 1, "This is the first windmill wing.", 2, 1);
+        PlaceableObject windMillPart2 = new WindMillPart("Windmill-wing", 2, "This is the second windmill wing.", 2, 1);
+        PlaceableObject windMillPart3 = new WindMillPart("Windmill-wing", 3, "This is the third windmill wing.", 2, 1);
+        PlaceableObject windMillPart4 = new WindMillPart("Windmill-head", 4, "This is the head of the windmill. This is where the wings are connected.", 2, 1);
+        PlaceableObject windMillPart5 = new WindMillPart("Windmill-tower", 5, "This is the tower of the windmill. This is where the head is connected.", 2, 1);
+        PlaceableObject windMillPart6 = new WindMillPart("Windmill-foundation", 6, "This is the foundation of the windmill. This is where the tower is connected.", 2, 1);
 
-        placeableObject1.getPosistion().updatePosition(1, 2);
-
-
-        this.player1 = new Player("Player 1", 3, 2);
+        this.player1 = new Player("Player 1", 2, 2);
 
 
         outside = new Room("outside the main entrance of the university", 5, 5);
@@ -53,8 +84,8 @@ public class Game //her "skabes" klassen Game
         outside.setExit("east", theatre);
         outside.setExit("west", pub);
 
-        outside.addObjectsInRoom(placeableObject1);
-        outside.addObjectsInRoom(placeableObject2);
+        outside.addObjectsInRoom(information1);
+        outside.addObjectsInRoom(windMillPart1);
         outside.addQuizToRoom(quiz2);
 
         this.assembleRoom.setExit("south", outside);
@@ -68,7 +99,7 @@ public class Game //her "skabes" klassen Game
 
         lab.setExit("north", outside);
         lab.setExit("east", office);
-        lab.addObjectsInRoom(placeableObject2);
+        lab.addObjectsInRoom(windMillPart1);
         lab.addQuizToRoom(quiz1);
 
         office.setExit("west", lab);
@@ -122,7 +153,7 @@ public class Game //her "skabes" klassen Game
 
         //The game has 3 endings
         if (this.gameCompleted) { //1st ending the game is completed and you win
-            System.out.println("Congratulations you have successfully collected all windmill parts and thereby completed the game!");
+            System.out.println("Congratulations you have successfully constructed the windmill and thereby completed the game!");
         }
         if (this.dead) { // 2nd ending the player is dead and you lose
             System.out.println("You have lost all your health and therefore died.");

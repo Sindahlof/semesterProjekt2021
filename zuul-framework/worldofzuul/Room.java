@@ -230,7 +230,7 @@ public class Room // laver en ny klasse ved navn room
     }
 
     public String getLongDescription() {//Method which basically makes the output string for when you first enter a room
-        return "You are " + this.description + "\n" + getExitString() + "." + /*printItemsInRoom() + */ printQuizInRoom() + printGrid() + checkPlayerPosition();
+        return "You are " + this.description + "\n" + getExitString() + "." + printQuizInRoom() + printGrid() + checkPlayerPosition();
     }
 
     public void setExit(String direction, Room neighbor) {//Method to add exit to the hashmap, which takes strings as keys which point at a room values

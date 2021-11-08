@@ -355,26 +355,17 @@ public class Room // laver en ny klasse ved navn room
         this.placeableObjectsInRoom = placeableObjectsInRoom;
     }
 
-    public void collectObject(Command command, Inventory playerInventory) {//Method used when you try to collect an item
-        if (!(command.hasSecondWord())) { //First it checks if you have actually told what you want to collect
-            System.out.println("Which object would you like to collect?");
-            return;
-        } else {
-            for (PlaceableObject placeableObject : this.placeableObjectsInRoom) {
-                //It now goes through all the objects in the room and sees if the object you are trying to collect is in the room
-                if (placeableObject.getObjectName().equalsIgnoreCase(command.getSecondWord())) {
-                    if (checkPlayerPosition().contains(placeableObject.getObjectName())) { //Checks if the player is standing on the object he is trying to collect
-                        playerInventory.addItem(placeableObject);
-                        removeObjectsInRoom(placeableObject);
-                        System.out.println("You have collected: " + placeableObject.getObjectName());
-                        return;
-                    }
-                    System.out.println("You are not close enough to that item");
-                    return;
-                }
+    public void collectObject(Command command, Inventory playerInventory) {
+        for (PlaceableObject placeableObject : this.placeableObjectsInRoom) {
+            if (checkPlayerPosition().contains(placeableObject.getObjectName())) { //Checks if the player is standing on the object he is trying to collect
+                playerInventory.addItem(placeableObject);
+                removeObjectsInRoom(placeableObject);
+                System.out.println("You have collected: " + placeableObject.getObjectName());
+                return;
             }
+            System.out.println("You are not standing on an item");
+            return;
         }
-        System.out.println("That item doesn't exist in this room");
     }
 }
 

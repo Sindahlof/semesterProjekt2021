@@ -15,7 +15,7 @@ public class Room // laver en ny klasse ved navn room
     private ArrayList<PlaceableObject> placeableObjectsInRoom;
 
     private Quiz quizInRoom;
-    private String[][] grid;
+    private char[][] grid;
 
     // y og x are placeholders for the grids dimensions
     private final int y;
@@ -32,7 +32,7 @@ public class Room // laver en ny klasse ved navn room
 
     //Method to place symbols representing different objects into the multidimensional array called grid.
     public void constructGrid() {
-        this.grid = new String[this.y][this.x]; //Every time this method is used a new grid is made. This way I don't need to remove items from the grid when they are moved
+        this.grid = new char[this.y][this.x]; //Every time this method is used a new grid is made. This way I don't need to remove items from the grid when they are moved
         //For loop to add exits to the grid, It also adds their position to a new Hashmap.
         for (String directions : this.exits.keySet()) {
             switch (directions) {
@@ -40,7 +40,7 @@ public class Room // laver en ny klasse ved navn room
                     //First generates the position of the north exit
                     Position position = new Position(0, Math.round(this.grid[0].length / 2));
                     //Second places the exit symbol
-                    this.grid[position.getY()][position.getX()] = "E";
+                    this.grid[position.getY()][position.getX()] = 'E';
                     //Lastly saved the position in new hashmap
                     this.doorLocationsInRoom.put("north", position);
                     break;
@@ -49,7 +49,7 @@ public class Room // laver en ny klasse ved navn room
                 //Same analogy as north
                 case "south": {
                     Position position = new Position(this.grid.length - 1, Math.round(this.grid[0].length / 2));
-                    this.grid[position.getY()][position.getX()] = "E";
+                    this.grid[position.getY()][position.getX()] = 'E';
                     this.doorLocationsInRoom.put("south", position);
                     break;
                 }
@@ -58,7 +58,7 @@ public class Room // laver en ny klasse ved navn room
                 case "west": {
                     Position position = new Position(Math.round(this.grid.length / 2), 0);
                     this.doorLocationsInRoom.put("west", position);
-                    this.grid[position.getY()][position.getX()] = "E";
+                    this.grid[position.getY()][position.getX()] = 'E';
                     break;
                 }
 
@@ -66,7 +66,7 @@ public class Room // laver en ny klasse ved navn room
                 case "east": {
                     Position position = new Position(Math.round(this.grid.length / 2), this.grid[0].length - 1);
                     this.doorLocationsInRoom.put("east", position);
-                    this.grid[position.getY()][position.getX()] = "E";
+                    this.grid[position.getY()][position.getX()] = 'E';
                     break;
                 }
                 default: {
@@ -79,18 +79,18 @@ public class Room // laver en ny klasse ved navn room
         if (checkForObjectsInRoom()) { //Method to check if there are any objects in the room
             for (PlaceableObject object : this.placeableObjectsInRoom) { //Goes through all the placeableObjectsInRoom
                 if (object instanceof Information) {// If it's an information object then add an A to the grid
-                    this.grid[object.getPosistion().getY()][object.getPosistion().getX()] = "A";
+                    this.grid[object.getPosistion().getY()][object.getPosistion().getX()] = 'A';
                 } else if (object instanceof WindMillPart) {//Checks if it's a windmill part
                     if (!(this.quizInRoom == null)) {//Checks if there is a quiz in the room
                         if (this.quizInRoom.isCompletion()) {//Checks if the quiz has been completed
-                            this.grid[object.getPosistion().getY()][object.getPosistion().getX()] = "W";//Adds the windmill part symbol to the grid
+                            this.grid[object.getPosistion().getY()][object.getPosistion().getX()] = 'W';//Adds the windmill part symbol to the grid
                         }
                     } else {
-                        this.grid[object.getPosistion().getY()][object.getPosistion().getX()] = "W"; // If there aren't any quiz in the room then it just adds the windmill part symbol to the grid
+                        this.grid[object.getPosistion().getY()][object.getPosistion().getX()] = 'W'; // If there aren't any quiz in the room then it just adds the windmill part symbol to the grid
                     }
 
                 } else {
-                    this.grid[object.getPosistion().getY()][object.getPosistion().getX()] = "P"; //If none of the objects are either a windmill part or an information object then it must be the player so we add the player symbol to the grid
+                    this.grid[object.getPosistion().getY()][object.getPosistion().getX()] = 'P'; //If none of the objects are either a windmill part or an information object then it must be the player so we add the player symbol to the grid
                 }
             }
         }
@@ -108,7 +108,7 @@ public class Room // laver en ny klasse ved navn room
                 if (x == 0) { //Starts with placing the end border symbolized by |
                     print += "|";
                 }
-                if (this.grid[y][x] == null) { //If the spot in the grid is empty then add a (    |).
+                if (this.grid[y][x] == '\0') { //If the spot in the grid is empty then add a (    |).
                     print += " " + " " + " |";
                 } else {
                     print += " " + this.grid[y][x] + " |"; //If there is something in the grid then print that symbol e.q. (" P |")
@@ -355,7 +355,7 @@ public class Room // laver en ny klasse ved navn room
         this.placeableObjectsInRoom = placeableObjectsInRoom;
     }
 
-    public void collectObject(Command command, Inventory playerInventory) {
+    public void collectObject(Inventory playerInventory) {
         for (PlaceableObject placeableObject : this.placeableObjectsInRoom) {
             if (checkPlayerPosition().contains(placeableObject.getObjectName())) { //Checks if the player is standing on the object he is trying to collect
                 playerInventory.addItem(placeableObject);

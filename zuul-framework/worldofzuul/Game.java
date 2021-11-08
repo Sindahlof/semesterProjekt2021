@@ -180,7 +180,7 @@ public class Game //her "skabes" klassen Game
                 }
                 break;
             case COLLECT:
-                this.currentRoom.collectObject(command, this.playerInventory); //calling method for collecting an object in a room into an inventory
+                this.currentRoom.collectObject(this.playerInventory); //calling method for collecting an object in a room into an inventory
                 break;
             case INSPECT:
                 this.playerInventory.inspectObjects(command); //Calling a method to inspect an object in your inventory

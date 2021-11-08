@@ -196,7 +196,7 @@ public class Game //her "skabes" klassen Game
                     break;
                 }
                 if (this.currentRoom.getQuizInRoom().isCompletion()) { //checks is the quiz is ALREADY completed
-                    this.player1 = this.currentRoom.doQuizInRoom(this.player1);
+                    System.out.println("The quiz in this room has already been completed.");
                     break;
                 }
                 this.player1 = this.currentRoom.doQuizInRoom(this.player1);

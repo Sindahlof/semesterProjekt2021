@@ -335,7 +335,7 @@ public class Room // laver en ny klasse ved navn room
             return player;
         }
         //none of the above are true then it'll send the play to the method called getQuiz
-        return this.quizInRoom.getQuiz(player);
+        return this.quizInRoom.doQuiz(player);
     }
 
     public Quiz getQuizInRoom() { //Method to get the quiz in the room

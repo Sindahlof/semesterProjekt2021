@@ -40,7 +40,7 @@ public class Quiz {
 
     }
 
-    private Player doQuiz(Player player) { //Method used to do the quiz it returns the players health
+    public Player doQuiz(Player player) { //Method used to do the quiz it returns the players health
         printQuestion();
         printAnswers();
 
@@ -66,10 +66,6 @@ public class Quiz {
                 return player;
             }
         }
-    }
-
-    public Player getQuiz(Player player) { //A method to execute the quiz
-        return doQuiz(player);
     }
 
     public boolean isCompletion() {

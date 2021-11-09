@@ -5,7 +5,7 @@ public class Information extends PlaceableObject {
     private String content;
 
     public Information(String objectName, String content, int y, int x) {
-        super(objectName,y,x);
+        super(objectName, y, x);
         this.content = content;
     }
 
@@ -15,7 +15,7 @@ public class Information extends PlaceableObject {
 
     @Override
     public void print() {
-        System.out.println(this.getObjectName() + "\n" + this.content);
+        System.out.println(this.content);
     }
 
 }

@@ -6,13 +6,14 @@ public class Position {
 
     //Class to keep track of an objects position
 
-    private int y,x;
-    public Position(int y, int x){
-        this.y=y;
-        this.x=x;
+    private int y, x;
+
+    public Position(int y, int x) {
+        this.y = y;
+        this.x = x;
     }
 
-    public void updatePosition(int y, int x){
+    public void updatePosition(int y, int x) {
         setY(y);
         setX(x);
     }

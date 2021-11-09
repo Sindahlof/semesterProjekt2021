@@ -9,8 +9,9 @@ public class Room // laver en ny klasse ved navn room
 {
     //2 atributter intialiseres
     private final String description;
-    private final HashMap<String, Room> exits; //laver et HashMap af key datatypen String og value datatypen Room (referer til sig selv)
-    private final HashMap<String, Position> doorLocationsInRoom;
+    private final String shortDescription;
+    private HashMap<String, Room> exits; //laver et HashMap af key datatypen String og value datatypen Room (referer til sig selv)
+    private HashMap<String, Position> doorLocationsInRoom;
 
     private ArrayList<PlaceableObject> placeableObjectsInRoom;
 
@@ -21,9 +22,11 @@ public class Room // laver en ny klasse ved navn room
     private final int y;
     private final int x;
 
-    public Room(String description, int y, int x) {
+
+    public Room(String shortDescription, String description, int y, int x) {
         this.y = y;
         this.x = x;
+        this.shortDescription = shortDescription;
         this.description = description; //descripiton attributen sættes til at være det samme som constructor inpute
         this.exits = new HashMap<>(); //Hash mappet fra oven over intialiserers
         this.doorLocationsInRoom = new HashMap<>();
@@ -186,7 +189,7 @@ public class Room // laver en ny klasse ved navn room
                 if (playerInRoom instanceof Player) { // When it gets the player object we continue
                     if (!(atWhichExit((Player) playerInRoom) == null)) { //atWhichExit returns the exit the player is at.
                         // So !(atWhichExit(playerInRoom) == null) is true when the player is at an exit and false if the player is not at an exit
-                        txt = "\nYou are standing at the " + atWhichExit((Player) playerInRoom) + " exit"; //sets the return txt to e.g. "you are standing at the north exit
+                        txt = "\nYou are standing at the " + this.exits.get(atWhichExit((Player) playerInRoom)).getShortDescription() + "'s entrance"; //sets the return txt to e.g. "you are standing at the north exit
                         break; //Breaks out of the massive if chain and straight to the return statement
                     }
                     //If the player isn't at an exit then it starts checking if the player is at standing on any other objects in the room
@@ -195,7 +198,7 @@ public class Room // laver en ny klasse ved navn room
                             //If any of the objects position is equal to the players position we then check which time of object it is
                             if (placeableObject instanceof Information) {
                                 //If it's an information item it sets the return string to "You are standing on a(n) + object name"
-                                txt = "\nYou are standing on a(n) " + placeableObject.getObjectName();
+                                txt = "\nYou are standing on an " + placeableObject.getObjectName();
                                 break; //Breaks out of the massive if chain and straight to the return statement
                             }
                             if (placeableObject instanceof WindMillPart) {
@@ -229,8 +232,13 @@ public class Room // laver en ny klasse ved navn room
         return false; //returns false if the object Arraylist hasn't been initialized
     }
 
+    public String getShortDescription() {
+        return this.shortDescription;
+    }
+
+
     public String getLongDescription() {//Method which basically makes the output string for when you first enter a room
-        return "You are " + this.description + "\n" + getExitString() + "." + /*printItemsInRoom() + */ printQuizInRoom() + printGrid() + checkPlayerPosition();
+        return "You are " + this.description + "\n" + getExitString() + "." + printQuizInRoom() + printGrid() + checkPlayerPosition();
     }
 
     public void setExit(String direction, Room neighbor) {//Method to add exit to the hashmap, which takes strings as keys which point at a room values
@@ -327,7 +335,7 @@ public class Room // laver en ny klasse ved navn room
             return player;
         }
         //none of the above are true then it'll send the play to the method called getQuiz
-        return this.quizInRoom.getQuiz(player);
+        return this.quizInRoom.doQuiz(player);
     }
 
     public Quiz getQuizInRoom() { //Method to get the quiz in the room
@@ -363,9 +371,9 @@ public class Room // laver en ny klasse ved navn room
                 System.out.println("You have collected: " + placeableObject.getObjectName());
                 return;
             }
-            System.out.println("You are not standing on an item");
-            return;
         }
+        System.out.println("You are not standing on an item");
+        return;
     }
 }
 

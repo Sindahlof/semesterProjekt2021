@@ -40,12 +40,12 @@ public class Quiz {
 
     }
 
-    private Player doQuiz(Player player) { //Method used to do the quiz it returns the players health
+    public Player doQuiz(Player player) { //Method used to do the quiz it returns the players health
         printQuestion();
         printAnswers();
 
         while (true) {
-            System.out.print("Your answer: \n>");
+            System.out.print("Type A, B or C for your answer or type quit: \n>");
             Scanner input = new Scanner(System.in); //Making a Scanner
             String answer = input.next(); //chekker hvad der er blevet skrevet på input og læse
             // dette som en String
@@ -59,16 +59,13 @@ public class Quiz {
                 return player;
             }
 
-            System.out.println("Your answer was wrong");
+            System.out.println("Your answer was wrong.");
             player.setHealth(player.getHealth() - 1); //Everytime you answer wrong the player losses 1 health
+            System.out.println("You have " + player.getHealth() + " left.");
             if (player.getHealth() == 0) { //Checks if the player has lost all his health. If true return player and stop the while loop
                 return player;
             }
         }
-    }
-
-    public Player getQuiz(Player player) { //A method to execute the quiz
-        return doQuiz(player);
     }
 
     public boolean isCompletion() {

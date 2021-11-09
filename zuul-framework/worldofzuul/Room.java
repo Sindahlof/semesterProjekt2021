@@ -11,7 +11,7 @@ public class Room // laver en ny klasse ved navn room
     private final String description;
     private final String shortDescription;
     private final HashMap<String, Room> exits; //laver et HashMap af key datatypen String og value datatypen Room (referer til sig selv)
-    private final HashMap<String, Position> doorLocationsInRoom;
+    private HashMap<String, Position> doorLocationsInRoom;
 
     private ArrayList<PlaceableObject> placeableObjectsInRoom;
 

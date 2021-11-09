@@ -45,7 +45,7 @@ public class Quiz {
         printAnswers();
 
         while (true) {
-            System.out.print("Type A, B or C for your answer: \n>");
+            System.out.print("Type A, B or C for your answer or type quit: \n>");
             Scanner input = new Scanner(System.in); //Making a Scanner
             String answer = input.next(); //chekker hvad der er blevet skrevet på input og læse
             // dette som en String
@@ -61,7 +61,7 @@ public class Quiz {
 
             System.out.println("Your answer was wrong.");
             player.setHealth(player.getHealth() - 1); //Everytime you answer wrong the player losses 1 health
-            System.out.println("You have "+player.getHealth()+" left.");
+            System.out.println("You have " + player.getHealth() + " left.");
             if (player.getHealth() == 0) { //Checks if the player has lost all his health. If true return player and stop the while loop
                 return player;
             }

@@ -22,7 +22,7 @@ public class Game //her "skabes" klassen Game
     }
 
     private void createRooms() {//en metode til at lave rum
-        Room outside, theatre, pub, lab, office, getRekt;
+        Room startingRoom, quizRoom1, quizRoom2, quizRoom3, quizRoom4, quizRoom5, quizRoom6, townSquare, park, cloverSt, harbor, queensSt, filler;
         String[] answers1 = {"A. 31%", "B. 20%", "C. 29%"};
         String[] answers2 = {"A. 4-10%", "B. 11-17%", "C. 18-24%"};
         String[] answers3 = {"A. 26-30 billion kroner", "B. 21-25 billion kroner", "C. 16-20 billion kroner"};
@@ -37,83 +37,124 @@ public class Game //her "skabes" klassen Game
         Quiz quiz5 = new Quiz("How much did green energy production increase globally in 2020?", answers5, "B", "Green energy production");
         Quiz quiz6 = new Quiz("How many people die annually due to air pollution on a global basis?", answers6, "B", "Air pollution");
 
-        PlaceableObject information1 = new Information("Article1", "" +
+        PlaceableObject information1 = new Information("Article-1", "" +
                 "This article is about green energy sources in 2020." +
                 "\nOnly 29% of the global energy production came from green energy sources in 2020. That rose from 27% in 2019.", 1, 2);
-        PlaceableObject information2 = new Information("Article2", "" +
+        PlaceableObject information2 = new Information("Article-2", "" +
                 "This article is about how much CO2 a person in general releases." +
                 "\nNew studies show that a regular person in Denmark releases somewhere between 11-17% CO2 in a span of 1 year." +
-                "The CO2 released is from food-production, transportation etc.", 1, 2);
-        PlaceableObject information3 = new Information("Article3", "" +
+                "The CO2 released is from food-production, transportation etc.", 2, 2);
+        PlaceableObject information3 = new Information("Article-3", "" +
                 "This article is about how much a green conversion will cost." +
                 "\nIt is estimated that a 70% green conversion by 2030 in Denmark will cost around 26-30 billion kroner. " +
                 "The calculations are made by a think tank Cepos and in collaboration with Dansk Energi.", 1, 2);
-        PlaceableObject information4 = new Information("Article4", "" +
+        PlaceableObject information4 = new Information("Article-4", "" +
                 "This article is about the consequences of CO2 emissions." +
                 "\nSeveral reports and analyzes demonstrate the link between CO2 emissions and other greenhouse gases in the atmosphere, " +
                 "along with the depletion of the ozone layer, rising temperatures, the clearing of rainforests, the melting of ice caps, " +
-                "elevated water levels and the critical consequences of global warming.", 1, 2);
-        PlaceableObject information5 = new Information("Article5", "" +
+                "elevated water levels and the critical consequences of global warming.", 0, 2);
+        PlaceableObject information5 = new Information("Article-5", "" +
                 "This article is about how many deaths pollution causes." +
                 "\nEvery year, 2.5 million people worldwide die as a result of air pollution. " +
                 "This makes pollution in particularly large cities from traffic and industry one of the most important environmental risk factors when it comes to human health. " +
-                "This is how it sounds from 30 researchers from the USA, England, Italy, Japan and New Zealand, who are behind a new study. ", 1, 2);
-        PlaceableObject information6 = new Information("Article6", "" +
+                "This is how it sounds from 30 researchers from the USA, England, Italy, Japan and New Zealand, who are behind a new study. ", 4, 1);
+        PlaceableObject information6 = new Information("Article-6", "" +
                 "This article is about the expansion of green energy." +
-                "\nGlobally, green energy production increased by 280GW in 2020. This is the largest increase in the last 20 years.", 1, 2);
-        PlaceableObject windMillPart1 = new WindMillPart("Windmill-wing", 1, "This is the first windmill wing.", 2, 1);
-        PlaceableObject windMillPart2 = new WindMillPart("Windmill-wing", 2, "This is the second windmill wing.", 2, 1);
-        PlaceableObject windMillPart3 = new WindMillPart("Windmill-wing", 3, "This is the third windmill wing.", 2, 1);
-        PlaceableObject windMillPart4 = new WindMillPart("Windmill-head", 4, "This is the head of the windmill. This is where the wings are connected.", 2, 1);
-        PlaceableObject windMillPart5 = new WindMillPart("Windmill-tower", 5, "This is the tower of the windmill. This is where the head is connected.", 2, 1);
-        PlaceableObject windMillPart6 = new WindMillPart("Windmill-foundation", 6, "This is the foundation of the windmill. This is where the tower is connected.", 2, 1);
+                "\nGlobally, green energy production increased by 280GW in 2020. This is the largest increase in the last 20 years.", 2, 1);
+        PlaceableObject windMillPart1 = new WindMillPart("Windmill-wing-1", 1, "This is the first windmill wing.", 2, 2);
+        PlaceableObject windMillPart2 = new WindMillPart("Windmill-wing-2", 2, "This is the second windmill wing.", 1, 2);
+        PlaceableObject windMillPart3 = new WindMillPart("Windmill-wing-3", 3, "This is the third windmill wing.", 2, 1);
+        PlaceableObject windMillPart4 = new WindMillPart("Windmill-head", 4, "This is the head of the windmill. This is where the wings are connected.", 1, 0);
+        PlaceableObject windMillPart5 = new WindMillPart("Windmill-tower", 5, "This is the tower of the windmill. This is where the head is connected.", 1, 1);
+        PlaceableObject windMillPart6 = new WindMillPart("Windmill-foundation", 6, "This is the foundation of the windmill. This is where the tower is connected.", 1, 2);
 
         this.player1 = new Player("Player 1", 2, 2);
 
 
-        outside = new Room("outside the main entrance of the university", 5, 5);
-        theatre = new Room("in a lecture theatre", 3, 3);
-        pub = new Room("in the campus pub", 3, 10);
-        lab = new Room("in a computing lab", 5, 5);
-        office = new Room("in the computing admin office", 3, 3);
-        getRekt = new Room("Imagine actually moving all the way here", 1, 1);
-        this.assembleRoom = new Room("in the room where you assemble your windmill", 3, 3);
+        this.assembleRoom = new Room("green fields", "on a lush green field perfect for assembling a windmill.", 3, 3);
+        startingRoom = new Room("mayor office", "at the mayor office.", 5, 5);
+        quizRoom1 = new Room("secretary office", "at the secretary office.", 5, 5);
+        quizRoom2 = new Room("Harbor", "at the harbor, there is a windmill part here complete the quiz to collect the part.", 3, 3);
+        quizRoom3 = new Room("public restroom", "at the public restroom, there is a windmill part here complete the quiz to collect the part. ", 3, 3);
+        quizRoom4 = new Room("volkswagen mechanic", "at the Volkswagen mechanic, there is a windmill part here complete the quiz to collect the part.", 3, 3);
+        quizRoom5 = new Room("playground", "at the Playground, there is a windmill part here complete the quiz to collect the part.", 3, 3);
+        quizRoom6 = new Room("university of Engineering and Science", "at the University of Engineering and Science, there is a windmill part here complete the quiz to collect the part.", 3, 3);
+        townSquare = new Room("town square", "at the town square.", 3, 5);
+        park = new Room("park", "at the park.", 5, 3);
+        cloverSt = new Room("clover St", "at the Clover St.", 3, 5);
+        harbor = new Room("harbor", "at the harbor.", 3, 5);
+        queensSt = new Room("queens St", "at the Queens St.", 5, 5);
 
-        outside.setExit("north", this.assembleRoom);
-        outside.setExit("south", lab);
-        outside.setExit("east", theatre);
-        outside.setExit("west", pub);
 
-        outside.addObjectsInRoom(information1);
-        outside.addObjectsInRoom(windMillPart1);
-        outside.addQuizToRoom(quiz2);
+        this.assembleRoom.setExit("south", queensSt);
 
-        this.assembleRoom.setExit("south", outside);
+        startingRoom.setExit("south", quizRoom1);
+        startingRoom.addObjectsInRoom(information1);
 
-        theatre.setExit("west", outside);
+        quizRoom1.setExit("north", startingRoom);
+        quizRoom1.setExit("south", townSquare);
+        quizRoom1.setExit("west", cloverSt);
+        quizRoom1.setExit("east", queensSt);
+        quizRoom1.addQuizToRoom(quiz1);
+        quizRoom1.addObjectsInRoom(windMillPart1);
 
-        pub.setExit("east", outside);
-        pub.setExit("west", getRekt);
+        townSquare.setExit("south", quizRoom3);
+        townSquare.setExit("north", quizRoom1);
+        townSquare.setExit("east", harbor);
+        townSquare.setExit("west", park);
+        townSquare.addObjectsInRoom(information3);
 
-        getRekt.setExit("east", pub);
+        cloverSt.setExit("east", quizRoom1);
+        cloverSt.setExit("west", quizRoom4);
+        cloverSt.addObjectsInRoom(information4);
 
-        lab.setExit("north", outside);
-        lab.setExit("east", office);
-        lab.addObjectsInRoom(windMillPart1);
-        lab.addQuizToRoom(quiz1);
+        quizRoom4.setExit("east", cloverSt);
+        quizRoom4.addQuizToRoom(quiz4);
+        quizRoom4.addObjectsInRoom(windMillPart4);
 
-        office.setExit("west", lab);
+        queensSt.setExit("east", quizRoom6);
+        queensSt.setExit("west", quizRoom1);
+        queensSt.setExit("north", this.assembleRoom);
+        queensSt.addObjectsInRoom(information6);
 
-        this.currentRoom = outside;
-        outside.addObjectsInRoom(this.player1);
+        quizRoom6.setExit("west", queensSt);
+        quizRoom6.addQuizToRoom(quiz6);
+        quizRoom6.addObjectsInRoom(windMillPart6);
+
+        harbor.setExit("west", townSquare);
+        harbor.setExit("east", quizRoom2);
+        harbor.addObjectsInRoom(information2);
+
+        quizRoom2.setExit("west", harbor);
+        quizRoom2.addObjectsInRoom(windMillPart2);
+        quizRoom2.addQuizToRoom(quiz2);
+
+        park.setExit("west", quizRoom5);
+        park.setExit("east", townSquare);
+        park.addObjectsInRoom(information5);
+
+        quizRoom5.setExit("east", park);
+        quizRoom5.addQuizToRoom(quiz5);
+        quizRoom5.addObjectsInRoom(windMillPart5);
+
+        quizRoom3.setExit("north", townSquare);
+        quizRoom3.addQuizToRoom(quiz3);
+        quizRoom3.addObjectsInRoom(windMillPart3);
+
+        this.currentRoom = startingRoom;
+        startingRoom.addObjectsInRoom(this.player1);
     }
 
     public void play() {//Method which determines when the game is over
 
         System.out.println("Welcome to the World of Power!");
-        System.out.println("World of Power is a game about the UN's 7th world goal; Affordable and clean energy");
+        System.out.println("World of Power is a game about the UN's 7th world goal; Affordable and clean energy. " +
+                "\nYou have been tasked by the mayor to help assemble a brand-new state of the art windmill." +
+                " \nTo do so you’ll have to walk around the city and collect the necessary parts. " +
+                "\nThese parts will be visible after you have answered a quiz. " +
+                "\nYou can gather information about the quiz’ by collecting and inspecting articles throughout the town. ");
 
-        System.out.print("Please choose one of the following difficulties. EASY, NORMAL, HARD: \n>");
+        System.out.print("To start the game please choose one of the following difficulties. EASY, NORMAL, HARD: \n>");
 
         boolean difficultySelected = false;
 
@@ -165,7 +206,10 @@ public class Game //her "skabes" klassen Game
     private void printWelcome() {
         System.out.println();
         System.out.println("Meaning of the following symbols:\n" +
-                "P = Player\nE = Exit\nA = Article\nW = Windmill part");
+                "P = Player" +
+                "\nE = Exit" +
+                "\nA = Article" +
+                "\nW = Windmill part");
         System.out.println("Type '" + CommandWord.HELP + " to get a list of commands");
         System.out.println();
         System.out.println(this.currentRoom.getLongDescription());
@@ -226,7 +270,7 @@ public class Game //her "skabes" klassen Game
                 this.playerInventory.printInventory(); //calling method to print player inventory
                 break;
             case HEALTH:
-                System.out.println("You have "+this.player1.getHealth()+" health left"); //prints the players health
+                System.out.println("You have " + this.player1.getHealth() + " health left"); //prints the players health
                 break;
             default:
                 System.out.println("I don't know what you mean..."); //default case which basically means if you try to type a command that it doesn't know then this happens

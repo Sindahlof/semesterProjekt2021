@@ -6,7 +6,7 @@ public abstract class PlaceableObject {
 
     //Constructor for placeableobject which just sets the value of the String objectName and the position attribut
     public PlaceableObject(String objectName, int y, int x) {
-        this.position = new Position(y,x);
+        this.position = new Position(y, x);
         this.objectName = objectName;
 
     }
@@ -17,7 +17,7 @@ public abstract class PlaceableObject {
 
     public abstract void print();
 
-    public Position getPosistion(){
+    public Position getPosistion() {
         return this.position;
     }
 

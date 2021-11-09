@@ -4,8 +4,8 @@ public class Player extends PlaceableObject {
 
     private int health;
 
-    public Player(String playerName,int y,int x) {
-        super(playerName,y,x);
+    public Player(String playerName, int y, int x) {
+        super(playerName, y, x);
         health = 3;
     }
 
@@ -19,6 +19,6 @@ public class Player extends PlaceableObject {
 
     @Override
     public void print() {
-        System.out.println("The player is located at: " + getPosistion() +" and has "+getHealth()+" Health");
+        System.out.println("The player is located at: " + getPosistion() + " and has " + getHealth() + " Health");
     }
 }

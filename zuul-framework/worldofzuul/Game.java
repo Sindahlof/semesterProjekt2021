@@ -40,7 +40,7 @@ public class Game //her "skabes" klassen Game
         PlaceableObject information1 = new Information("Article-1", "" +
                 "This article is about green energy sources in 2020." +
                 "\nOnly 29% of the global energy production came from green energy sources in 2020. That rose from 27% in 2019.", 1, 2);
-        PlaceableObject information2 = new Information("Article-6", "" +
+        PlaceableObject information2 = new Information("Article-2", "" +
                 "This article is about sustainable energy" +
                 "\nSustainable energy is when the energy you produce right now, will still be able to power the future generations without reducing the quality of life." +
                 "\nRenewable energy sources such as wind and solar are examples of sustainable energy sources.", 2, 1);
@@ -58,7 +58,7 @@ public class Game //her "skabes" klassen Game
                 "\nEvery year, 2.5 million people worldwide die as a result of air pollution. " +
                 "\nThis makes pollution in particularly large cities from traffic and industry one of the most important environmental risk factors when it comes to human health. " +
                 "\nThis is how it sounds from 30 researchers from the USA, England, Italy, Japan and New Zealand, who are behind a new study. ", 4, 1);
-        PlaceableObject information6 = new Information("Article-2", "" +
+        PlaceableObject information6 = new Information("Article-6", "" +
                 "This article is about sustainable energy sources" +
                 "\nSustainable energy comes from renewable sources. Renewable sources are things like sunlight, wind, water and geothermal." +
                 "\nThese are replenished in a timescale of a human lifetime, which means that they aren’t in limited supply." +

@@ -24,43 +24,45 @@ public class Game //her "skabes" klassen Game
     private void createRooms() {//en metode til at lave rum
         Room startingRoom, quizRoom1, quizRoom2, quizRoom3, quizRoom4, quizRoom5, quizRoom6, townSquare, park, cloverSt, harbor, queensSt, filler;
         String[] answers1 = {"A. 31%", "B. 20%", "C. 29%"};
-        String[] answers2 = {"A. 4-10%", "B. 11-17%", "C. 18-24%"};
+        String[] answers2 = {"A. Energy that will not be replenished in a short timescale", "B. Energy that is replenished in a short timescale", "C. Energy that we can’t produce yet"};
         String[] answers3 = {"A. 26-30 billion kroner", "B. 21-25 billion kroner", "C. 16-20 billion kroner"};
-        String[] answers4 = {"A. Global warming, rising water levels and more violent climate", "B. Better conditions for animal and plant life", "C. Better air quality"};
+        String[] answers4 = {"A. Pollution", "B. Not enough energy is created", "C. Not enough room"};
         String[] answers5 = {"A. 320 GW", "B. 280 GW", "C. 240 GW"};
-        String[] answers6 = {"A. 2 million", "B. 2,5 million", "C. 3 million"};
+        String[] answers6 = {"A. Coal power plants", "B. Nuclear power plants", "C. Wind power plants"};
 
         Quiz quiz1 = new Quiz("What percentage of global electricity production came from green energy sources in 2020? ", answers1, "C", "Electricity production");
-        Quiz quiz2 = new Quiz("How much CO2 does a person in Denmark emit on average in a year?", answers2, "B", "CO2 Emissions");
+        Quiz quiz2 = new Quiz("What is sustainable energy?", answers2, "B", "Sustainable energy");
         Quiz quiz3 = new Quiz("How much will the green transition cost in Denmark?", answers3, "A", "Green transition cost");
-        Quiz quiz4 = new Quiz("What consequences does CO2 emissions have, among other things?", answers4, "A", "Consequences of CO2 emissions");
+        Quiz quiz4 = new Quiz("What are some of the drawbacks of current energy production?", answers4, "A", "drawbacks of our energy production");
         Quiz quiz5 = new Quiz("How much did green energy production increase globally in 2020?", answers5, "B", "Green energy production");
-        Quiz quiz6 = new Quiz("How many people die annually due to air pollution on a global basis?", answers6, "B", "Air pollution");
+        Quiz quiz6 = new Quiz("How is sustainable energy produced?", answers6, "C", "Sustainable energy production");
 
         PlaceableObject information1 = new Information("Article-1", "" +
                 "This article is about green energy sources in 2020." +
                 "\nOnly 29% of the global energy production came from green energy sources in 2020. That rose from 27% in 2019.", 1, 2);
-        PlaceableObject information2 = new Information("Article-2", "" +
-                "This article is about how much CO2 a person in general releases." +
-                "\nNew studies show that a regular person in Denmark releases somewhere between 11-17% CO2 in a span of 1 year." +
-                "The CO2 released is from food-production, transportation etc.", 2, 2);
+        PlaceableObject information2 = new Information("Article-6", "" +
+                "This article is about sustainable energy" +
+                "\nSustainable energy is when the energy you produce right now, will still be able to power the future generations without reducing the quality of life." +
+                "\nRenewable energy sources such as wind and solar are examples of sustainable energy sources.", 2, 1);
         PlaceableObject information3 = new Information("Article-3", "" +
                 "This article is about how much a green conversion will cost." +
                 "\nIt is estimated that a 70% green conversion by 2030 in Denmark will cost around 26-30 billion kroner. " +
-                "The calculations are made by a think tank Cepos and in collaboration with Dansk Energi.", 1, 2);
+                "\nThe calculations are made by a think tank Cepos and in collaboration with Dansk Energi.", 1, 2);
         PlaceableObject information4 = new Information("Article-4", "" +
-                "This article is about the consequences of CO2 emissions." +
-                "\nSeveral reports and analyzes demonstrate the link between CO2 emissions and other greenhouse gases in the atmosphere, " +
-                "along with the depletion of the ozone layer, rising temperatures, the clearing of rainforests, the melting of ice caps, " +
-                "elevated water levels and the critical consequences of global warming.", 0, 2);
+                "This article is about the drawbacks of current energy production" +
+                "\nThe cons of burning coal to produce energy is that with burning coal comes a lot of pollution into the air. " +
+                "\nAnd by mining coal some byproducts like mercury and arsenic also get uncovered. " +
+                "\nAlso, the quantity of coal is finite, which means that we will run out of coal at some point if we keep mining coal. ", 0, 2);
         PlaceableObject information5 = new Information("Article-5", "" +
                 "This article is about how many deaths pollution causes." +
                 "\nEvery year, 2.5 million people worldwide die as a result of air pollution. " +
-                "This makes pollution in particularly large cities from traffic and industry one of the most important environmental risk factors when it comes to human health. " +
-                "This is how it sounds from 30 researchers from the USA, England, Italy, Japan and New Zealand, who are behind a new study. ", 4, 1);
-        PlaceableObject information6 = new Information("Article-6", "" +
-                "This article is about the expansion of green energy." +
-                "\nGlobally, green energy production increased by 280GW in 2020. This is the largest increase in the last 20 years.", 2, 1);
+                "\nThis makes pollution in particularly large cities from traffic and industry one of the most important environmental risk factors when it comes to human health. " +
+                "\nThis is how it sounds from 30 researchers from the USA, England, Italy, Japan and New Zealand, who are behind a new study. ", 4, 1);
+        PlaceableObject information6 = new Information("Article-2", "" +
+                "This article is about sustainable energy sources" +
+                "\nSustainable energy comes from renewable sources. Renewable sources are things like sunlight, wind, water and geothermal." +
+                "\nThese are replenished in a timescale of a human lifetime, which means that they aren’t in limited supply." +
+                "\nThe most well-known renewable energy production technologies are hydropower, wind power, solar power and geothermal power. ", 2, 2);
         PlaceableObject windMillPart1 = new WindMillPart("Windmill-wing-1", 1, "This is the first windmill wing.", 2, 2);
         PlaceableObject windMillPart2 = new WindMillPart("Windmill-wing-2", 2, "This is the second windmill wing.", 1, 2);
         PlaceableObject windMillPart3 = new WindMillPart("Windmill-wing-3", 3, "This is the third windmill wing.", 2, 1);

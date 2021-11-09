@@ -198,7 +198,7 @@ public class Room // laver en ny klasse ved navn room
                             //If any of the objects position is equal to the players position we then check which time of object it is
                             if (placeableObject instanceof Information) {
                                 //If it's an information item it sets the return string to "You are standing on a(n) + object name"
-                                txt = "\nYou are standing on a(n) " + placeableObject.getObjectName();
+                                txt = "\nYou are standing on an " + placeableObject.getObjectName();
                                 break; //Breaks out of the massive if chain and straight to the return statement
                             }
                             if (placeableObject instanceof WindMillPart) {

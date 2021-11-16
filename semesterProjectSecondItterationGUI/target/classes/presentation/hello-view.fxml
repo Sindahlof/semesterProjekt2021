@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Circle?>
 
-<AnchorPane maxHeight="620.0" maxWidth="560.0" minHeight="620.0" minWidth="560.0" prefHeight="620.0" prefWidth="560.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.javafxexample.HelloController">
+<AnchorPane maxHeight="620.0" maxWidth="560.0" minHeight="620.0" minWidth="560.0" prefHeight="620.0" prefWidth="560.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.HelloController">
     <AnchorPane fx:id="room1" disable="true" focusTraversable="true" onKeyPressed="#keyHandler" prefHeight="468.0" prefWidth="348.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="115.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">

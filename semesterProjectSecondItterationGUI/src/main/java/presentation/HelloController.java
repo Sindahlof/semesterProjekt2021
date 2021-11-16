@@ -1,4 +1,4 @@
-package presentation.javafxexample;
+package presentation;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

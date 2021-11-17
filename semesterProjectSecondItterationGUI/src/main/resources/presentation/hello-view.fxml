@@ -29,7 +29,7 @@
             <Button layoutX="115.0" layoutY="215.0" mnemonicParsing="false" onAction="#onFuckDigSindahl" text="Fuck dig Sindahl" />
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="115.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
                 <image>
-                    <Image url="@248359633_5339570612736421_7743029098509728911_n.jpg" />
+                    <Image url="@marcus.jpg" />
                 </image>
             </ImageView>
         </children>
@@ -82,7 +82,7 @@
         <children>
             <ImageView fx:id="player" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
                 <image>
-                    <Image url="@248359633_5339570612736421_7743029098509728911_n.jpg" />
+                    <Image url="@marcus.jpg" />
                 </image>
             </ImageView>
             <Circle fill="DODGERBLUE" radius="31.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="4" GridPane.rowIndex="3" />

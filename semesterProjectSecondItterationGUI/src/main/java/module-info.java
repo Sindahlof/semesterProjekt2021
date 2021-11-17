@@ -5,6 +5,7 @@ module presentation.javafxexample {
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
     requires org.kordamp.bootstrapfx.core;
+    requires javafx.graphics;
 
     opens presentation to javafx.fxml;
     exports presentation;

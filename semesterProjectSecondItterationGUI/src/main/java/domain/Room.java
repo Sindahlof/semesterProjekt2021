@@ -20,12 +20,12 @@ public class Room // laver en ny klasse ved navn room
 
     // y og x are placeholders for the grids dimensions
     private final int y;
-    private final int x;
+    private final int X;
 
 
     public Room(String shortDescription, String description, int y, int x) {
         this.y = y;
-        this.x = x;
+        this.X = x;
         this.shortDescription = shortDescription;
         this.description = description; //descripiton attributen sættes til at være det samme som constructor inpute
         this.exits = new HashMap<>(); //Hash mappet fra oven over intialiserers
@@ -34,8 +34,8 @@ public class Room // laver en ny klasse ved navn room
     }
 
     //Method to place symbols representing different objects into the multidimensional array called grid.
-    public void constructGrid() {
-        this.grid = new char[this.y][this.x]; //Every time this method is used a new grid is made. This way I don't need to remove items from the grid when they are moved
+    public void constructGrid(Player player) {
+        this.grid = new char[this.y][this.X]; //Every time this method is used a new grid is made. This way I don't need to remove items from the grid when they are moved
         //For loop to add exits to the grid, It also adds their position to a new Hashmap.
         for (String directions : this.exits.keySet()) {
             switch (directions) {
@@ -92,15 +92,28 @@ public class Room // laver en ny klasse ved navn room
                         this.grid[object.getPosistion().getY()][object.getPosistion().getX()] = 'W'; // If there aren't any quiz in the room then it just adds the windmill part symbol to the grid
                     }
 
-                } else {
-                    this.grid[object.getPosistion().getY()][object.getPosistion().getX()] = 'P'; //If none of the objects are either a windmill part or an information object then it must be the player so we add the player symbol to the grid
                 }
             }
         }
+        addPlayerToGrid(player);
+    }
+
+    private void addPlayerToGrid(Player player) {
+        for (int y = 0; y < this.grid.length; y++) {
+            for (int x = 0; x < this.grid[y].length; x++) {
+                if(this.grid[y][x] == 'P'){
+                    this.grid[y][x] = '\0';
+                }
+            }
+        }
+
+        this.grid[player.getPosistion().getY()][player.getPosistion().getX()] = 'P';
+
+
     }
 
     //Method used for printing the grid basically going through the multidimensional String array
-    public String printGrid() {
+   /* public String printGrid() {
         constructGrid();
         String print = "";
         for (int y = 0; y < this.grid.length; y++) { // Does one vertical line at the time
@@ -120,10 +133,10 @@ public class Room // laver en ny klasse ved navn room
             print += "\n" + verticalLine() + "\n"; // when it's done with one vertical line separate it by --------------
         }
         return print;
-    }
+    }*/
 
     //Method used for making the vertical lines that separate each "vertical line" in the array
-    private String verticalLine() {
+    public String verticalLine() {
         String line = "";
         for (int i = 0; i < this.grid[0].length; i++) {
             line += "----";
@@ -140,37 +153,41 @@ public class Room // laver en ny klasse ved navn room
             if (command.getSecondWord().equalsIgnoreCase("up")) {
                 //Checks whether the player can move in the wanted direction. Which it does by checking if the player is standing within the allowed area.
                 if (player.getPosistion().getY() < this.grid.length && player.getPosistion().getY() > 0) {
-                    this.placeableObjectsInRoom.remove(player); //First we remove the old player in the room
+                    //this.placeableObjectsInRoom.remove(player);  //First we remove the old player in the room
                     player.getPosistion().setY(player.getPosistion().getY() - 1);//Change the player position
-                    this.placeableObjectsInRoom.add(player); //Add the player to the room again
-                    System.out.println(printGrid() + checkPlayerPosition()); //Display the updated grid
+                    this.addPlayerToGrid(player);
+                    //this.placeableObjectsInRoom.add(player); //Add the player to the room again
+                    System.out.println(checkPlayerPosition(player)); //Display the updated grid
                 } else {
                     System.out.println("You cannot move there");
                 }
             } else if (command.getSecondWord().equalsIgnoreCase("down")) { // Same analogy as up
                 if (player.getPosistion().getY() < this.grid.length - 1 && player.getPosistion().getY() >= 0) {
-                    this.placeableObjectsInRoom.remove(player);
+                    //this.placeableObjectsInRoom.remove(player);
                     player.getPosistion().setY(player.getPosistion().getY() + 1);
-                    this.placeableObjectsInRoom.add(player);
-                    System.out.println(printGrid() + checkPlayerPosition());
+                    this.addPlayerToGrid(player);
+                    //this.placeableObjectsInRoom.add(player);
+                    System.out.println(checkPlayerPosition(player));
                 } else {
                     System.out.println("You cannot move there");
                 }
             } else if (command.getSecondWord().equalsIgnoreCase("right")) { // Same analogy as up
                 if (player.getPosistion().getX() < this.grid[0].length - 1 && player.getPosistion().getX() >= 0) {
-                    this.placeableObjectsInRoom.remove(player);
+                    //this.placeableObjectsInRoom.remove(player);
                     player.getPosistion().setX(player.getPosistion().getX() + 1);
-                    this.placeableObjectsInRoom.add(player);
-                    System.out.println(printGrid() + checkPlayerPosition());
+                    this.addPlayerToGrid(player);
+                    //this.placeableObjectsInRoom.add(player);
+                    System.out.println(checkPlayerPosition(player));
                 } else {
                     System.out.println("You cannot move there");
                 }
             } else if (command.getSecondWord().equalsIgnoreCase("left")) { // Same analogy as up
                 if (player.getPosistion().getX() < this.grid[0].length && player.getPosistion().getX() > 0) {
-                    this.placeableObjectsInRoom.remove(player);
+                    //this.placeableObjectsInRoom.remove(player);
                     player.getPosistion().setX(player.getPosistion().getX() - 1);
-                    this.placeableObjectsInRoom.add(player);
-                    System.out.println(printGrid() + checkPlayerPosition());
+                    this.addPlayerToGrid(player);
+                   // this.placeableObjectsInRoom.add(player);
+                    System.out.println(checkPlayerPosition(player));
                 } else {
                     System.out.println("You cannot move there");
                 }
@@ -181,20 +198,21 @@ public class Room // laver en ny klasse ved navn room
         return player;
     }
 
-    public String checkPlayerPosition() { //Method used to check whether the player is standing on an exit, information object or a windmill part.
+    public String checkPlayerPosition(Player player) { //Method used to check whether the player is standing on an exit, information object or a windmill part.
         String txt = "";//Initializing the return txt
         if (checkForObjectsInRoom()) { //Checks if there are any objects in the room
-            for (PlaceableObject playerInRoom : this.placeableObjectsInRoom) { //For loop to go through all the objects in the room.
+           // for (PlaceableObject playerInRoom : this.placeableObjectsInRoom) { //For loop to go through all the objects in the room.
                 // Its purpose is basically to find the player object in the array
-                if (playerInRoom instanceof Player) { // When it gets the player object we continue
-                    if (!(atWhichExit((Player) playerInRoom) == null)) { //atWhichExit returns the exit the player is at.
+                //if (playerInRoom instanceof Player) { // When it gets the player object we continue
+                    if (!(atWhichExit( player) == null)) { //atWhichExit returns the exit the player is at.
                         // So !(atWhichExit(playerInRoom) == null) is true when the player is at an exit and false if the player is not at an exit
-                        txt = "\nYou are standing at the " + this.exits.get(atWhichExit((Player) playerInRoom)).getShortDescription() + "'s entrance"; //sets the return txt to e.g. "you are standing at the north exit
-                        break; //Breaks out of the massive if chain and straight to the return statement
+                        txt = "\nYou are standing at the " + this.exits.get(atWhichExit((Player) player)).getShortDescription() + "'s entrance"; //sets the return txt to e.g. "you are standing at the north exit
+                        ; //Breaks out of the massive if chain and straight to the return statement
+                        return txt;
                     }
                     //If the player isn't at an exit then it starts checking if the player is at standing on any other objects in the room
                     for (PlaceableObject placeableObject : this.placeableObjectsInRoom) { //So goes through all the objects in the room
-                        if (placeableObject.getPosistion().equals(playerInRoom.getPosistion())) {
+                        if (placeableObject.getPosistion().equals(player.getPosistion())) {
                             //If any of the objects position is equal to the players position we then check which time of object it is
                             if (placeableObject instanceof Information) {
                                 //If it's an information item it sets the return string to "You are standing on a(n) + object name"
@@ -219,10 +237,9 @@ public class Room // laver en ny klasse ved navn room
                         }
                     }
                 }
-            }
-        }
         return txt;
-    }
+            }
+
 
 
     private boolean checkForObjectsInRoom() { //Method to check if there are objects in the room
@@ -237,13 +254,12 @@ public class Room // laver en ny klasse ved navn room
     }
 
 
-    public String getLongDescription() {//Method which basically makes the output string for when you first enter a room
-        return "You are " + this.description + "\n" + getExitString() + "." + printQuizInRoom() + printGrid() + checkPlayerPosition();
+    public String getLongDescription(Player player) {//Method which basically makes the output string for when you first enter a room
+        return "You are " + this.description + "\n" + getExitString() + "." + printQuizInRoom() + checkPlayerPosition(player);
     }
 
     public void setExit(String direction, Room neighbor) {//Method to add exit to the hashmap, which takes strings as keys which point at a room values
         this.exits.put(direction, neighbor);
-        constructGrid();
     }
 
     public String atWhichExit(Player player) { //Method used to find which exit the player is standing at
@@ -363,9 +379,9 @@ public class Room // laver en ny klasse ved navn room
         this.placeableObjectsInRoom = placeableObjectsInRoom;
     }
 
-    public void collectObject(Inventory playerInventory) {
+    public void collectObject(Inventory playerInventory, Player player) {
         for (PlaceableObject placeableObject : this.placeableObjectsInRoom) {
-            if (checkPlayerPosition().contains(placeableObject.getObjectName())) { //Checks if the player is standing on the object he is trying to collect
+            if (checkPlayerPosition(player).contains(placeableObject.getObjectName())) { //Checks if the player is standing on the object he is trying to collect
                 playerInventory.addItem(placeableObject);
                 removeObjectsInRoom(placeableObject);
                 System.out.println("You have collected: " + placeableObject.getObjectName());
@@ -375,5 +391,19 @@ public class Room // laver en ny klasse ved navn room
         System.out.println("You are not standing on an item");
         return;
     }
+
+    public int getX() {
+        return this.X;
+    }
+
+    public int getY() {
+        return this.y;
+    }
+
+    public char[][] getGrid() {
+        return this.grid;
+    }
+
+
 }
 

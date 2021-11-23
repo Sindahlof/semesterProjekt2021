@@ -43,6 +43,7 @@ public class CommandWords {
 
     public void showAll()  //methode der ikke retuner noget
     {
+        String commands;
 
         /*
         //for each loop, der løber gennem alle keys, og printer dem ud.

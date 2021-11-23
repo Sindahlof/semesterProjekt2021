@@ -21,16 +21,17 @@ public class Inventory {
     }
 
     //Method to print the contents of inventory
-    public void printInventory() {
+    public String returnInventory() {
         if (!(this.inventory.isEmpty())) { //Obv. checks if the inventory is empty first
-            System.out.println("You have the following item(s) in your inventory:");
             for (PlaceableObject placeableObject : this.inventory) { // Goes through all the objects in the inventory and prints it
-                System.out.print(placeableObject.getObjectName() + ", ");
+                String j = "You have the following item(s) in your inventory:" + "\n" + placeableObject.getObjectName() + ", ";
+                return j;
+
             }
-            System.out.println();
         } else {
-            System.out.println("There are no items in your inventory.");
+            return  "There are no items in your inventory.";
         }
+        return "";
     }
 
     public void inspectObjects(Command command) { //Method used to inspect an object in your inventory

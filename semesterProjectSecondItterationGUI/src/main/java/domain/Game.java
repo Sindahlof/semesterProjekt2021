@@ -1,7 +1,5 @@
 package domain;
 
-import java.util.Scanner;
-
 public class Game //her "skabes" klassen Game
 {
     //der laves 2 attributter, deres datatyper er taget fra andre klasser
@@ -21,7 +19,7 @@ public class Game //her "skabes" klassen Game
         this.playerInventory = new Inventory(); //Initializer player's inventory
     }
 
-    private void createRooms() {//en metode til at lave rum
+    public void createRooms() {//en metode til at lave rum
         Room startingRoom, quizRoom1, quizRoom2, quizRoom3, quizRoom4, quizRoom5, quizRoom6, townSquare, park, cloverSt, harbor, queensSt, filler;
         String[] answers1 = {"A. 31%", "B. 20%", "C. 29%"};
         String[] answers2 = {"A. Energy that will not be replenished in a short timescale", "B. Energy that is replenished in a short timescale", "C. Energy that we can’t produce yet"};
@@ -144,10 +142,10 @@ public class Game //her "skabes" klassen Game
         quizRoom3.addObjectsInRoom(windMillPart3);
 
         this.currentRoom = startingRoom;
-        startingRoom.addObjectsInRoom(this.player1);
+        this.currentRoom.constructGrid(this.player1);
     }
 
-    public void play() {//Method which determines when the game is over
+    /*public void play() {//Method which determines when the game is over
 
         System.out.println("Welcome to the World of Power!");
         System.out.println("World of Power is a game about the UN's 7th world goal; Affordable and clean energy. " +
@@ -185,13 +183,14 @@ public class Game //her "skabes" klassen Game
             }
         }
 
-        printWelcome();
+        welcome();
 
         boolean finished = false;
 
         while (!finished) {
             Command command = this.parser.getCommand();
-            finished = processCommand(command);
+            getCurrentRoom();
+            finished = processCommand(command,"hello");
         }
 
         //The game has 3 endings
@@ -203,21 +202,21 @@ public class Game //her "skabes" klassen Game
         }
         // Last ending the player quits without completing or dying
         System.out.println("Thank you for playing.  Goodbye.");
-    }
+    }*/
 
-    private void printWelcome() {
+    public String welcome() {
         System.out.println();
-        System.out.println("Meaning of the following symbols:\n" +
+        return "Meaning of the following symbols:\n" +
                 "P = Player" +
                 "\nE = Exit" +
                 "\nA = Article" +
-                "\nW = Windmill part");
-        System.out.println("Type '" + CommandWord.HELP + " to get a list of commands");
-        System.out.println();
-        System.out.println(this.currentRoom.getLongDescription());
+                "\nW = Windmill part" + "\n" + "Type '" +
+                CommandWord.HELP +
+                " to get a list of commands" +
+                "\n" + this.currentRoom.getLongDescription(this.player1);
     }
 
-    private boolean processCommand(Command command) { //den tjekker konsol-inputsene og tjekker, om de passer med dem i enum'et
+    public int processCommand(Command command) { //den tjekker konsol-inputsene og tjekker, om de passer med dem i enum'et
         boolean wantToQuit = false;
 
         CommandWord commandWord = command.getCommandWord();
@@ -225,30 +224,33 @@ public class Game //her "skabes" klassen Game
         //Switch case for processing the commands.
         switch (commandWord) {
             case HELP:
-                this.printHelp();
-                break;
+                return 1;
+
             case EXIT: //command for exiting a room
                 this.exitRoom();
                 break;
+
             case MOVE: //command for moving around in a room
                 this.player1 = this.currentRoom.movePlayer(this.player1, command);
-                break;
+                return 10;
+
             case QUIT:
                 wantToQuit = this.quit(command);
                 break;
+
             case DoQUIZ: //command for doing the quiz
                 if (this.currentRoom.getQuizInRoom() == null) { //checks if there is a quiz in the room
-                    System.out.println("There is no quiz in this room.");
-                    break;
+                    System.out.println("do quiz ");
+                    return 2;
+
                 }
                 if (this.currentRoom.getQuizInRoom().isCompletion()) { //checks is the quiz is ALREADY completed
-                    System.out.println("The quiz in this room has already been completed.");
-                    break;
+                    return 3;
                 }
                 this.player1 = this.currentRoom.doQuizInRoom(this.player1);
                 if (this.currentRoom.getQuizInRoom().isCompletion()) { //Checks if the player JUST completed the quiz
-                    System.out.println(this.currentRoom.printGrid() + this.currentRoom.checkPlayerPosition());
-                    System.out.println("Congratulations you have completed the quiz, a windmill part has been unlocked.");
+                    this.currentRoom.constructGrid(this.player1);
+                    return 4;
                 }
                 if (this.player1.getHealth() == 0) { //Checks if the player has lost all his health
                     //if true changes boolean dead to true which triggers 3 ending;
@@ -256,36 +258,36 @@ public class Game //her "skabes" klassen Game
                     wantToQuit = true;
                 }
                 break;
+
             case COLLECT:
-                this.currentRoom.collectObject(this.playerInventory); //calling method for collecting an object in a room into an inventory
+                this.currentRoom.collectObject(this.playerInventory,this.player1); //calling method for collecting an object in a room into an inventory
                 break;
+
             case INSPECT:
                 this.playerInventory.inspectObjects(command); //Calling a method to inspect an object in your inventory
-                break;
+                return 5;
+
             case ASSEMBLE:
-                if (successfulAssemble()) { //Calling a method to assemble the windmill
+                if (successfulAssemble() == 1) { //Calling a method to assemble the windmill
                     this.gameCompleted = true; // This triggers the first end condition
-                    return true;
-                }
+                }else{
+                return 8;}
                 break;
+
             case INVENTORY:
-                this.playerInventory.printInventory(); //calling method to print player inventory
-                break;
+                return 6;
+
             case HEALTH:
-                System.out.println("You have " + this.player1.getHealth() + " health left"); //prints the players health
-                break;
+                return 7;
+
             default:
-                System.out.println("I don't know what you mean..."); //default case which basically means if you try to type a command that it doesn't know then this happens
-                return false;
+                return 0;
         }
 
-        return wantToQuit;
+        return 1000;
     }
 
-    private void printHelp() {
-        System.out.println("These are the possible commands in the game:");
-        this.parser.showCommands();
-    }
+
 
     private void exitRoom() { //Exit room method
         String direction = this.currentRoom.atWhichExit(this.player1); //First it gets which exit the player is at
@@ -304,21 +306,21 @@ public class Game //her "skabes" klassen Game
             this.player1.getPosistion().updatePosition(this.currentRoom.getExitPosition(direction)); //Updates the players position to match the exit in the next room.
             // (e.g. Goes through the north gate exits at the south gate in the next room)
             this.currentRoom.addObjectsInRoom(this.player1); //Adds the player object to the new room
-            System.out.println(this.currentRoom.getLongDescription()); //Get the long description for the next room
+            System.out.println(this.currentRoom.getLongDescription(this.player1)); //Get the long description for the next room
         }
     }
 
-    private boolean successfulAssemble() { //Method used for assembling the windmill
+    public int successfulAssemble() { //Method used for assembling the windmill
         if (this.currentRoom == this.assembleRoom) { //Checks if the player is in the correct room for assemble
             if (this.playerInventory.collectedAllWindmillParts()) {//Checks if the player has collected all the windmill parts
-                return true;
+                return 1;
             } else {
-                System.out.println("You have not collected all windmill-parts");
+                return 2;
             }
         } else {
-            System.out.println("You are in the wrong room head to the assemble room");
+            return 3;
         }
-        return false;
+
     }
 
     private boolean quit(Command command) {  //metode til at stoppe spillet
@@ -329,4 +331,29 @@ public class Game //her "skabes" klassen Game
             return true;
         }
     }
+
+    public Room getCurrentRoom(){
+        return this.currentRoom;
+    }
+
+    public Player getPlayer1(){
+        return this.player1;
+    }
+
+    public Parser getParser(){
+        return this.parser;
+    }
+
+    public boolean getDead(){
+        return  this.dead;
+    }
+
+    public boolean getGameCompleted(){
+        return this.gameCompleted;
+    }
+
+    public Inventory getPlayerInventory(){
+        return this.playerInventory;
+    }
+
 }

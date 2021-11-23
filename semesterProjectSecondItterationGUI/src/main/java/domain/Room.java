@@ -106,10 +106,7 @@ public class Room // laver en ny klasse ved navn room
                 }
             }
         }
-
         this.grid[player.getPosistion().getY()][player.getPosistion().getX()] = 'P';
-
-
     }
 
     //Method used for printing the grid basically going through the multidimensional String array
@@ -151,43 +148,30 @@ public class Room // laver en ny klasse ved navn room
         } else {
             // if true then checks which direction
             if (command.getSecondWord().equalsIgnoreCase("up")) {
-                //Checks whether the player can move in the wanted direction. Which it does by checking if the player is standing within the allowed area.
                 if (player.getPosistion().getY() < this.grid.length && player.getPosistion().getY() > 0) {
-                    //this.placeableObjectsInRoom.remove(player);  //First we remove the old player in the room
                     player.getPosistion().setY(player.getPosistion().getY() - 1);//Change the player position
                     this.addPlayerToGrid(player);
-                    //this.placeableObjectsInRoom.add(player); //Add the player to the room again
-                    System.out.println(checkPlayerPosition(player)); //Display the updated grid
                 } else {
                     System.out.println("You cannot move there");
                 }
             } else if (command.getSecondWord().equalsIgnoreCase("down")) { // Same analogy as up
                 if (player.getPosistion().getY() < this.grid.length - 1 && player.getPosistion().getY() >= 0) {
-                    //this.placeableObjectsInRoom.remove(player);
                     player.getPosistion().setY(player.getPosistion().getY() + 1);
                     this.addPlayerToGrid(player);
-                    //this.placeableObjectsInRoom.add(player);
-                    System.out.println(checkPlayerPosition(player));
                 } else {
                     System.out.println("You cannot move there");
                 }
             } else if (command.getSecondWord().equalsIgnoreCase("right")) { // Same analogy as up
                 if (player.getPosistion().getX() < this.grid[0].length - 1 && player.getPosistion().getX() >= 0) {
-                    //this.placeableObjectsInRoom.remove(player);
                     player.getPosistion().setX(player.getPosistion().getX() + 1);
                     this.addPlayerToGrid(player);
-                    //this.placeableObjectsInRoom.add(player);
-                    System.out.println(checkPlayerPosition(player));
                 } else {
                     System.out.println("You cannot move there");
                 }
             } else if (command.getSecondWord().equalsIgnoreCase("left")) { // Same analogy as up
                 if (player.getPosistion().getX() < this.grid[0].length && player.getPosistion().getX() > 0) {
-                    //this.placeableObjectsInRoom.remove(player);
                     player.getPosistion().setX(player.getPosistion().getX() - 1);
                     this.addPlayerToGrid(player);
-                   // this.placeableObjectsInRoom.add(player);
-                    System.out.println(checkPlayerPosition(player));
                 } else {
                     System.out.println("You cannot move there");
                 }

@@ -7,8 +7,11 @@ import java.util.Scanner;
 public class Play {
 
     private String output;
+    private boolean finished;
 
-    public Play() {}
+    public Play() {
+        this.finished = false;
+    }
 
 
     public void play(Game game) {//Method which determines when the game is over
@@ -50,8 +53,6 @@ public class Play {
         }
 
         System.out.println( game.welcome());
-
-        boolean finished = false;
         PrintGrid grid = new PrintGrid();
         System.out.println(grid.printGrid(game));
 
@@ -59,9 +60,6 @@ public class Play {
             game.getCurrentRoom().constructGrid(game.getPlayer1());
             Command command = game.getParser().getCommand();
             commandHandlerUI(game,command);
-            if(game.processCommand(command) == 1000){
-                finished = true;
-            }
         }
 
         //The game has 3 endings
@@ -75,10 +73,9 @@ public class Play {
         System.out.println("Thank you for playing.  Goodbye.");
     }
 
-    private void commandHandlerUI(Game game,Command command){
+    public void commandHandlerUI(Game game, Command command){
         int data = game.processCommand(command);
         PrintGrid grid = new PrintGrid();
-        grid.printGrid(game);
 
         switch (data){
             case 1:
@@ -124,6 +121,8 @@ public class Play {
                 System.out.println(grid.printGrid(game));
                 break;
 
+            case 1000:
+                this.finished = true;
         }
     }
 

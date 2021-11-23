@@ -1,6 +1,8 @@
 package textUI;
 
+import domain.Command;
 import domain.Game;
+import domain.Player;
 import domain.Room;
 
 
@@ -10,6 +12,8 @@ public class Test {
         Play play = new Play();
 
         play.play(game);
+
+
 
 
     }

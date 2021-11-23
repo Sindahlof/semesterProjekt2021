@@ -242,7 +242,6 @@ public class Game //her "skabes" klassen Game
                 if (this.currentRoom.getQuizInRoom() == null) { //checks if there is a quiz in the room
                     System.out.println("do quiz ");
                     return 2;
-
                 }
                 if (this.currentRoom.getQuizInRoom().isCompletion()) { //checks is the quiz is ALREADY completed
                     return 3;

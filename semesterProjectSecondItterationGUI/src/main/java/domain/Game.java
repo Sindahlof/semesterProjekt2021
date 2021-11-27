@@ -216,96 +216,91 @@ public class Game //her "skabes" klassen Game
                 "\n" + this.currentRoom.getLongDescription(this.player1);
     }
 
-    public int processCommand(Command command) { //den tjekker konsol-inputsene og tjekker, om de passer med dem i enum'et
-        boolean wantToQuit = false;
-
+    public String processCommand(Command command) { //den tjekker konsol-inputsene og tjekker, om de passer med dem i enum'et
         CommandWord commandWord = command.getCommandWord();
 
         //Switch case for processing the commands.
         switch (commandWord) {
             case HELP:
-                return 1;
+                return "1";
 
             case EXIT: //command for exiting a room
-                this.exitRoom();
-                break;
+                return "12";
 
             case MOVE: //command for moving around in a room
                 this.player1 = this.currentRoom.movePlayer(this.player1, command);
-                return 10;
+                return "10";
 
             case QUIT:
-                wantToQuit = this.quit(command);
-                break;
+                return "13";
 
             case DoQUIZ: //command for doing the quiz
                 if (this.currentRoom.getQuizInRoom() == null) { //checks if there is a quiz in the room
                     System.out.println("do quiz ");
-                    return 2;
+                    return "2";
                 }
                 if (this.currentRoom.getQuizInRoom().isCompletion()) { //checks is the quiz is ALREADY completed
-                    return 3;
+                    return "3";
                 }
                 this.player1 = this.currentRoom.doQuizInRoom(this.player1);
                 if (this.currentRoom.getQuizInRoom().isCompletion()) { //Checks if the player JUST completed the quiz
                     this.currentRoom.constructGrid(this.player1);
-                    return 4;
+                    return "4";
                 }
                 if (this.player1.getHealth() == 0) { //Checks if the player has lost all his health
                     //if true changes boolean dead to true which triggers 3 ending;
                     this.dead = true;
-                    wantToQuit = true;
                 }
                 break;
 
             case COLLECT:
-                this.currentRoom.collectObject(this.playerInventory,this.player1); //calling method for collecting an object in a room into an inventory
-                break;
+                return "11";
 
             case INSPECT:
                 this.playerInventory.inspectObjects(command); //Calling a method to inspect an object in your inventory
-                return 5;
+                return "5";
 
             case ASSEMBLE:
                 if (successfulAssemble() == 1) { //Calling a method to assemble the windmill
                     this.gameCompleted = true; // This triggers the first end condition
                 }else{
-                return 8;}
+                return "8";}
                 break;
 
             case INVENTORY:
-                return 6;
+                return "6";
 
             case HEALTH:
-                return 7;
+                return "7";
 
             default:
-                return 0;
+                return "0";
         }
+        return "-1000";
 
-        return 1000;
     }
 
 
 
-    private void exitRoom() { //Exit room method
+    public String exitRoom() { //Exit room method
         String direction = this.currentRoom.atWhichExit(this.player1); //First it gets which exit the player is at
         if (direction == null) { //If the player is not at any exits then it'll tell the player that
-            System.out.println("You are not at an exit");
-            return;
+            return "1";
         }
 
         Room nextRoom = this.currentRoom.getExit(direction); //Gets the room which is linked to the exit the player is at
 
         if (nextRoom == null) { //Checks if there is a room at that exit location // this one is always false which makes it kind obsolete
-            System.out.println("There is no door!");
+           return "2";
         } else {
             this.currentRoom.removeObjectsInRoom(this.player1);            //Removes the player from the current room
+            String exit = this.currentRoom.atWhichExit(getPlayer1());
             this.currentRoom = nextRoom;            //Changes to room to the next room
-            this.player1.getPosistion().updatePosition(this.currentRoom.getExitPosition(direction)); //Updates the players position to match the exit in the next room.
+            this.currentRoom.constructGrid(this.getPlayer1());
+            this.player1.getPosistion().updatePosition(this.currentRoom.getExitPosition(exit)); //Updates the players position to match the exit in the next room.
             // (e.g. Goes through the north gate exits at the south gate in the next room)
             this.currentRoom.addObjectsInRoom(this.player1); //Adds the player object to the new room
-            System.out.println(this.currentRoom.getLongDescription(this.player1)); //Get the long description for the next room
+            return "3";
         }
     }
 
@@ -355,4 +350,11 @@ public class Game //her "skabes" klassen Game
         return this.playerInventory;
     }
 
+/*startingRoom.setExit("south", quizRoom1);
+
+    private String getDirection(){
+
+        this.getCurrentRoom().getExit(this.player1.)
+    }
+*/
 }

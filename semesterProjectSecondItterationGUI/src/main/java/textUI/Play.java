@@ -52,14 +52,14 @@ public class Play {
             }
         }
 
-        System.out.println( game.welcome());
+        System.out.println(game.welcome());
         PrintGrid grid = new PrintGrid();
         System.out.println(grid.printGrid(game));
 
-        while (!finished) {
+        while (!(this.finished)) {
             game.getCurrentRoom().constructGrid(game.getPlayer1());
             Command command = game.getParser().getCommand();
-            commandHandlerUI(game,command);
+            commandHandlerUI(game, command);
         }
 
         //The game has 3 endings
@@ -73,75 +73,122 @@ public class Play {
         System.out.println("Thank you for playing.  Goodbye.");
     }
 
-    public void commandHandlerUI(Game game, Command command){
-        int data = game.processCommand(command);
+    public void commandHandlerUI(Game game, Command command) {
+        String data = game.processCommand(command);
         PrintGrid grid = new PrintGrid();
 
-        switch (data){
-            case 1:
+        switch (data) {
+            case "1":
                 printHelp(game);
                 break;
 
-            case 2:
+            case "2":
                 System.out.println("There is no quiz in this room.");
                 break;
 
-            case 3:
+            case "3":
                 System.out.println("The quiz in this room has already been completed.");
                 break;
 
-            case 4:
+            case "4":
                 System.out.println("Congratulations you have completed the quiz, a windmill part has been unlocked.");
                 System.out.println(grid.printGrid(game));
                 break;
 
-            case 5:
+            case "5":
 
 
-            case 6:
+            case "6":
                 System.out.println(game.getPlayerInventory().returnInventory());
                 break;
 
-            case 7:
+            case "7":
                 System.out.println("You have " + game.getPlayer1().getHealth() + " health left");
                 break;
 
-            case 8:
+            case "8":
 
 
-                if(game.successfulAssemble() == 2){
-                System.out.println(("You have not collected all windmill-parts"));
-            }
-                if (game.successfulAssemble() == 3){
+                if (game.successfulAssemble() == 2) {
+                    System.out.println(("You have not collected all windmill-parts"));
+                }
+                if (game.successfulAssemble() == 3) {
                     System.out.println("You are in the wrong room head to the assemble room");
                 }
-            break;
-
-            case 10:
-                System.out.println(grid.printGrid(game));
                 break;
 
-            case 1000:
-                this.finished = true;
+            case "10":
+                String move = movePlayerUIParser(game.getCurrentRoom().getMovePlayerUIhandler());
+                if(move == "1"){
+                    System.out.println("Move player where?");
+                    break;
+                }
+                if(move == "2"){
+                    System.out.println("You cannot move there");
+                    break;
+                }
+                if(move == "3"){
+                    System.out.println("Unknown direction");
+                    break;
+                }
+                if (move == "0"){
+                    System.out.println(grid.printGrid(game));
+                    break;
+                }
+            case "11":
+                String a = game.getCurrentRoom().collectObject(game.getPlayerInventory(), game.getPlayer1());
+                if (!(a == "df")) {
+                    System.out.println("you have collected " + a);
+                } else {
+                    System.out.println("you are not standing on an item");
+                }
+                break;
+
+            case "1000":
+                System.out.println("I dont know what that means ....");
+
+            case"12":
+                String exit = game.exitRoom();
+                if (exit == "1"){
+                    System.out.println("You are not at an exit");
+                }
+                if (exit == "2"){
+                    System.out.println("There is no door!");
+                }
+                if (exit == "3"){
+                    System.out.println(game.getCurrentRoom().getLongDescription(game.getPlayer1()));
+                    System.out.println(grid.printGrid(game));
+                }
+                break;
+
+            case "13":
+                setFinished();
+                break;
+
+            case "0":
+                System.out.println("i don't know what that means......");
         }
     }
 
-    public void printHelp(Game game) {
+    public void printHelp (Game game){
         System.out.println("These are the possible commands in the game:");
         game.getParser().showCommands();
     }
 
+    public String movePlayerUIParser (int num){
+        if (num == 1){
+            return "1";
+        }
+        if(num == 2){
+            return "2";
+        }
+        if (num == 3){
+            return "3";
+        }
+        return "0";
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
+    private void setFinished(){
+        this.finished = true;
+    }
 }

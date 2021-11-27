@@ -12,6 +12,7 @@ public class Room // laver en ny klasse ved navn room
     private final String shortDescription;
     private HashMap<String, Room> exits; //laver et HashMap af key datatypen String og value datatypen Room (referer til sig selv)
     private HashMap<String, Position> doorLocationsInRoom;
+    private int movePlayerUIhandler;
 
     private ArrayList<PlaceableObject> placeableObjectsInRoom;
 
@@ -144,43 +145,49 @@ public class Room // laver en ny klasse ved navn room
     // Method to move the player
     public Player movePlayer(Player player, Command command) {
         if (!(command.hasSecondWord())) { //First of all check if we have given a direction to move in
-            System.out.println("Move player where?");
+            setMovePlayerUIhandler(1);
+
         } else {
             // if true then checks which direction
             if (command.getSecondWord().equalsIgnoreCase("up")) {
                 if (player.getPosistion().getY() < this.grid.length && player.getPosistion().getY() > 0) {
                     player.getPosistion().setY(player.getPosistion().getY() - 1);//Change the player position
                     this.addPlayerToGrid(player);
+                    setMovePlayerUIhandler(0);
                 } else {
-                    System.out.println("You cannot move there");
+                    setMovePlayerUIhandler(2);
                 }
             } else if (command.getSecondWord().equalsIgnoreCase("down")) { // Same analogy as up
                 if (player.getPosistion().getY() < this.grid.length - 1 && player.getPosistion().getY() >= 0) {
                     player.getPosistion().setY(player.getPosistion().getY() + 1);
                     this.addPlayerToGrid(player);
+                    setMovePlayerUIhandler(0);
                 } else {
-                    System.out.println("You cannot move there");
+                    setMovePlayerUIhandler(2);
                 }
             } else if (command.getSecondWord().equalsIgnoreCase("right")) { // Same analogy as up
                 if (player.getPosistion().getX() < this.grid[0].length - 1 && player.getPosistion().getX() >= 0) {
                     player.getPosistion().setX(player.getPosistion().getX() + 1);
                     this.addPlayerToGrid(player);
+                    setMovePlayerUIhandler(0);
                 } else {
-                    System.out.println("You cannot move there");
+                    setMovePlayerUIhandler(2);
                 }
             } else if (command.getSecondWord().equalsIgnoreCase("left")) { // Same analogy as up
                 if (player.getPosistion().getX() < this.grid[0].length && player.getPosistion().getX() > 0) {
                     player.getPosistion().setX(player.getPosistion().getX() - 1);
                     this.addPlayerToGrid(player);
+                    setMovePlayerUIhandler(0);
                 } else {
-                    System.out.println("You cannot move there");
+                    setMovePlayerUIhandler(2);
                 }
             } else {
-                System.out.println("Unknown direction");
+                setMovePlayerUIhandler(3);
             }
         }
         return player;
     }
+
 
     public String checkPlayerPosition(Player player) { //Method used to check whether the player is standing on an exit, information object or a windmill part.
         String txt = "";//Initializing the return txt
@@ -363,17 +370,17 @@ public class Room // laver en ny klasse ved navn room
         this.placeableObjectsInRoom = placeableObjectsInRoom;
     }
 
-    public void collectObject(Inventory playerInventory, Player player) {
+    public String collectObject(Inventory playerInventory, Player player) {
         for (PlaceableObject placeableObject : this.placeableObjectsInRoom) {
             if (checkPlayerPosition(player).contains(placeableObject.getObjectName())) { //Checks if the player is standing on the object he is trying to collect
                 playerInventory.addItem(placeableObject);
                 removeObjectsInRoom(placeableObject);
-                System.out.println("You have collected: " + placeableObject.getObjectName());
-                return;
+                return placeableObject.getObjectName();
+            } else {
+                return "df";
             }
         }
-        System.out.println("You are not standing on an item");
-        return;
+        return "df";
     }
 
     public int getX() {
@@ -387,6 +394,15 @@ public class Room // laver en ny klasse ved navn room
     public char[][] getGrid() {
         return this.grid;
     }
+
+    public void setMovePlayerUIhandler (int num){
+        this.movePlayerUIhandler = num;
+    }
+
+    public int getMovePlayerUIhandler (){
+        return  this.movePlayerUIhandler;
+    }
+
 
 
 }

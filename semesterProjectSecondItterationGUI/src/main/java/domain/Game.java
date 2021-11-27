@@ -145,67 +145,8 @@ public class Game //her "skabes" klassen Game
         this.currentRoom.constructGrid(this.player1);
     }
 
-    /*public void play() {//Method which determines when the game is over
-
-        System.out.println("Welcome to the World of Power!");
-        System.out.println("World of Power is a game about the UN's 7th world goal; Affordable and clean energy. " +
-                "\nYou have been tasked by the mayor to help assemble a brand-new state of the art windmill." +
-                " \nTo do so you’ll have to walk around the city and collect the necessary parts. " +
-                "\nThese parts will be visible after you have answered a quiz. " +
-                "\nYou can gather information about the quiz’ by collecting and inspecting articles throughout the town. ");
-
-        System.out.print("To start the game please choose one of the following difficulties. EASY, NORMAL, HARD: \n>");
-
-        boolean difficultySelected = false;
-
-        //While loop for selecting difficulty
-        while (!difficultySelected) {
-            Scanner input = new Scanner(System.in);
-            String answer = input.next().toLowerCase();
-            switch (answer) {
-                case "easy":
-                    System.out.println("You have selected the easy difficulty, you have 10 health.");
-                    this.player1.setHealth(10);
-                    difficultySelected = true;
-                    break;
-                case "normal":
-                    System.out.println("You have selected the normal difficulty, you have 5 health.");
-                    this.player1.setHealth(5);
-                    difficultySelected = true;
-                    break;
-                case "hard":
-                    System.out.println("You have selected the hard difficulty, you have 2 health.");
-                    this.player1.setHealth(2);
-                    difficultySelected = true;
-                    break;
-                default:
-                    System.out.print("Unknown difficulty, try again. \n>");
-            }
-        }
-
-        welcome();
-
-        boolean finished = false;
-
-        while (!finished) {
-            Command command = this.parser.getCommand();
-            getCurrentRoom();
-            finished = processCommand(command,"hello");
-        }
-
-        //The game has 3 endings
-        if (this.gameCompleted) { //1st ending the game is completed and you win
-            System.out.println("Congratulations you have successfully constructed the windmill and thereby completed the game!");
-        }
-        if (this.dead) { // 2nd ending the player is dead and you lose
-            System.out.println("You have lost all your health and therefore died.");
-        }
-        // Last ending the player quits without completing or dying
-        System.out.println("Thank you for playing.  Goodbye.");
-    }*/
 
     public String welcome() {
-        System.out.println();
         return "Meaning of the following symbols:\n" +
                 "P = Player" +
                 "\nE = Exit" +
@@ -232,11 +173,15 @@ public class Game //her "skabes" klassen Game
                 return "10";
 
             case QUIT:
-                return "13";
+                if (!(quit(command)) == false) {
+                    return "13";
+                } else {
+                    return "14";
+                }
+
 
             case DoQUIZ: //command for doing the quiz
                 if (this.currentRoom.getQuizInRoom() == null) { //checks if there is a quiz in the room
-                    System.out.println("do quiz ");
                     return "2";
                 }
                 if (this.currentRoom.getQuizInRoom().isCompletion()) { //checks is the quiz is ALREADY completed
@@ -263,8 +208,9 @@ public class Game //her "skabes" klassen Game
             case ASSEMBLE:
                 if (successfulAssemble() == 1) { //Calling a method to assemble the windmill
                     this.gameCompleted = true; // This triggers the first end condition
-                }else{
-                return "8";}
+                } else {
+                    return "8";
+                }
                 break;
 
             case INVENTORY:
@@ -277,9 +223,7 @@ public class Game //her "skabes" klassen Game
                 return "0";
         }
         return "-1000";
-
     }
-
 
 
     public String exitRoom() { //Exit room method
@@ -291,7 +235,7 @@ public class Game //her "skabes" klassen Game
         Room nextRoom = this.currentRoom.getExit(direction); //Gets the room which is linked to the exit the player is at
 
         if (nextRoom == null) { //Checks if there is a room at that exit location // this one is always false which makes it kind obsolete
-           return "2";
+            return "2";
         } else {
             this.currentRoom.removeObjectsInRoom(this.player1);            //Removes the player from the current room
             String exit = this.currentRoom.atWhichExit(getPlayer1());
@@ -317,36 +261,35 @@ public class Game //her "skabes" klassen Game
 
     }
 
-    private boolean quit(Command command) {  //metode til at stoppe spillet
+    public boolean quit(Command command) {  //metode til at stoppe spillet
         if (command.hasSecondWord()) { //tjekker, om der er et ord efter.
-            System.out.println("Quit what?");
             return false;
         } else { //returnerer "true", som stopper spillet via de andre metoder
             return true;
         }
     }
 
-    public Room getCurrentRoom(){
+    public Room getCurrentRoom() {
         return this.currentRoom;
     }
 
-    public Player getPlayer1(){
+    public Player getPlayer1() {
         return this.player1;
     }
 
-    public Parser getParser(){
+    public Parser getParser() {
         return this.parser;
     }
 
-    public boolean getDead(){
-        return  this.dead;
+    public boolean getDead() {
+        return this.dead;
     }
 
-    public boolean getGameCompleted(){
+    public boolean getGameCompleted() {
         return this.gameCompleted;
     }
 
-    public Inventory getPlayerInventory(){
+    public Inventory getPlayerInventory() {
         return this.playerInventory;
     }
 

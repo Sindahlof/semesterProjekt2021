@@ -133,6 +133,7 @@ public class Play {
                 }
                 if (move == "0"){
                     System.out.println(grid.printGrid(game));
+                    System.out.println(game.getCurrentRoom().checkPlayerPosition(game.getPlayer1()));
                     break;
                 }
             case "11":
@@ -162,12 +163,20 @@ public class Play {
                 break;
 
             case "13":
-                setFinished();
+                System.out.println("Quit what?");
                 break;
 
+            case "14":
+                setFinished();
+                break;
             case "0":
                 System.out.println("i don't know what that means......");
         }
+
+        if (game.getPlayer1().getHealth() == 0){
+            setFinished();
+        }
+
     }
 
     public void printHelp (Game game){

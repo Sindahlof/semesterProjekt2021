@@ -41,7 +41,7 @@ public class CommandWords {
         return validCommands.containsKey(aString);
     }
 
-    public void showAll()  //methode der ikke retuner noget
+    public String showAll()  //methode der ikke retuner noget
     {
         String commands;
 
@@ -52,45 +52,55 @@ public class CommandWords {
         for (String command : validCommands.keySet()) {
             switch (command) { //To get a more specific description for each command
                 case "move":
-                    System.out.println("Type \"" + command + "\" to move around inside a room");
-                    break;
+                    commands = "Type \"" + command + "\" to move around inside a room";
+                    return commands;
 
                 case "exit":
-                    System.out.println("Type \"" + command + "\" to exit the room");
-                    break;
+                    commands = "Type \"" + command + "\" to exit the room";
+                    return commands;
+
 
                 case "quit":
-                    System.out.println("Type \"" + command + "\" to quit the game");
-                    break;
+                    commands = "Type \"" + command + "\" to quit the game";
+                    return commands;
+
 
                 case "collect":
-                    System.out.println("Type \"" + command + "\" to collect an object");
-                    break;
+                    commands = "Type \"" + command + "\" to collect an object";
+                    return commands;
+
 
                 case "inventory":
-                    System.out.println("Type \"" + command + "\" to view your inventory");
-                    break;
+                    commands = "Type \"" + command + "\" to view your inventory";
+                    return commands;
+
 
                 case "inspect":
-                    System.out.println("Type \"" + command + "\" to inspect an item in your inventory");
-                    break;
+                    commands = "Type \"" + command + "\" to inspect an item in your inventory";
+                    return commands;
+
 
                 case "help":
-                    System.out.println("Type \"" + command + "\" to get this menu");
-                    break;
+                    commands = "Type \"" + command + "\" to get this menu";
+                    return commands;
+
 
                 case "do-quiz":
-                    System.out.println("Type \"" + command + "\" to start the quiz in a room");
-                    break;
+                    commands = "Type \"" + command + "\" to start the quiz in a room";
+                    return commands;
+
 
                 case "assemble":
-                    System.out.println("Type \"" + command + "\" to assemble the windmill");
-                    break;
+                    commands = "Type \"" + command + "\" to assemble the windmill";
+                    return commands;
+
+
                 case "health":
-                    System.out.println("Type \"" + command + "\" to get the player health");
-                    break;
+                    commands = "Type \"" + command + "\" to get the player health";
+                    return commands;
+
             }
         }
-        System.out.println();
+        return "";
     }
 }

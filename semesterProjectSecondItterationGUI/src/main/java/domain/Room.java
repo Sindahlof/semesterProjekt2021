@@ -110,28 +110,7 @@ public class Room // laver en ny klasse ved navn room
         this.grid[player.getPosistion().getY()][player.getPosistion().getX()] = 'P';
     }
 
-    //Method used for printing the grid basically going through the multidimensional String array
-   /* public String printGrid() {
-        constructGrid();
-        String print = "";
-        for (int y = 0; y < this.grid.length; y++) { // Does one vertical line at the time
-            if (y == 0) {
-                print += "\n" + verticalLine() + "\n";
-            }
-            for (int x = 0; x < this.grid[y].length; x++) { //Loop for placing each symbol in the horizontal line
-                if (x == 0) { //Starts with placing the end border symbolized by |
-                    print += "|";
-                }
-                if (this.grid[y][x] == '\0') { //If the spot in the grid is empty then add a (    |).
-                    print += " " + " " + " |";
-                } else {
-                    print += " " + this.grid[y][x] + " |"; //If there is something in the grid then print that symbol e.q. (" P |")
-                }
-            }
-            print += "\n" + verticalLine() + "\n"; // when it's done with one vertical line separate it by --------------
-        }
-        return print;
-    }*/
+
 
     //Method used for making the vertical lines that separate each "vertical line" in the array
     public String verticalLine() {
@@ -333,12 +312,10 @@ public class Room // laver en ny klasse ved navn room
         //It requires you to give it a player object so that if you answer the quiz wrong it can remove health from that player
         if (this.quizInRoom == null) { //it'll first check if there is a quiz in that room
             //if there isn't any quiz then it'll just print there is no quiz in the room. and return player
-            System.out.println("There is no quiz in this room.");
             return player;
         }
         if (this.quizInRoom.isCompletion()) { //Checks if the quiz has already been completed
             //if it has been completed then it'll return the player object and print quiz completion
-            System.out.println("The quiz in this room has already been completed.");
             return player;
         }
         //none of the above are true then it'll send the play to the method called getQuiz

@@ -8,6 +8,7 @@ public class Play {
 
     private String output;
     private boolean finished;
+    private PrintGrid grid = new PrintGrid();
 
     public Play() {
         this.finished = false;
@@ -53,8 +54,7 @@ public class Play {
         }
 
         System.out.println(game.welcome());
-        PrintGrid grid = new PrintGrid();
-        System.out.println(grid.printGrid(game));
+        System.out.println(this.grid.printGrid(game));
 
         while (!(this.finished)) {
             game.getCurrentRoom().constructGrid(game.getPlayer1());
@@ -75,7 +75,6 @@ public class Play {
 
     public void commandHandlerUI(Game game, Command command) {
         String data = game.processCommand(command);
-        PrintGrid grid = new PrintGrid();
 
         switch (data) {
             case "1":
@@ -90,13 +89,9 @@ public class Play {
                 System.out.println("The quiz in this room has already been completed.");
                 break;
 
-            case "4":
-                System.out.println("Congratulations you have completed the quiz, a windmill part has been unlocked.");
-                System.out.println(grid.printGrid(game));
-                break;
-
             case "5":
-
+                System.out.println(game.getPlayerInventory().inspectObjects(command));
+                break;
 
             case "6":
                 System.out.println(game.getPlayerInventory().returnInventory());
@@ -107,8 +102,6 @@ public class Play {
                 break;
 
             case "8":
-
-
                 if (game.successfulAssemble() == 2) {
                     System.out.println(("You have not collected all windmill-parts"));
                 }
@@ -132,7 +125,7 @@ public class Play {
                     break;
                 }
                 if (move == "0"){
-                    System.out.println(grid.printGrid(game));
+                    System.out.println(this.grid.printGrid(game));
                     System.out.println(game.getCurrentRoom().checkPlayerPosition(game.getPlayer1()));
                     break;
                 }
@@ -158,7 +151,7 @@ public class Play {
                 }
                 if (exit == "3"){
                     System.out.println(game.getCurrentRoom().getLongDescription(game.getPlayer1()));
-                    System.out.println(grid.printGrid(game));
+                    System.out.println(this.grid.printGrid(game));
                 }
                 break;
 
@@ -171,6 +164,11 @@ public class Play {
                 break;
             case "0":
                 System.out.println("i don't know what that means......");
+                break;
+
+            case "15":
+                quizHandler(game.getCurrentRoom().getQuizInRoom(),game);
+                this.grid.printGrid(game);
         }
 
         if (game.getPlayer1().getHealth() == 0){
@@ -199,5 +197,37 @@ public class Play {
 
     private void setFinished(){
         this.finished = true;
+    }
+
+    public void quizHandler(Quiz quiz, Game game){
+        System.out.println(game.getCurrentRoom().getQuizInRoom().txtQuestion());
+        System.out.println(game.getCurrentRoom().getQuizInRoom().txtAnswers());
+        System.out.print("Type A, B or C for your answer or type quit: \n>");
+
+        while (!(game.getCurrentRoom().getQuizInRoom().getQuizUIHandler() == 1)){
+            quiz.doQuiz(game.getPlayer1());
+            if(game.getCurrentRoom().getQuizInRoom().getQuizUIHandler() == 1){
+                System.out.println("Your answer was correct!");
+                break;
+            }
+            if (game.getCurrentRoom().getQuizInRoom().getQuizUIHandler() == 2){
+                System.out.println("remember you can always return to this quiz later");
+                break;
+            }
+            if(game.getPlayer1().getHealth() == 0){
+                quiz.setQuizUIHandler(1);
+            } else{
+                System.out.println("Your answer was wrong.");
+                System.out.println("You have " + game.getPlayer1().getHealth() + " left.");
+            }
+        }
+        if(game.getCurrentRoom().getQuizInRoom().isCompletion()){
+            System.out.println("Congratulations you have completed the quiz, a windmill part has been unlocked.");
+            System.out.println(this.grid.printGrid(game));
+        }
+    }
+
+    public PrintGrid getGrid(){
+        return this.grid;
     }
 }

@@ -15,7 +15,7 @@ public abstract class PlaceableObject {
         return this.objectName;
     }
 
-    public abstract void print();
+    public abstract String print();
 
     public Position getPosistion() {
         return this.position;

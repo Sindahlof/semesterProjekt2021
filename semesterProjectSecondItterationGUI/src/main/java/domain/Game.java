@@ -187,22 +187,19 @@ public class Game //her "skabes" klassen Game
                 if (this.currentRoom.getQuizInRoom().isCompletion()) { //checks is the quiz is ALREADY completed
                     return "3";
                 }
-                this.player1 = this.currentRoom.doQuizInRoom(this.player1);
-                if (this.currentRoom.getQuizInRoom().isCompletion()) { //Checks if the player JUST completed the quiz
-                    this.currentRoom.constructGrid(this.player1);
-                    return "4";
+                if (!(this.currentRoom.getQuizInRoom().isCompletion())){
+                    return "15";
                 }
                 if (this.player1.getHealth() == 0) { //Checks if the player has lost all his health
                     //if true changes boolean dead to true which triggers 3 ending;
                     this.dead = true;
                 }
-                break;
 
             case COLLECT:
                 return "11";
 
             case INSPECT:
-                this.playerInventory.inspectObjects(command); //Calling a method to inspect an object in your inventory
+                 //Calling a method to inspect an object in your inventory
                 return "5";
 
             case ASSEMBLE:
@@ -240,6 +237,7 @@ public class Game //her "skabes" klassen Game
             this.currentRoom.removeObjectsInRoom(this.player1);            //Removes the player from the current room
             String exit = this.currentRoom.atWhichExit(getPlayer1());
             this.currentRoom = nextRoom;            //Changes to room to the next room
+            this.player1.getPosistion().updatePosition(0,0);
             this.currentRoom.constructGrid(this.getPlayer1());
             this.player1.getPosistion().updatePosition(this.currentRoom.getExitPosition(exit)); //Updates the players position to match the exit in the next room.
             // (e.g. Goes through the north gate exits at the south gate in the next room)

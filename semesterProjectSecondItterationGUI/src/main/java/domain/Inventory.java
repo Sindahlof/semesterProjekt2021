@@ -34,19 +34,18 @@ public class Inventory {
         return "";
     }
 
-    public void inspectObjects(Command command) { //Method used to inspect an object in your inventory
+    public String inspectObjects(Command command) { //Method used to inspect an object in your inventory
         if (!(command.hasSecondWord())) { //Checks if you have specified which object you would like to inspect
-            System.out.println("Inspect what object?");
-            return;
+            return "Inspect what object?";
+
         } else {
             for (PlaceableObject placeableObject : this.inventory) { //Goes through the inventory to find the item you would like to inspect
                 if (placeableObject.getObjectName().equalsIgnoreCase(command.getSecondWord())) {
-                    placeableObject.print();
-                    return;
+                    return placeableObject.print();
                 }
             }
         }
-        System.out.println("You dont have that item in your inventory");
+        return "You dont have that item in your inventory";
     }
 
     public boolean collectedAllWindmillParts() { //Method used to check if you have all the windmill parts in your inventory

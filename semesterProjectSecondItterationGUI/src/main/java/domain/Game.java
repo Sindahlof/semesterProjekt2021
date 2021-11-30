@@ -72,8 +72,8 @@ public class Game //her "skabes" klassen Game
 
 
         this.assembleRoom = new Room("green fields", "on a lush green field perfect for assembling a windmill.", 3, 3);
-        startingRoom = new Room("mayor office", "at the mayor office.", 5, 5);
-        quizRoom1 = new Room("secretary office", "at the secretary office.", 5, 5);
+        startingRoom = new Room("mayor office", "at the mayor office.", 14, 22);
+        quizRoom1 = new Room("secretary office", "at the secretary office.", 6, 6);
         quizRoom2 = new Room("Harbor", "at the harbor, there is a windmill part here complete the quiz to collect the part.", 3, 3);
         quizRoom3 = new Room("public restroom", "at the public restroom, there is a windmill part here complete the quiz to collect the part. ", 3, 3);
         quizRoom4 = new Room("volkswagen mechanic", "at the Volkswagen mechanic, there is a windmill part here complete the quiz to collect the part.", 3, 3);

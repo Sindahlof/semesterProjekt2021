@@ -17,7 +17,7 @@ public class Play {
 
     public void play(Game game) {//Method which determines when the game is over
 
-        System.out.println("Welcome to the World of Power!");
+       /* System.out.println("Welcome to the World of Power!");
         System.out.println("World of Power is a game about the UN's 7th world goal; Affordable and clean energy. " +
                 "\nYou have been tasked by the mayor to help assemble a brand-new state of the art windmill." +
                 " \nTo do so you’ll have to walk around the city and collect the necessary parts. " +
@@ -53,7 +53,7 @@ public class Play {
             }
         }
 
-        System.out.println(game.welcome());
+        System.out.println(game.welcome());*/
         System.out.println(this.grid.printGrid(game));
 
         while (!(this.finished)) {

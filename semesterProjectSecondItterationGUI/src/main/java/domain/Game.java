@@ -1,5 +1,8 @@
 package domain;
 
+import javafx.scene.layout.GridPane;
+import org.controlsfx.control.spreadsheet.Grid;
+
 public class Game //her "skabes" klassen Game
 {
     //der laves 2 attributter, deres datatyper er taget fra andre klasser
@@ -20,6 +23,10 @@ public class Game //her "skabes" klassen Game
     }
 
     public void createRooms() {//en metode til at lave rum
+        GridPane a = new GridPane();
+        GridPane secretaryOffice = new GridPane();
+        GridPane Room = new GridPane();
+
         Room startingRoom, quizRoom1, quizRoom2, quizRoom3, quizRoom4, quizRoom5, quizRoom6, townSquare, park, cloverSt, harbor, queensSt, filler;
         String[] answers1 = {"A. 31%", "B. 20%", "C. 29%"};
         String[] answers2 = {"A. Energy that will not be replenished in a short timescale", "B. Energy that is replenished in a short timescale", "C. Energy that we can’t produce yet"};
@@ -68,22 +75,21 @@ public class Game //her "skabes" klassen Game
         PlaceableObject windMillPart5 = new WindMillPart("Windmill-tower", 5, "This is the tower of the windmill. This is where the head is connected.", 1, 1);
         PlaceableObject windMillPart6 = new WindMillPart("Windmill-foundation", 6, "This is the foundation of the windmill. This is where the tower is connected.", 1, 2);
 
-        this.player1 = new Player("Player 1", 2, 2);
+        this.player1 = new Player("Player 1", 6, 0,"D:\\Programs\\GitKraken\\semesterPojekt2021\\semesterProjectSecondItterationGUI\\src\\main\\java\\textUI\\sindahl.jpg");
 
-
-        this.assembleRoom = new Room("green fields", "on a lush green field perfect for assembling a windmill.", 3, 3);
-        startingRoom = new Room("mayor office", "at the mayor office.", 14, 22);
-        quizRoom1 = new Room("secretary office", "at the secretary office.", 6, 6);
-        quizRoom2 = new Room("Harbor", "at the harbor, there is a windmill part here complete the quiz to collect the part.", 3, 3);
-        quizRoom3 = new Room("public restroom", "at the public restroom, there is a windmill part here complete the quiz to collect the part. ", 3, 3);
-        quizRoom4 = new Room("volkswagen mechanic", "at the Volkswagen mechanic, there is a windmill part here complete the quiz to collect the part.", 3, 3);
-        quizRoom5 = new Room("playground", "at the Playground, there is a windmill part here complete the quiz to collect the part.", 3, 3);
-        quizRoom6 = new Room("university of Engineering and Science", "at the University of Engineering and Science, there is a windmill part here complete the quiz to collect the part.", 3, 3);
-        townSquare = new Room("town square", "at the town square.", 3, 5);
-        park = new Room("park", "at the park.", 5, 3);
-        cloverSt = new Room("clover St", "at the Clover St.", 3, 5);
-        harbor = new Room("harbor", "at the harbor.", 3, 5);
-        queensSt = new Room("queens St", "at the Queens St.", 5, 5);
+        this.assembleRoom = new Room("green fields", "on a lush green field perfect for assembling a windmill.", 3, 3,a);
+        startingRoom = new Room("room", "at the mayor office.", 15, 23,Room);
+        quizRoom1 = new Room("secretaryOffice", "at the secretary office.", 7, 7,secretaryOffice);
+        quizRoom2 = new Room("Harbor", "at the harbor, there is a windmill part here complete the quiz to collect the part.", 3, 3,a);
+        quizRoom3 = new Room("public restroom", "at the public restroom, there is a windmill part here complete the quiz to collect the part. ", 3, 3,a);
+        quizRoom4 = new Room("volkswagen mechanic", "at the Volkswagen mechanic, there is a windmill part here complete the quiz to collect the part.", 3, 3,a);
+        quizRoom5 = new Room("playground", "at the Playground, there is a windmill part here complete the quiz to collect the part.", 3, 3,a);
+        quizRoom6 = new Room("university of Engineering and Science", "at the University of Engineering and Science, there is a windmill part here complete the quiz to collect the part.", 3, 3,a);
+        townSquare = new Room("town square", "at the town square.", 3, 5,a);
+        park = new Room("park", "at the park.", 5, 3,a);
+        cloverSt = new Room("clover St", "at the Clover St.", 3, 5,a);
+        harbor = new Room("harbor", "at the harbor.", 3, 5,a);
+        queensSt = new Room("queens St", "at the Queens St.", 5, 5,a);
 
 
         this.assembleRoom.setExit("south", queensSt);

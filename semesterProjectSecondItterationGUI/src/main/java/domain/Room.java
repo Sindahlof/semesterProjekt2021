@@ -1,5 +1,7 @@
 package domain;
 
+import javafx.scene.layout.GridPane;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
@@ -13,18 +15,16 @@ public class Room // laver en ny klasse ved navn room
     private HashMap<String, Room> exits; //laver et HashMap af key datatypen String og value datatypen Room (referer til sig selv)
     private HashMap<String, Position> doorLocationsInRoom;
     private int movePlayerUIhandler;
-
     private ArrayList<PlaceableObject> placeableObjectsInRoom;
-
     private Quiz quizInRoom;
     private char[][] grid;
-
+    private GridPane pane;
     // y og x are placeholders for the grids dimensions
     private final int y;
     private final int X;
 
 
-    public Room(String shortDescription, String description, int y, int x) {
+    public Room(String shortDescription, String description, int y, int x, GridPane pane) {
         this.y = y;
         this.X = x;
         this.shortDescription = shortDescription;
@@ -32,6 +32,7 @@ public class Room // laver en ny klasse ved navn room
         this.exits = new HashMap<>(); //Hash mappet fra oven over intialiserers
         this.doorLocationsInRoom = new HashMap<>();
         this.placeableObjectsInRoom = new ArrayList<>();
+        this.pane = pane;
     }
 
     //Method to place symbols representing different objects into the multidimensional array called grid.
@@ -378,6 +379,10 @@ public class Room // laver en ny klasse ved navn room
 
     public int getMovePlayerUIhandler (){
         return  this.movePlayerUIhandler;
+    }
+
+    public GridPane getGridPane(){
+        return this.pane;
     }
 
 

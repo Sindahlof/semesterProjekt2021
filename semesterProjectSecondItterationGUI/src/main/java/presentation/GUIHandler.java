@@ -19,37 +19,44 @@ import java.util.HashMap;
 
 public class GUIHandler {
     @FXML
-    private ImageView player;
+    private GridPane secretaryOffice;
 
     @FXML
-    private AnchorPane secretaryOffice;
-
-    @FXML
-    private AnchorPane startRoom;
-
-    @FXML
-    private GridPane roomGrid;
-
-    @FXML
-    private GridPane Room2Grid;
+    private GridPane room;
 
     @FXML
     private AnchorPane titleScreen;
 
     private Game game;
-    private AnchorPane currentRoom;
+    private GridPane currentRoom;
     private GridPane currentRoomGrid;
     private PrintGrid grid;
+    private ImageView player;
+    private HashMap<String,GridPane> rooms;
 
     private void startGame() {
         this.game = new Game();
         this.grid = new PrintGrid();
+        this.player = new ImageView(game.getPlayer1().getImage());
+        this.player.setFitHeight(30);
+        this.player.setFitWidth(30);
+        this.rooms = new HashMap<>();
     }
 
-    private void changeRoom(AnchorPane pane) {
+    private void changeRoom(GridPane pane) {
         this.currentRoom = pane;
         this.currentRoom.setVisible(true);
         this.currentRoom.setDisable(false);
+        int x = game.getPlayer1().getPosistion().getX();
+        int y = game.getPlayer1().getPosistion().getY();
+        this.currentRoom.add(this.player,x,y);
+        System.out.println(this.grid.printGrid(game));
+        addAllRooms();
+    }
+
+    public void addAllRooms(){
+        this.rooms.put("secretaryOffice",this.secretaryOffice);
+        this.rooms.put("room",this.room);
     }
 
     private void disableTitleScreen() {
@@ -61,84 +68,72 @@ public class GUIHandler {
         startGame();
         disableTitleScreen();
         this.game.getPlayer1().setHealth(10);
-        changeRoom(this.startRoom);
+        changeRoom(this.room);
     }
 
     public void medium() {
         startGame();
         disableTitleScreen();
         this.game.getPlayer1().setHealth(5);
-        changeRoom(this.startRoom);
+        changeRoom(this.room);
     }
 
     public void hard() {
         startGame();
         disableTitleScreen();
         this.game.getPlayer1().setHealth(2);
-        changeRoom(this.startRoom);
+        changeRoom(this.room);
     }
 
-    private void masterKeyHandler(KeyEvent keyEvent, GridPane room) {
+    private void masterKeyHandler(KeyEvent keyEvent,GridPane grid) {
         int i;
+        System.out.println("fejl 1");
+
         if (keyEvent.getCode() == KeyCode.S) {
             Command command = new Command(CommandWord.MOVE, "down");
             game.processCommand(command);
-            if (room.getRowIndex(player) == null) {
-                room.setRowIndex(player, 1);
-            } else if (!(room.getRowIndex(player) == (room.getRowCount() - 1))) {
-                room.setRowIndex(player, (room.getRowIndex(player) + 1));
-            }
+            grid.setRowIndex(this.player,game.getPlayer1().getPosistion().getY());
+            System.out.println("fejl 2");
         }
+
         if (keyEvent.getCode() == KeyCode.W) {
             Command command = new Command(CommandWord.MOVE, "up");
             game.processCommand(command);
-            if (room.getRowIndex(player) == null || room.getRowIndex(player) == 0 || room.getRowIndex(player) == 1) {
-                i = 0;
-            } else {
-                i = room.getRowIndex(player) - 1;
-            }
-            room.setRowIndex(player, i);
+            grid.setRowIndex(this.player,game.getPlayer1().getPosistion().getY());
+            System.out.println("fejl 3");
         }
+
         if (keyEvent.getCode() == KeyCode.A) {
             Command command = new Command(CommandWord.MOVE, "left");
             game.processCommand(command);
-            if (room.getColumnIndex(player) == 1 || room.getColumnIndex(player) == 0 || room.getColumnIndex(player) == null) {
-                room.setColumnIndex(player, 0);
-            } else {
-                room.setColumnIndex(player, (room.getColumnIndex(player) - 1));
-            }
+            grid.setColumnIndex(this.player,game.getPlayer1().getPosistion().getX());
+            System.out.println("fejl 4");
         }
         if (keyEvent.getCode() == KeyCode.D) {
             Command command = new Command(CommandWord.MOVE, "right");
             game.processCommand(command);
-            if (room.getColumnIndex(player) == null) {
-                i = 1;
-            } else if (!(room.getColumnIndex(player) == (room.getColumnCount() - 1))) {
-                room.setColumnIndex(player, (room.getColumnIndex(player) + 1));
-            }
+            grid.setColumnIndex(player,game.getPlayer1().getPosistion().getX());
+            System.out.println("fejl 5");
         }
 
         if (keyEvent.getCode() == KeyCode.E){
+            this.currentRoom.setDisable(true);
             game.exitRoom();
-            String a = game.getCurrentRoom().collectObject(game.getPlayerInventory(), game.getPlayer1());
+            changeRoom(this.rooms.get(game.getCurrentRoom().getShortDescription()));
+            /*String a = game.getCurrentRoom().collectObject(game.getPlayerInventory(), game.getPlayer1());
             if (!(a == "df")) {
-                room.getChildren().get(1).;
+                room.getChildren().get(1);
                 room.getChildren().get(1).setDisable(true);
             } else {
             }
-
+            */
         }
         game.getCurrentRoom().constructGrid(game.getPlayer1());
         System.out.println(this.grid.printGrid(game));
     }
 
-    public void keyHandlerStartingRoom(KeyEvent keyEvent) {
-        masterKeyHandler(keyEvent, this.roomGrid);
-    }
-
     public void keyHandler(KeyEvent keyEvent) {
-        masterKeyHandler(keyEvent, this.roomGrid);
+        masterKeyHandler(keyEvent, this.currentRoom);
+        System.out.println("fejl 40");
     }
-
-
 }

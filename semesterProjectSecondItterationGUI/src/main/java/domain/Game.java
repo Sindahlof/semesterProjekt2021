@@ -75,7 +75,7 @@ public class Game //her "skabes" klassen Game
         PlaceableObject windMillPart5 = new WindMillPart("Windmill-tower", 5, "This is the tower of the windmill. This is where the head is connected.", 1, 1);
         PlaceableObject windMillPart6 = new WindMillPart("Windmill-foundation", 6, "This is the foundation of the windmill. This is where the tower is connected.", 1, 2);
 
-        this.player1 = new Player("Player 1", 6, 0,"D:\\Programs\\GitKraken\\semesterPojekt2021\\semesterProjectSecondItterationGUI\\src\\main\\java\\textUI\\sindahl.jpg");
+        this.player1 = new Player("Player 1", 6, 0,"C:\\Users\\abedr\\OneDrive - Syddansk Universitet\\SE\\Github\\semesterPojekt2021\\semesterProjectSecondItterationGUI\\src\\main\\java\\textUI\\sindahl.jpg");
 
         this.assembleRoom = new Room("green fields", "on a lush green field perfect for assembling a windmill.", 3, 3,a);
         startingRoom = new Room("room", "at the mayor office.", 15, 23,Room);

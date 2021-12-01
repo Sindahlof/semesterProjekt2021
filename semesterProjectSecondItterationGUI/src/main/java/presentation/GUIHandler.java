@@ -29,7 +29,6 @@ public class GUIHandler {
 
     private Game game;
     private GridPane currentRoom;
-    private GridPane currentRoomGrid;
     private PrintGrid grid;
     private ImageView player;
     private HashMap<String,GridPane> rooms;
@@ -54,9 +53,14 @@ public class GUIHandler {
         addAllRooms();
     }
 
-    public void addAllRooms(){
+    private void addAllRooms(){
         this.rooms.put("secretaryOffice",this.secretaryOffice);
         this.rooms.put("room",this.room);
+    }
+
+    private void disableCurrentRoom(){
+        this.currentRoom.setVisible(false);
+        this.currentRoom.setDisable(true);
     }
 
     private void disableTitleScreen() {
@@ -85,55 +89,49 @@ public class GUIHandler {
         changeRoom(this.room);
     }
 
-    private void masterKeyHandler(KeyEvent keyEvent,GridPane grid) {
-        int i;
-        System.out.println("fejl 1");
-
+    @FXML
+    public void keyHandler(KeyEvent keyEvent) {
         if (keyEvent.getCode() == KeyCode.S) {
             Command command = new Command(CommandWord.MOVE, "down");
             game.processCommand(command);
-            grid.setRowIndex(this.player,game.getPlayer1().getPosistion().getY());
+            this.currentRoom.setRowIndex(this.player,game.getPlayer1().getPosistion().getY());
             System.out.println("fejl 2");
         }
 
         if (keyEvent.getCode() == KeyCode.W) {
             Command command = new Command(CommandWord.MOVE, "up");
             game.processCommand(command);
-            grid.setRowIndex(this.player,game.getPlayer1().getPosistion().getY());
+            this.currentRoom.setRowIndex(this.player,game.getPlayer1().getPosistion().getY());
             System.out.println("fejl 3");
         }
 
         if (keyEvent.getCode() == KeyCode.A) {
             Command command = new Command(CommandWord.MOVE, "left");
             game.processCommand(command);
-            grid.setColumnIndex(this.player,game.getPlayer1().getPosistion().getX());
+            this.currentRoom.setColumnIndex(this.player,game.getPlayer1().getPosistion().getX());
             System.out.println("fejl 4");
         }
         if (keyEvent.getCode() == KeyCode.D) {
             Command command = new Command(CommandWord.MOVE, "right");
             game.processCommand(command);
-            grid.setColumnIndex(player,game.getPlayer1().getPosistion().getX());
+            this.currentRoom.setColumnIndex(player,game.getPlayer1().getPosistion().getX());
             System.out.println("fejl 5");
         }
 
         if (keyEvent.getCode() == KeyCode.E){
-            this.currentRoom.setDisable(true);
-            game.exitRoom();
-            changeRoom(this.rooms.get(game.getCurrentRoom().getShortDescription()));
-            /*String a = game.getCurrentRoom().collectObject(game.getPlayerInventory(), game.getPlayer1());
-            if (!(a == "df")) {
-                room.getChildren().get(1);
-                room.getChildren().get(1).setDisable(true);
-            } else {
+            String s = game.exitRoom();
+            if (s.equals("3")){
+                disableCurrentRoom();
+                changeRoom(this.rooms.get(game.getCurrentRoom().getShortDescription()));
+                System.out.println("Room "+this.room.isVisible() +""+ this.room.isDisable());
+                System.out.println("Sec "+this.secretaryOffice.isVisible() +""+ this.secretaryOffice.isDisable());
+                System.out.println("cur "+this.currentRoom.isVisible() +""+ this.currentRoom.isDisable());
             }
-            */
         }
         game.getCurrentRoom().constructGrid(game.getPlayer1());
         System.out.println(this.grid.printGrid(game));
-    }
-
-    public void keyHandler(KeyEvent keyEvent) {
-        masterKeyHandler(keyEvent, this.currentRoom);
-        System.out.println("fejl 40");
+        System.out.println("Room "+this.room.isVisible() +""+ this.room.isDisable());
+        System.out.println("Sec "+this.secretaryOffice.isVisible() +""+ this.secretaryOffice.isDisable());
+        System.out.println("cur "+this.currentRoom.isVisible() +""+ this.currentRoom.isDisable());
     }
 }

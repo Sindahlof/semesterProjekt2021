@@ -27,11 +27,17 @@ public class GUIHandler {
     @FXML
     private AnchorPane titleScreen;
 
+    @FXML
+    private ImageView article1;
+
     private Game game;
     private GridPane currentRoom;
     private PrintGrid grid;
     private ImageView player;
     private HashMap<String,GridPane> rooms;
+    private HashMap<String,ImageView> items;
+
+
 
     private void startGame() {
         this.game = new Game();
@@ -40,6 +46,7 @@ public class GUIHandler {
         this.player.setFitHeight(30);
         this.player.setFitWidth(30);
         this.rooms = new HashMap<>();
+        this.items = new HashMap<>();
     }
 
     private void changeRoom(GridPane pane) {
@@ -51,11 +58,21 @@ public class GUIHandler {
         this.currentRoom.add(this.player,x,y);
         System.out.println(this.grid.printGrid(game));
         addAllRooms();
+        addAllItems();
     }
 
     private void addAllRooms(){
         this.rooms.put("secretaryOffice",this.secretaryOffice);
         this.rooms.put("room",this.room);
+    }
+
+    private void addAllItems(){
+        this.items.put("Article-1",this.article1);
+        this.items.put("Article-2",);
+        this.items.put("Article-3",);
+        this.items.put("Article-4",);
+        this.items.put("Article-5",);
+        this.items.put("Article-6",);
     }
 
     private void disableCurrentRoom(){
@@ -120,18 +137,18 @@ public class GUIHandler {
 
         if (keyEvent.getCode() == KeyCode.E){
             String s = game.exitRoom();
-            if (s.equals("3")){
+            if (s.equals("3")) {
                 disableCurrentRoom();
                 changeRoom(this.rooms.get(game.getCurrentRoom().getShortDescription()));
-                System.out.println("Room "+this.room.isVisible() +""+ this.room.isDisable());
-                System.out.println("Sec "+this.secretaryOffice.isVisible() +""+ this.secretaryOffice.isDisable());
-                System.out.println("cur "+this.currentRoom.isVisible() +""+ this.currentRoom.isDisable());
+            }
+            String a = game.getCurrentRoom().collectObject(game.getPlayerInventory(), game.getPlayer1());
+            if (!(a == "df")) {
+                this.items.get(a).setDisable(false);
+                this.items.get(a).setVisible(true);
+            } else {
             }
         }
         game.getCurrentRoom().constructGrid(game.getPlayer1());
         System.out.println(this.grid.printGrid(game));
-        System.out.println("Room "+this.room.isVisible() +""+ this.room.isDisable());
-        System.out.println("Sec "+this.secretaryOffice.isVisible() +""+ this.secretaryOffice.isDisable());
-        System.out.println("cur "+this.currentRoom.isVisible() +""+ this.currentRoom.isDisable());
     }
 }

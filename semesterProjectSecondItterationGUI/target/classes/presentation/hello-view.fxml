@@ -17,64 +17,64 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="738.0" maxWidth="1055.0" minHeight="620.0" minWidth="560.0" prefHeight="738.0" prefWidth="1055.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.GUIHandler">
-    <AnchorPane fx:id="titleScreen" layoutX="237.0" layoutY="225.0" prefHeight="200.0" prefWidth="200.0">
-        <children>
-            <VBox style="-fx-background-color: White;">
-                <children>
-                    <TextField alignment="CENTER" text="Welcome to World of Power!">
-                        <font>
-                            <Font name="Comic Sans MS Bold" size="20.0" />
-                        </font>
-                    </TextField>
-                    <TextArea prefHeight="120.0" prefWidth="581.0" text="World of Power is a game about the UN's 7th world goal; Affordable and clean energy. &#10;You have been tasked by the mayor to help assemble a brand-new state of the art windmill. &#10;To do so you’ll have to walk around the city and collect the necessary parts. &#10;These parts will be visible after you have answered a quiz. &#10;You can gather information about the quiz’ by collecting and inspecting articles throughout the town. &#10;">
-                        <padding>
-                            <Insets top="5.0" />
-                        </padding>
-                    </TextArea>
-                    <TextField alignment="CENTER" text="To start the game please choose one of the following difficulties:">
-                        <padding>
-                            <Insets bottom="5.0" top="5.0" />
-                        </padding>
-                    </TextField>
-                    <HBox prefHeight="100.0" prefWidth="200.0" spacing="145.0">
-                        <children>
-                            <Button mnemonicParsing="false" onAction="#easy" prefHeight="100.0" prefWidth="100.0" text="Easy" />
-                            <Button mnemonicParsing="false" onAction="#medium" prefHeight="100.0" prefWidth="100.0" text="Medium" />
-                            <Button mnemonicParsing="false" onAction="#hard" prefHeight="100.0" prefWidth="100.0" text="Hard" />
-                        </children>
-                        <padding>
-                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                        </padding>
-                    </HBox>
-                </children>
-            </VBox>
-        </children>
-    </AnchorPane>
-    <GridPane gridLinesVisible="true" layoutX="910.0" layoutY="310.0" style="-fx-background-color: White;">
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-        <children>
-            <ImageView disable="true" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                <image>
-                    <Image url="@../../java/textUI/sindahl.jpg" />
-                </image>
-            </ImageView>
-        </children>
-    </GridPane>
-    <Text fill="WHITE" layoutX="910.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inventory" textAlignment="CENTER" wrappingWidth="90.0">
-        <font>
-            <Font size="21.0" />
-        </font>
-    </Text>
+   <AnchorPane fx:id="titleScreen" layoutX="237.0" layoutY="225.0" prefHeight="200.0" prefWidth="200.0">
+      <children>
+         <VBox style="-fx-background-color: White;">
+            <children>
+               <TextField alignment="CENTER" text="Welcome to World of Power!">
+                  <font>
+                     <Font name="Comic Sans MS Bold" size="20.0" />
+                  </font>
+               </TextField>
+               <TextArea prefHeight="120.0" prefWidth="581.0" text="World of Power is a game about the UN's 7th world goal; Affordable and clean energy. &#10;You have been tasked by the mayor to help assemble a brand-new state of the art windmill. &#10;To do so you’ll have to walk around the city and collect the necessary parts. &#10;These parts will be visible after you have answered a quiz. &#10;You can gather information about the quiz’ by collecting and inspecting articles throughout the town. &#10;">
+                  <padding>
+                     <Insets top="5.0" />
+                  </padding>
+               </TextArea>
+               <TextField alignment="CENTER" text="To start the game please choose one of the following difficulties:">
+                  <padding>
+                     <Insets bottom="5.0" top="5.0" />
+                  </padding>
+               </TextField>
+               <HBox prefHeight="100.0" prefWidth="200.0" spacing="145.0">
+                  <children>
+                     <Button mnemonicParsing="false" onAction="#easy" prefHeight="100.0" prefWidth="100.0" text="Easy" />
+                     <Button mnemonicParsing="false" onAction="#medium" prefHeight="100.0" prefWidth="100.0" text="Medium" />
+                     <Button mnemonicParsing="false" onAction="#hard" prefHeight="100.0" prefWidth="100.0" text="Hard" />
+                  </children>
+                  <padding>
+                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                  </padding>
+               </HBox>
+            </children>
+         </VBox>
+      </children>
+   </AnchorPane>
+   <GridPane gridLinesVisible="true" layoutX="910.0" layoutY="310.0" style="-fx-background-color: White;">
+     <columnConstraints>
+         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+       <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+       <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+     </columnConstraints>
+     <rowConstraints>
+         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+       <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+       <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+       <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+     </rowConstraints>
+      <children>
+         <ImageView fx:id="article1" disable="true" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <image>
+               <Image url="@sindahl.jpg" />
+            </image>
+         </ImageView>
+      </children>
+   </GridPane>
+   <Text fill="WHITE" layoutX="910.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inventory" textAlignment="CENTER" wrappingWidth="90.0">
+      <font>
+         <Font size="21.0" />
+      </font>
+   </Text>
     <GridPane fx:id="room" disable="true" focusTraversable="true" layoutX="183.0" layoutY="134.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#keyHandler" prefHeight="450.0" prefWidth="690.0" style="-fx-background-color: white;" visible="false">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
@@ -125,24 +125,24 @@
             <Insets />
         </opaqueInsets>
     </GridPane>
-    <GridPane fx:id="secretaryOffice" disable="true" focusTraversable="true" layoutX="423.0" layoutY="254.0" onKeyPressed="#keyHandler" style="-fx-background-color: White;" visible="false">
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-    </GridPane>
+   <GridPane fx:id="secretaryOffice" disable="true" layoutX="423.0" layoutY="254.0" onKeyPressed="#keyHandler" style="-fx-background-color: White;" visible="false">
+     <columnConstraints>
+         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+       <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+       <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+     </columnConstraints>
+     <rowConstraints>
+         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+       <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+       <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+       <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+     </rowConstraints>
+   </GridPane>
 </AnchorPane>

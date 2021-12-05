@@ -23,9 +23,20 @@ public class Game //her "skabes" klassen Game
     }
 
     public void createRooms() {//en metode til at lave rum
-        GridPane a = new GridPane();
+        GridPane restroom = new GridPane();
         GridPane secretaryOffice = new GridPane();
         GridPane Room = new GridPane();
+        GridPane assemblyRoom = new GridPane();
+        GridPane harbor1 = new GridPane();
+        GridPane volkswagenMechanic = new GridPane();
+        GridPane playground = new GridPane();
+        GridPane university = new GridPane();
+        GridPane townSquare_ = new GridPane();
+        GridPane park_ = new GridPane();
+        GridPane cloverSt_ = new GridPane();
+        GridPane queenST = new GridPane();
+        GridPane harbor2 = new GridPane();
+
 
         Room startingRoom, quizRoom1, quizRoom2, quizRoom3, quizRoom4, quizRoom5, quizRoom6, townSquare, park, cloverSt, harbor, queensSt, filler;
         String[] answers1 = {"A. 31%", "B. 20%", "C. 29%"};
@@ -35,7 +46,7 @@ public class Game //her "skabes" klassen Game
         String[] answers5 = {"A. 320 GW", "B. 280 GW", "C. 240 GW"};
         String[] answers6 = {"A. Coal power plants", "B. Nuclear power plants", "C. Wind power plants"};
 
-        Quiz quiz1 = new Quiz("What percentage of global electricity production came from green energy sources in 2020? ", answers1, "C", "Electricity production");
+        Quiz quiz1 = new Quiz("What percentage of global electricity production came from green energy sources in 2020? ", answers1, "C", "1");
         Quiz quiz2 = new Quiz("What is sustainable energy?", answers2, "B", "Sustainable energy");
         Quiz quiz3 = new Quiz("How much will the green transition cost in Denmark?", answers3, "A", "Green transition cost");
         Quiz quiz4 = new Quiz("What are some of the drawbacks of current energy production?", answers4, "A", "drawbacks of our energy production");
@@ -75,21 +86,21 @@ public class Game //her "skabes" klassen Game
         PlaceableObject windMillPart5 = new WindMillPart("Windmill-tower", 5, "This is the tower of the windmill. This is where the head is connected.", 1, 1);
         PlaceableObject windMillPart6 = new WindMillPart("Windmill-foundation", 6, "This is the foundation of the windmill. This is where the tower is connected.", 1, 2);
 
-        this.player1 = new Player("Player 1", 6, 0,"D:\\Programs\\GitKraken\\semesterPojekt2021\\semesterProjectSecondItterationGUI\\src\\main\\resources\\presentation\\sindahl.jpg");
+        this.player1 = new Player("Player 1", 6, 0, "C:\\Users\\clara\\OneDrive\\Dokumenter\\GitKraken\\semesterProjekt2021\\semesterProjectSecondItterationGUI\\src\\main\\resources\\presentation\\sindahl.jpg");
 
-        this.assembleRoom = new Room("green fields", "on a lush green field perfect for assembling a windmill.", 3, 3,a);
-        startingRoom = new Room("room", "at the mayor office.", 15, 23,Room);
-        quizRoom1 = new Room("secretaryOffice", "at the secretary office.", 7, 7,secretaryOffice);
-        quizRoom2 = new Room("Harbor", "at the harbor, there is a windmill part here complete the quiz to collect the part.", 3, 3,a);
-        quizRoom3 = new Room("public restroom", "at the public restroom, there is a windmill part here complete the quiz to collect the part. ", 3, 3,a);
-        quizRoom4 = new Room("volkswagen mechanic", "at the Volkswagen mechanic, there is a windmill part here complete the quiz to collect the part.", 3, 3,a);
-        quizRoom5 = new Room("playground", "at the Playground, there is a windmill part here complete the quiz to collect the part.", 3, 3,a);
-        quizRoom6 = new Room("university of Engineering and Science", "at the University of Engineering and Science, there is a windmill part here complete the quiz to collect the part.", 3, 3,a);
-        townSquare = new Room("town square", "at the town square.", 3, 5,a);
-        park = new Room("park", "at the park.", 5, 3,a);
-        cloverSt = new Room("clover St", "at the Clover St.", 3, 5,a);
-        harbor = new Room("harbor", "at the harbor.", 3, 5,a);
-        queensSt = new Room("queens St", "at the Queens St.", 5, 5,a);
+        this.assembleRoom = new Room("green fields", "on a lush green field perfect for assembling a windmill.", 15, 23, assemblyRoom);
+        startingRoom = new Room("Mayor Office", "at the mayor office.", 8, 8, Room);
+        quizRoom1 = new Room("secretary Office", "at the secretary office.", 7, 7, secretaryOffice);
+        quizRoom2 = new Room("Harbor", "at the harbor, there is a windmill part here complete the quiz to collect the part.", 9, 17, harbor1);
+        quizRoom3 = new Room("public restroom", "at the public restroom, there is a windmill part here complete the quiz to collect the part. ", 5, 6, restroom);
+        quizRoom4 = new Room("volkswagen mechanic", "at the Volkswagen mechanic, there is a windmill part here complete the quiz to collect the part.", 8, 10, volkswagenMechanic);
+        quizRoom5 = new Room("playground", "at the Playground, there is a windmill part here complete the quiz to collect the part.", 9, 10, playground);
+        quizRoom6 = new Room("university of Engineering and Science", "at the University of Engineering and Science, there is a windmill part here complete the quiz to collect the part.", 8, 9, university);
+        townSquare = new Room("town square", "at the town square.", 14, 23, townSquare_);
+        park = new Room("park", "at the park.", 11, 18, park_);
+        cloverSt = new Room("clover St", "at the Clover St.", 9, 18, cloverSt_);
+        harbor = new Room("harbor", "at the harbor.", 12, 12, harbor2);
+        queensSt = new Room("queens St", "at the Queens St.", 8, 15, queenST);
 
 
         this.assembleRoom.setExit("south", queensSt);
@@ -193,7 +204,7 @@ public class Game //her "skabes" klassen Game
                 if (this.currentRoom.getQuizInRoom().isCompletion()) { //checks is the quiz is ALREADY completed
                     return "3";
                 }
-                if (!(this.currentRoom.getQuizInRoom().isCompletion())){
+                if (!(this.currentRoom.getQuizInRoom().isCompletion())) {
                     return "15";
                 }
                 if (this.player1.getHealth() == 0) { //Checks if the player has lost all his health
@@ -205,7 +216,7 @@ public class Game //her "skabes" klassen Game
                 return "11";
 
             case INSPECT:
-                 //Calling a method to inspect an object in your inventory
+                //Calling a method to inspect an object in your inventory
                 return "5";
 
             case ASSEMBLE:
@@ -243,7 +254,7 @@ public class Game //her "skabes" klassen Game
             this.currentRoom.removeObjectsInRoom(this.player1);            //Removes the player from the current room
             String exit = this.currentRoom.atWhichExit(getPlayer1());
             this.currentRoom = nextRoom;            //Changes to room to the next room
-            this.player1.getPosistion().updatePosition(0,0);
+            this.player1.getPosistion().updatePosition(0, 0);
             this.currentRoom.constructGrid(this.getPlayer1());
             this.player1.getPosistion().updatePosition(this.currentRoom.getExitPosition(exit)); //Updates the players position to match the exit in the next room.
             // (e.g. Goes through the north gate exits at the south gate in the next room)

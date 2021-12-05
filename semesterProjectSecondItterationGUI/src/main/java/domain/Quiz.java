@@ -47,10 +47,10 @@ public class Quiz {
         return text;
     }
 
-    public Player doQuiz(Player player) { //Method used to do the quiz it returns the players health
+    public Player doQuiz(Player player, String answer) { //Method used to do the quiz it returns the players health
 
-            Scanner input = new Scanner(System.in); //Making a Scanner
-            String answer = input.next(); //chekker hvad der er blevet skrevet på input og læse
+           //Scanner input = new Scanner(System.in); //Making a Scanner
+            //String answer = input.next(); //chekker hvad der er blevet skrevet på input og læse
             // dette som en String
 
             if (answer.equalsIgnoreCase(this.answerKey)) { //true hvis input passer med answerKey

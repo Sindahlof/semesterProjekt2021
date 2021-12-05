@@ -11,7 +11,7 @@ public class RunGUI extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RunGUI.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1055, 738);
+        Scene scene = new Scene(fxmlLoader.load(), 1200, 800);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.setResizable(false);

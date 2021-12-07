@@ -109,6 +109,12 @@ public class GUIHandler {
 
     @FXML
     private ImageView assemblyRoomBG;
+    @FXML
+    private ImageView volkswagenMechanicBG;
+    @FXML
+    private ImageView townSquareBG;
+    @FXML
+    private ImageView universityBG;
 
     @FXML
     private ImageView article1;
@@ -185,10 +191,10 @@ public class GUIHandler {
         this.roomBackground.put("green fields", this.assemblyRoomBG);
         this.roomBackground.put("Harbor", this.harbor1BG);
         this.roomBackground.put("public restroom", this.restroomBG);
-        //this.roomBackground.put("volkswagen mechanic", this.volkswagenMechanic);
+        this.roomBackground.put("volkswagen mechanic", this.volkswagenMechanicBG);
         this.roomBackground.put("playground", this.playgroundBG);
-        //this.roomBackground.put("university of Engineering and Science", this.university);
-        //this.roomBackground.put("town square", this.townSquare_);
+        this.roomBackground.put("university of Engineering and Science", this.universityBG);
+        this.roomBackground.put("town square", this.townSquareBG);
         this.roomBackground.put("park", this.parkBG);
         this.roomBackground.put("clover St", this.cloverStBG);
         this.roomBackground.put("harbor", this.harbor1BG);

@@ -259,6 +259,11 @@
             <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
     </GridPane>
+   <ImageView fx:id="volkswagenMechanicBG" disable="true" fitHeight="240.0" fitWidth="300.0" layoutX="386.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <image>
+         <Image url="@../images/Restroom.png" />
+      </image>
+   </ImageView>
     <GridPane fx:id="playground" disable="true" focusTraversable="true" layoutX="386.0" layoutY="234.0" onKeyPressed="#keyHandler" visible="false">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
@@ -312,7 +317,12 @@
             <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
     </GridPane>
-    <GridPane fx:id="townSquare_" disable="true" focusTraversable="true" layoutX="184.0" layoutY="145.0" onKeyPressed="#keyHandler" style="-fx-background-color: white;" visible="false">
+   <ImageView fx:id="universityBG" disable="true" fitHeight="240.0" fitWidth="270.0" layoutX="401.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <image>
+         <Image url="@../images/Restroom.png" />
+      </image>
+   </ImageView>
+    <GridPane fx:id="townSquare_" disable="true" focusTraversable="true" layoutX="184.0" layoutY="145.0" onKeyPressed="#keyHandler" visible="false">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
@@ -355,6 +365,11 @@
             <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
     </GridPane>
+   <ImageView fx:id="townSquareBG" disable="true" fitHeight="420.0" fitWidth="690.0" layoutX="184.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <image>
+         <Image url="@../images/Town_Square.png" />
+      </image>
+   </ImageView>
     <GridPane fx:id="park_" disable="true" focusTraversable="true" layoutX="266.0" layoutY="205.0" onKeyPressed="#keyHandler" visible="false">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />

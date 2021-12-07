@@ -64,7 +64,7 @@
       <children>
          <ImageView fx:id="article1" disable="true" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" visible="false">
             <image>
-               <Image url="@sindahl.jpg" />
+               <Image url="@../images/sindahl.jpg" />
             </image>
          </ImageView>
       </children>

@@ -1,7 +1,6 @@
 package domain;
 
 import javafx.scene.layout.GridPane;
-import org.controlsfx.control.spreadsheet.Grid;
 
 public class Game //her "skabes" klassen Game
 {
@@ -86,7 +85,7 @@ public class Game //her "skabes" klassen Game
         PlaceableObject windMillPart5 = new WindMillPart("Windmill-tower", 5, "This is the tower of the windmill. This is where the head is connected.", 1, 1);
         PlaceableObject windMillPart6 = new WindMillPart("Windmill-foundation", 6, "This is the foundation of the windmill. This is where the tower is connected.", 1, 2);
 
-        this.player1 = new Player("Player 1", 6, 0, "C:\\Users\\clara\\OneDrive\\Dokumenter\\GitKraken\\semesterProjekt2021\\semesterProjectSecondItterationGUI\\src\\main\\resources\\presentation\\sindahl.jpg");
+        this.player1 = new Player("Player 1", 6, 0, "/marcus.jpg");
 
         this.assembleRoom = new Room("green fields", "on a lush green field perfect for assembling a windmill.", 15, 23, assemblyRoom);
         startingRoom = new Room("Mayor Office", "at the mayor office.", 8, 8, Room);

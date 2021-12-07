@@ -26,7 +26,7 @@ public class Game //her "skabes" klassen Game
         GridPane secretaryOffice = new GridPane();
         GridPane Room = new GridPane();
         GridPane assemblyRoom = new GridPane();
-        GridPane harbor1 = new GridPane();
+        GridPane harbor = new GridPane();
         GridPane volkswagenMechanic = new GridPane();
         GridPane playground = new GridPane();
         GridPane university = new GridPane();
@@ -34,10 +34,10 @@ public class Game //her "skabes" klassen Game
         GridPane park_ = new GridPane();
         GridPane cloverSt_ = new GridPane();
         GridPane queenST = new GridPane();
-        GridPane harbor2 = new GridPane();
+        GridPane harbor_st = new GridPane();
 
 
-        Room startingRoom, quizRoom1, quizRoom2, quizRoom3, quizRoom4, quizRoom5, quizRoom6, townSquare, park, cloverSt, harbor, queensSt, filler;
+        Room startingRoom, quizRoom1, quizRoom2, quizRoom3, quizRoom4, quizRoom5, quizRoom6, townSquare, park, cloverSt, harborST, queensSt, filler;
         String[] answers1 = {"A. 31%", "B. 20%", "C. 29%"};
         String[] answers2 = {"A. Energy that will not be replenished in a short timescale", "B. Energy that is replenished in a short timescale", "C. Energy that we can’t produce yet"};
         String[] answers3 = {"A. 26-30 billion kroner", "B. 21-25 billion kroner", "C. 16-20 billion kroner"};
@@ -90,7 +90,7 @@ public class Game //her "skabes" klassen Game
         this.assembleRoom = new Room("green fields", "on a lush green field perfect for assembling a windmill.", 15, 23, assemblyRoom);
         startingRoom = new Room("Mayor Office", "at the mayor office.", 8, 8, Room);
         quizRoom1 = new Room("secretary Office", "at the secretary office.", 7, 7, secretaryOffice);
-        quizRoom2 = new Room("Harbor", "at the harbor, there is a windmill part here complete the quiz to collect the part.", 9, 17, harbor1);
+        quizRoom2 = new Room("Harbor", "at the harbor, there is a windmill part here complete the quiz to collect the part.", 12, 12, harbor);
         quizRoom3 = new Room("public restroom", "at the public restroom, there is a windmill part here complete the quiz to collect the part. ", 5, 6, restroom);
         quizRoom4 = new Room("volkswagen mechanic", "at the Volkswagen mechanic, there is a windmill part here complete the quiz to collect the part.", 8, 10, volkswagenMechanic);
         quizRoom5 = new Room("playground", "at the Playground, there is a windmill part here complete the quiz to collect the part.", 9, 10, playground);
@@ -98,7 +98,7 @@ public class Game //her "skabes" klassen Game
         townSquare = new Room("town square", "at the town square.", 14, 23, townSquare_);
         park = new Room("park", "at the park.", 11, 18, park_);
         cloverSt = new Room("clover St", "at the Clover St.", 9, 18, cloverSt_);
-        harbor = new Room("harbor", "at the harbor.", 12, 12, harbor2);
+        harborST = new Room("harbor St", "at the harbor St", 9, 17, harbor_st);
         queensSt = new Room("queens St", "at the Queens St.", 8, 15, queenST);
 
 
@@ -116,7 +116,7 @@ public class Game //her "skabes" klassen Game
 
         townSquare.setExit("south", quizRoom3);
         townSquare.setExit("north", quizRoom1);
-        townSquare.setExit("east", harbor);
+        townSquare.setExit("east", harborST);
         townSquare.setExit("west", park);
         townSquare.addObjectsInRoom(information3);
 
@@ -137,11 +137,11 @@ public class Game //her "skabes" klassen Game
         quizRoom6.addQuizToRoom(quiz6);
         quizRoom6.addObjectsInRoom(windMillPart6);
 
-        harbor.setExit("west", townSquare);
-        harbor.setExit("east", quizRoom2);
-        harbor.addObjectsInRoom(information2);
+        harborST.setExit("west", townSquare);
+        harborST.setExit("east", quizRoom2);
+        harborST.addObjectsInRoom(information2);
 
-        quizRoom2.setExit("west", harbor);
+        quizRoom2.setExit("west", harborST);
         quizRoom2.addObjectsInRoom(windMillPart2);
         quizRoom2.addQuizToRoom(quiz2);
 

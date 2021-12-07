@@ -176,7 +176,7 @@
          <Image url="@../images/Assemble_Room.png" />
       </image>
    </ImageView>
-    <GridPane fx:id="harbor1" disable="true" focusTraversable="true" layoutX="273.0" layoutY="224.0" onKeyPressed="#keyHandler" visible="false">
+    <GridPane fx:id="harbor_st" disable="true" focusTraversable="true" layoutX="273.0" layoutY="224.0" onKeyPressed="#keyHandler" visible="false">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
@@ -208,7 +208,7 @@
             <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
     </GridPane>
-   <ImageView fx:id="harbor1BG" disable="true" fitHeight="270.0" fitWidth="510.0" layoutX="273.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true" visible="false">
+   <ImageView fx:id="harbor_stBG" disable="true" fitHeight="270.0" fitWidth="510.0" layoutX="273.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true" visible="false">
       <image>
          <Image url="@../images/Harbor_St.png" />
       </image>
@@ -448,7 +448,7 @@
          <Image url="@../images/Clover_St.png" />
       </image>
    </ImageView>
-    <GridPane fx:id="harbor2" disable="true" focusTraversable="true" layoutX="356.0" layoutY="189.0" onKeyPressed="#keyHandler" visible="false">
+    <GridPane fx:id="harbor" disable="true" focusTraversable="true" layoutX="356.0" layoutY="189.0" onKeyPressed="#keyHandler" visible="false">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
@@ -478,7 +478,7 @@
             <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
     </GridPane>
-   <ImageView fx:id="harbor2BG" disable="true" fitHeight="360.0" fitWidth="360.0" layoutX="356.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true" visible="false">
+   <ImageView fx:id="harborBG" disable="true" fitHeight="360.0" fitWidth="360.0" layoutX="356.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true" visible="false">
       <image>
          <Image url="@../images/Harbor.png" />
       </image>

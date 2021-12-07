@@ -2,17 +2,12 @@ package presentation;
 
 import domain.*;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import textUI.Play;
 import textUI.PrintGrid;
@@ -54,7 +49,7 @@ public class GUIHandler {
     private GridPane assemblyRoom;
 
     @FXML
-    private GridPane harbor1;
+    private GridPane harbor;
 
     @FXML
     private GridPane restroom;
@@ -78,7 +73,7 @@ public class GUIHandler {
     private GridPane cloverSt_;
 
     @FXML
-    private GridPane harbor2;
+    private GridPane harbor_st;
 
     @FXML
     private GridPane queensST;
@@ -90,7 +85,10 @@ public class GUIHandler {
     private ImageView SecretaryRoomBG;
 
     @FXML
-    private ImageView harbor1BG;
+    private ImageView harborBG;
+
+    @FXML
+    private ImageView harbor_stBG;
 
     @FXML
     private ImageView restroomBG;
@@ -166,14 +164,13 @@ public class GUIHandler {
         this.roomDescription.setDisable(false);
         this.roomDescription.setVisible(true);
         this.roomDescription.setText(this.game.getCurrentRoom().getTitle());
-        System.out.println(this.grid.printGrid(game));
     }
 
     private void addAllRooms() {
         this.rooms.put("secretary Office", this.secretaryOffice);
         this.rooms.put("Mayor Office", this.mayorOffice);
         this.rooms.put("green fields", this.assemblyRoom);
-        this.rooms.put("Harbor", this.harbor1);
+        this.rooms.put("Harbor", this.harbor);
         this.rooms.put("public restroom", this.restroom);
         this.rooms.put("volkswagen mechanic", this.volkswagenMechanic);
         this.rooms.put("playground", this.playground);
@@ -181,7 +178,7 @@ public class GUIHandler {
         this.rooms.put("town square", this.townSquare_);
         this.rooms.put("park", this.park_);
         this.rooms.put("clover St", this.cloverSt_);
-        this.rooms.put("harbor", this.harbor2);
+        this.rooms.put("harbor St", this.harbor_st);
         this.rooms.put("queens St", this.queensST);
     }
 
@@ -189,7 +186,7 @@ public class GUIHandler {
         this.roomBackground.put("Mayor Office", this.mayorOfficeBG);
         this.roomBackground.put("secretary Office", this.SecretaryRoomBG);
         this.roomBackground.put("green fields", this.assemblyRoomBG);
-        this.roomBackground.put("Harbor", this.harbor1BG);
+        this.roomBackground.put("Harbor", this.harborBG);
         this.roomBackground.put("public restroom", this.restroomBG);
         this.roomBackground.put("volkswagen mechanic", this.volkswagenMechanicBG);
         this.roomBackground.put("playground", this.playgroundBG);
@@ -197,7 +194,7 @@ public class GUIHandler {
         this.roomBackground.put("town square", this.townSquareBG);
         this.roomBackground.put("park", this.parkBG);
         this.roomBackground.put("clover St", this.cloverStBG);
-        this.roomBackground.put("harbor", this.harbor1BG);
+        this.roomBackground.put("harbor St", this.harbor_stBG);
         this.roomBackground.put("queens St", this.queensSTBG);
     }
 
@@ -300,27 +297,23 @@ public class GUIHandler {
             Command command = new Command(CommandWord.MOVE, "down");
             game.processCommand(command);
             this.currentRoom.setRowIndex(this.player, game.getPlayer1().getPosistion().getY());
-            System.out.println("fejl 2");
         }
 
         if (keyEvent.getCode() == KeyCode.W) {
             Command command = new Command(CommandWord.MOVE, "up");
             game.processCommand(command);
             this.currentRoom.setRowIndex(this.player, game.getPlayer1().getPosistion().getY());
-            System.out.println("fejl 3");
         }
 
         if (keyEvent.getCode() == KeyCode.A) {
             Command command = new Command(CommandWord.MOVE, "left");
             game.processCommand(command);
             this.currentRoom.setColumnIndex(this.player, game.getPlayer1().getPosistion().getX());
-            System.out.println("fejl 4");
         }
         if (keyEvent.getCode() == KeyCode.D) {
             Command command = new Command(CommandWord.MOVE, "right");
             game.processCommand(command);
             this.currentRoom.setColumnIndex(player, game.getPlayer1().getPosistion().getX());
-            System.out.println("fejl 5");
         }
 
         if (keyEvent.getCode() == KeyCode.E) {
@@ -329,7 +322,7 @@ public class GUIHandler {
                 disableCurrentRoom();
                 String room = game.getCurrentRoom().getShortDescription();
                 changeRoom(this.rooms.get(room),this.roomBackground.get(room));
-                System.out.println(game.getCurrentRoom().getShortDescription());
+                System.out.println(this.currentRoom.getId());
             }
             String a = game.getCurrentRoom().collectObject(game.getPlayerInventory(), game.getPlayer1());
             if (!(a == "df")) {

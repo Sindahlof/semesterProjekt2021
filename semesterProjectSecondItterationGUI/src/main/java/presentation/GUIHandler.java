@@ -13,7 +13,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
-import org.controlsfx.control.spreadsheet.Grid;
+import javafx.scene.text.Text;
 import textUI.Play;
 import textUI.PrintGrid;
 
@@ -21,15 +21,10 @@ import java.util.HashMap;
 
 public class GUIHandler {
     @FXML
-    private GridPane secretaryOffice;
-
-
-
-    @FXML
     private AnchorPane titleScreen;
 
     @FXML
-    private ImageView article1;
+    private Text roomDescription;
 
     @FXML
     private VBox quiz1;
@@ -48,6 +43,9 @@ public class GUIHandler {
 
     @FXML
     private VBox quiz6;
+
+    @FXML
+    private GridPane secretaryOffice;
 
     @FXML
     private GridPane mayorOffice;
@@ -112,6 +110,9 @@ public class GUIHandler {
     @FXML
     private ImageView assemblyRoomBG;
 
+    @FXML
+    private ImageView article1;
+
     private Game game;
     private GridPane currentRoom;
     private ImageView currentBackgroundImage;
@@ -156,6 +157,9 @@ public class GUIHandler {
         int x = game.getPlayer1().getPosistion().getX();
         int y = game.getPlayer1().getPosistion().getY();
         this.currentRoom.add(this.player, x, y);
+        this.roomDescription.setDisable(false);
+        this.roomDescription.setVisible(true);
+        this.roomDescription.setText(this.game.getCurrentRoom().getTitle());
         System.out.println(this.grid.printGrid(game));
     }
 
@@ -220,6 +224,8 @@ public class GUIHandler {
     private void enableCurrentRoom() {
         this.currentRoom.setVisible(true);
         this.currentRoom.setDisable(false);
+        this.currentBackgroundImage.setVisible(true);
+        this.currentBackgroundImage.setDisable(false);
     }
 
     private void disableTitleScreen() {

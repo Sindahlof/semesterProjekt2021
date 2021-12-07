@@ -312,7 +312,7 @@
             <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
     </GridPane>
-    <GridPane fx:id="townSquare_" disable="true" focusTraversable="true" layoutX="184.0" layoutY="145.0" onKeyPressed="#keyHandler" visible="false">
+    <GridPane fx:id="townSquare_" disable="true" focusTraversable="true" layoutX="184.0" layoutY="145.0" onKeyPressed="#keyHandler" style="-fx-background-color: white;" visible="false">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
@@ -712,6 +712,25 @@
             </HBox>
         </children>
     </VBox>
+   <Text fill="WHITE" layoutX="14.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Game Controls:" textAlignment="CENTER" wrappingWidth="164.0">
+      <font>
+         <Font size="21.0" />
+      </font>
+   </Text>
+   <Text fill="WHITE" fontSmoothingType="LCD" layoutX="14.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Press &quot;W, A, S &amp; D&quot; to move your character around.&#10;&#10;Press &quot;E&quot; to use an exit or collect an item.&#10;&#10;Press &quot;SPACEBAR&quot; to do the quiz in the room if there is any. &#10;&#10;Press &quot;ESCAPE&quot; to abort a quiz.&#10;&#10;Click an item in your inventory to inspect it.&#10;" wrappingWidth="164.0">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </Text>
+   <Text fill="WHITE" layoutX="284.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="World of Power!" textAlignment="CENTER" wrappingWidth="491.13671875">
+      <font>
+         <Font size="24.0" />
+      </font>
+   </Text>
+   <Text fx:id="roomDescription" disable="true" fill="WHITE" layoutX="305.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" visible="false" wrappingWidth="450.0">
+      <font>
+         <Font size="16.0" />
+      </font></Text>
     <opaqueInsets>
         <Insets left="10.0" />
     </opaqueInsets>

@@ -2,6 +2,8 @@ package domain;
 
 import javafx.scene.layout.GridPane;
 
+import java.util.HashMap;
+
 public class Game //her "skabes" klassen Game
 {
     //der laves 2 attributter, deres datatyper er taget fra andre klasser
@@ -11,14 +13,23 @@ public class Game //her "skabes" klassen Game
     private boolean gameCompleted, dead;
     private Room assembleRoom;
     private Player player1;
+    private PlaceableObject information1;
+    private PlaceableObject information2;
+    private PlaceableObject information3;
+    private PlaceableObject information4;
+    private PlaceableObject information5;
+    private PlaceableObject information6;
+    private HashMap<String,PlaceableObject> placeAbleItems;
+
 
 
     public Game() { //constructor Game defineres
+        this.playerInventory = new Inventory(); //Initializer player's inventory
+        this.placeAbleItems = new HashMap<String,PlaceableObject>();
         createRooms();
         this.gameCompleted = false;
         this.dead = false;
         this.parser = new Parser(); //attributten parser sættes til at være klassen Parser
-        this.playerInventory = new Inventory(); //Initializer player's inventory
     }
 
     public void createRooms() {//en metode til at lave rum
@@ -45,39 +56,45 @@ public class Game //her "skabes" klassen Game
         String[] answers5 = {"A. 320 GW", "B. 280 GW", "C. 240 GW"};
         String[] answers6 = {"A. Coal power plants", "B. Nuclear power plants", "C. Wind power plants"};
 
-        Quiz quiz1 = new Quiz("What percentage of global electricity production came from green energy sources in 2020? ", answers1, "C", "1");
-        Quiz quiz2 = new Quiz("What is sustainable energy?", answers2, "B", "2");
-        Quiz quiz3 = new Quiz("How much will the green transition cost in Denmark?", answers3, "A", "3");
-        Quiz quiz4 = new Quiz("What are some of the drawbacks of current energy production?", answers4, "A", "4");
-        Quiz quiz5 = new Quiz("How much did green energy production increase globally in 2020?", answers5, "B", "5");
-        Quiz quiz6 = new Quiz("How is sustainable energy produced?", answers6, "C", "6");
+        Quiz quiz1 = new Quiz("What percentage of global electricity production came from green energy sources in 2020? ", answers1, "C", "Electricity production");
+        Quiz quiz2 = new Quiz("What is sustainable energy?", answers2, "B", "Sustainable energy");
+        Quiz quiz3 = new Quiz("How much will the green transition cost in Denmark?", answers3, "A", "Green transition cost");
+        Quiz quiz4 = new Quiz("What are some of the drawbacks of current energy production?", answers4, "A", "Drawbacks of our energy production");
+        Quiz quiz5 = new Quiz("How much did green energy production increase globally in 2020?", answers5, "B", "Green energy production");
+        Quiz quiz6 = new Quiz("How is sustainable energy produced?", answers6, "C", "Sustainable energy production");
 
-        PlaceableObject information1 = new Information("Article-1", "" +
+        this.information1 = new Information("Article-1", "" +
                 "This article is about green energy sources in 2020." +
                 "\nOnly 29% of the global energy production came from green energy sources in 2020. That rose from 27% in 2019.", 1, 2);
-        PlaceableObject information2 = new Information("Article-6", "" +
+        this.placeAbleItems.put("article1",this.information1);
+        this.information2 = new Information("Article-6", "" +
                 "This article is about sustainable energy" +
                 "\nSustainable energy is when the energy you produce right now, will still be able to power the future generations without reducing the quality of life." +
                 "\nRenewable energy sources such as wind and solar are examples of sustainable energy sources.", 2, 1);
-        PlaceableObject information3 = new Information("Article-3", "" +
+        this.placeAbleItems.put("article2",this.information2);
+        this.information3 = new Information("Article-3", "" +
                 "This article is about how much a green conversion will cost." +
                 "\nIt is estimated that a 70% green conversion by 2030 in Denmark will cost around 26-30 billion kroner. " +
                 "\nThe calculations are made by a think tank Cepos and in collaboration with Dansk Energi.", 1, 2);
-        PlaceableObject information4 = new Information("Article-4", "" +
+        this.placeAbleItems.put("article3",this.information3);
+        this.information4 = new Information("Article-4", "" +
                 "This article is about the drawbacks of current energy production" +
                 "\nThe cons of burning coal to produce energy is that with burning coal comes a lot of pollution into the air. " +
                 "\nAnd by mining coal some byproducts like mercury and arsenic also get uncovered. " +
-                "\nAlso, the quantity of coal is finite, which means that we will run out of coal at some point if we keep mining coal. ", 0, 2);
-        PlaceableObject information5 = new Information("Article-5", "" +
+                "\nAlso, the quantity of coal is finite, which means that we will run out of coal at some point if we keep mining coal. ", 1, 1);
+        this.placeAbleItems.put("article4",this.information4);
+        this.information5 = new Information("Article-5", "" +
                 "This article is about how many deaths pollution causes." +
                 "\nEvery year, 2.5 million people worldwide die as a result of air pollution. " +
                 "\nThis makes pollution in particularly large cities from traffic and industry one of the most important environmental risk factors when it comes to human health. " +
                 "\nThis is how it sounds from 30 researchers from the USA, England, Italy, Japan and New Zealand, who are behind a new study. ", 4, 1);
-        PlaceableObject information6 = new Information("Article-2", "" +
+        this.placeAbleItems.put("article5",this.information5);
+        this.information6 = new Information("Article-2", "" +
                 "This article is about sustainable energy sources" +
                 "\nSustainable energy comes from renewable sources. Renewable sources are things like sunlight, wind, water and geothermal." +
                 "\nThese are replenished in a timescale of a human lifetime, which means that they aren’t in limited supply." +
                 "\nThe most well-known renewable energy production technologies are hydropower, wind power, solar power and geothermal power. ", 2, 2);
+        this.placeAbleItems.put("article6",this.information6);
         PlaceableObject windMillPart1 = new WindMillPart("Windmill-wing-1", 1, "This is the first windmill wing.", 2, 2);
         PlaceableObject windMillPart2 = new WindMillPart("Windmill-wing-2", 2, "This is the second windmill wing.", 1, 2);
         PlaceableObject windMillPart3 = new WindMillPart("Windmill-wing-3", 3, "This is the third windmill wing.", 2, 1);
@@ -306,6 +323,36 @@ public class Game //her "skabes" klassen Game
     public Inventory getPlayerInventory() {
         return this.playerInventory;
     }
+
+    public PlaceableObject getInformation1 (){
+        return this.information1;
+    }
+
+    public PlaceableObject getInformation2 (){
+        return this.information2;
+    }
+
+    public PlaceableObject getInformation3 (){
+        return this.information3;
+    }
+
+    public PlaceableObject getInformation4 (){
+        return this.information4;
+    }
+
+    public PlaceableObject getInformation5 (){
+        return this.information5;
+    }
+
+    public PlaceableObject getInformation6 (){
+        return this.information6;
+    }
+
+
+    //public Information getPlaceableItem (String item){
+      //  System.out.println(item);
+        //return this.getPlaceableItem(item);
+    //}
 
 /*startingRoom.setExit("south", quizRoom1);
 

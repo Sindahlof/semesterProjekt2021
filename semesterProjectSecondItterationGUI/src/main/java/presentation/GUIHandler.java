@@ -2,6 +2,7 @@ package presentation;
 
 import domain.*;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -13,10 +14,13 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
 import org.controlsfx.control.spreadsheet.Grid;
 import textUI.Play;
 import textUI.PrintGrid;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class GUIHandler {
@@ -31,6 +35,21 @@ public class GUIHandler {
 
     @FXML
     private ImageView article1;
+
+    @FXML
+    private ImageView article2;
+
+    @FXML
+    private ImageView article3;
+
+    @FXML
+    private ImageView article4;
+
+    @FXML
+    private ImageView article5;
+
+    @FXML
+    private ImageView article6;
 
     @FXML
     private VBox quiz1;
@@ -83,6 +102,9 @@ public class GUIHandler {
     @FXML
     private GridPane queensST;
 
+    @FXML
+    private Text inspect;
+
     private Game game;
     private GridPane currentRoom;
     private PrintGrid grid;
@@ -93,7 +115,7 @@ public class GUIHandler {
     private String answer;
     private HashMap<String, VBox> quizs;
     private String quiz;
-
+    private HashMap<String, PlaceableObject> inspectItems;
 
     private void startGame() {
         this.game = new Game();
@@ -105,9 +127,11 @@ public class GUIHandler {
         this.items = new HashMap<>();
         this.quizs = new HashMap<>();
         this.play = new Play();
+        this.inspectItems = new HashMap<>();
         addAllRooms();
         addAllItems();
         addAllQuizs();
+        addAllInspectItems();
         this.titleScreen.setDisable(false);
         this.titleScreen.setVisible(true);
     }
@@ -139,21 +163,31 @@ public class GUIHandler {
     }
 
     private void addAllQuizs() {
-        this.quizs.put("1", this.quiz1);
-        this.quizs.put("2", this.quiz2);
-        this.quizs.put("3", this.quiz3);
-        this.quizs.put("4", this.quiz4);
-        this.quizs.put("5", this.quiz5);
-        this.quizs.put("6", this.quiz6);
+        this.quizs.put("Electricity production", this.quiz1);
+        this.quizs.put("Sustainable energy", this.quiz2);
+        this.quizs.put("Green transition cost", this.quiz3);
+        this.quizs.put("Drawbacks of our energy production", this.quiz4);
+        this.quizs.put("Green energy production", this.quiz5);
+        this.quizs.put("Sustainable energy production", this.quiz6);
+    }
+
+    private void addAllInspectItems() {
+        this.inspectItems.put("article1", this.game.getInformation1());
+        this.inspectItems.put("article2", this.game.getInformation2());
+        this.inspectItems.put("article3", this.game.getInformation3());
+        this.inspectItems.put("article4", this.game.getInformation4());
+        this.inspectItems.put("article5", this.game.getInformation5());
+        this.inspectItems.put("article6", this.game.getInformation6());
+
     }
 
     private void addAllItems() {
         this.items.put("Article-1", this.article1);
-        /*this.items.put("Article-2",);
-        this.items.put("Article-3",);
-        this.items.put("Article-4",);
-        this.items.put("Article-5",);
-        this.items.put("Article-6",);*/
+        this.items.put("Article-2", this.article2);
+        this.items.put("Article-3", this.article3);
+        this.items.put("Article-4", this.article4);
+        this.items.put("Article-5", this.article5);
+        this.items.put("Article-6", this.article6);
     }
 
     private void disableCurrentRoom() {
@@ -251,7 +285,7 @@ public class GUIHandler {
             System.out.println("fejl 5");
         }
 
-        if (keyEvent.getCode() == KeyCode.E) {
+        if (keyEvent.getCode() == KeyCode.E) { 
             String s = game.exitRoom();
             if (s.equals("3")) {
                 disableCurrentRoom();
@@ -260,8 +294,16 @@ public class GUIHandler {
             }
             String a = game.getCurrentRoom().collectObject(game.getPlayerInventory(), game.getPlayer1());
             if (!(a == "df")) {
+                System.out.println(a);
                 this.items.get(a).setDisable(false);
                 this.items.get(a).setVisible(true);
+                for (Node node : this.currentRoom.getChildren())
+                if (this.currentRoom.getColumnIndex(node) == this.game.getPlayer1().getPosistion().getX() &&  this.currentRoom.getRowIndex(node) == this.game.getPlayer1().getPosistion().getY()){
+                    node.setDisable(true);
+                    node.setVisible(false);
+                    this.player.setDisable(false);
+                    this.player.setVisible(true);
+                }
             } else {
             }
         }
@@ -276,15 +318,25 @@ public class GUIHandler {
             }
         }
 
+
+        game.getCurrentRoom().constructGrid(game.getPlayer1());
+        System.out.println(this.grid.printGrid(game));
+    }
+
+    public void quizKeyHandler(KeyEvent keyEvent) {
         if (keyEvent.getCode() == KeyCode.ESCAPE) {
             this.quizs.get(this.quiz).setVisible(false);
             this.quizs.get(this.quiz).setDisable(true);
             enableCurrentRoom();
         }
+    }
 
-
-        game.getCurrentRoom().constructGrid(game.getPlayer1());
-        System.out.println(this.grid.printGrid(game));
+    public void clickGrid(javafx.scene.input.MouseEvent event) {
+        Node clickedNode = event.getPickResult().getIntersectedNode();
+        String id = clickedNode.getId();
+        System.out.println(id);
+        System.out.println(this.inspectItems.get(id).print());
+        this.inspect.setText(this.inspectItems.get(id).print());
     }
 
 

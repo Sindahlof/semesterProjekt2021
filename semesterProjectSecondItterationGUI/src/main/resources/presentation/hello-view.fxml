@@ -49,7 +49,7 @@
          </VBox>
       </children>
    </AnchorPane>
-   <GridPane gridLinesVisible="true" layoutX="910.0" layoutY="310.0" style="-fx-background-color: White;">
+   <GridPane gridLinesVisible="true" layoutX="910.0" layoutY="310.0" onMouseClicked="#clickGrid" style="-fx-background-color: White;">
      <columnConstraints>
          <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
        <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
@@ -64,7 +64,32 @@
       <children>
          <ImageView fx:id="article1" disable="true" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" visible="false">
             <image>
-               <Image url="@../images/sindahl.jpg" />
+               <Image url="@../images/articleDark1.png" />
+            </image>
+         </ImageView>
+         <ImageView fx:id="article2" disable="true" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="1">
+            <image>
+               <Image url="@../images/articleLight1.png" />
+            </image>
+         </ImageView>
+         <ImageView fx:id="article3" disable="true" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="2">
+            <image>
+               <Image url="@../images/articleDark2.png" />
+            </image>
+         </ImageView>
+         <ImageView fx:id="article4" disable="true" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.rowIndex="1">
+            <image>
+               <Image url="@../images/articleLight2.png" />
+            </image>
+         </ImageView>
+         <ImageView fx:id="article5" disable="true" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <image>
+               <Image url="@../images/articleDark3.png" />
+            </image>
+         </ImageView>
+         <ImageView fx:id="article6" disable="true" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <image>
+               <Image url="@../images/articleLight3.png" />
             </image>
          </ImageView>
       </children>
@@ -98,6 +123,13 @@
         <opaqueInsets>
             <Insets />
         </opaqueInsets>
+      <children>
+         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <image>
+               <Image url="@../images/articleDark4.png" />
+            </image>
+         </ImageView>
+      </children>
     </GridPane>
    <GridPane fx:id="secretaryOffice" disable="true" focusTraversable="true" layoutX="423.0" layoutY="254.0" onKeyPressed="#keyHandler" style="-fx-background-color: White;" visible="false">
      <columnConstraints>
@@ -326,6 +358,13 @@
          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
       </rowConstraints>
+      <children>
+         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <image>
+               <Image url="@../images/articleDark5.png" />
+            </image>
+         </ImageView>
+      </children>
    </GridPane>
    <GridPane fx:id="park_" disable="true" focusTraversable="true" layoutX="266.0" layoutY="205.0" onKeyPressed="#keyHandler" style="-fx-background-color: white;" visible="false">
       <columnConstraints>
@@ -361,6 +400,13 @@
          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
       </rowConstraints>
+      <children>
+         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <image>
+               <Image url="@../images/articleDark6.png" />
+            </image>
+         </ImageView>
+      </children>
    </GridPane>
    <GridPane fx:id="cloverSt_" disable="true" focusTraversable="true" layoutX="258.0" layoutY="235.0" onKeyPressed="#keyHandler" style="-fx-background-color: white;" visible="false">
       <columnConstraints>
@@ -394,8 +440,15 @@
          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
       </rowConstraints>
+      <children>
+         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <image>
+               <Image url="@../images/articleLight6.png" />
+            </image>
+         </ImageView>
+      </children>
    </GridPane>
-   <GridPane fx:id="harbor2" disable="true" focusTraversable="true" layoutX="356.0" layoutY="189.0" onKeyPressed="#keyHandler" style="-fx-background-color: white;" visible="false">
+   <GridPane fx:id="harbor2" disable="true" focusTraversable="true" layoutX="357.0" layoutY="189.0" onKeyPressed="#keyHandler" style="-fx-background-color: white;" visible="false">
       <columnConstraints>
          <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
          <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
@@ -424,6 +477,13 @@
          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
       </rowConstraints>
+      <children>
+         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <image>
+               <Image url="@../images/articleLight4.png" />
+            </image>
+         </ImageView>
+      </children>
    </GridPane>
    <GridPane fx:id="queensST" disable="true" focusTraversable="true" layoutX="303.0" layoutY="249.0" onKeyPressed="#keyHandler" style="-fx-background-color: white;" visible="false">
       <columnConstraints>
@@ -453,8 +513,15 @@
          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
       </rowConstraints>
+      <children>
+         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <image>
+               <Image url="@../images/articleLight5.png" />
+            </image>
+         </ImageView>
+      </children>
    </GridPane>
-   <VBox fx:id="quiz1" disable="true" layoutX="424.0" layoutY="244.0" style="-fx-background-color: white;" visible="false">
+   <VBox fx:id="quiz1" disable="true" layoutX="424.0" layoutY="244.0" onKeyPressed="#quizKeyHandler" style="-fx-background-color: white;" visible="false">
       <children>
          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&#10;Questien:&#10;What percentage of global electricity production came from green energy sources in 2020?&#10;" textAlignment="CENTER" wrappingWidth="200.244140625">
             <VBox.margin>
@@ -489,7 +556,7 @@
          </HBox>
       </children>
    </VBox>
-   <VBox fx:id="quiz2" disable="true" layoutX="431.0" layoutY="208.0" style="-fx-background-color: white;" visible="false">
+   <VBox fx:id="quiz2" disable="true" layoutX="431.0" layoutY="208.0" onKeyPressed="#quizKeyHandler" style="-fx-background-color: white;" visible="false">
       <children>
          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&#10;Questien:&#10;What is sustainable energy?&#10;" textAlignment="CENTER" wrappingWidth="200.244140625">
             <VBox.margin>
@@ -524,7 +591,7 @@
          </HBox>
       </children>
    </VBox>
-   <VBox fx:id="quiz3" disable="true" layoutX="431.0" layoutY="231.0" style="-fx-background-color: white;" visible="false">
+   <VBox fx:id="quiz3" disable="true" layoutX="431.0" layoutY="231.0" onKeyPressed="#quizKeyHandler" style="-fx-background-color: white;" visible="false">
       <children>
          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&#10;Questien:&#10;How much will the green transition cost in Denmark?&#10;" textAlignment="CENTER" wrappingWidth="200.244140625">
             <VBox.margin>
@@ -559,7 +626,7 @@
          </HBox>
       </children>
    </VBox>
-   <VBox fx:id="quiz4" disable="true" layoutX="441.0" layoutY="241.0" style="-fx-background-color: white;" visible="false">
+   <VBox fx:id="quiz4" disable="true" layoutX="441.0" layoutY="241.0" onKeyPressed="#quizKeyHandler" style="-fx-background-color: white;" visible="false">
       <children>
          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&#10;Questien:&#10;What are some of the drawbacks of current energy production?&#10;" textAlignment="CENTER" wrappingWidth="200.244140625">
             <VBox.margin>
@@ -594,7 +661,7 @@
          </HBox>
       </children>
    </VBox>
-   <VBox fx:id="quiz5" disable="true" layoutX="451.0" layoutY="251.0" style="-fx-background-color: white;" visible="false">
+   <VBox fx:id="quiz5" disable="true" layoutX="451.0" layoutY="251.0" onKeyPressed="#quizKeyHandler" style="-fx-background-color: white;" visible="false">
       <children>
          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&#10;Questien:&#10;How much did green energy production increase globally in 2020?&#10;" textAlignment="CENTER" wrappingWidth="200.244140625">
             <VBox.margin>
@@ -629,7 +696,7 @@
          </HBox>
       </children>
    </VBox>
-   <VBox fx:id="quiz6" disable="true" layoutX="461.0" layoutY="261.0" style="-fx-background-color: white;" visible="false">
+   <VBox fx:id="quiz6" disable="true" layoutX="461.0" layoutY="261.0" onKeyPressed="#quizKeyHandler" style="-fx-background-color: white;" visible="false">
       <children>
          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&#10;Questien:&#10;How is sustainable energy produced?&#10;" textAlignment="CENTER" wrappingWidth="200.244140625">
             <VBox.margin>
@@ -664,6 +731,7 @@
          </HBox>
       </children>
    </VBox>
+   <Text fx:id="inspect" fill="WHITE" layoutX="246.0" layoutY="618.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="581.0" />
    <opaqueInsets>
       <Insets left="10.0" />
    </opaqueInsets>

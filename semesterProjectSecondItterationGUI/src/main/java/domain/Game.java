@@ -98,9 +98,9 @@ public class Game //her "skabes" klassen Game
         PlaceableObject windMillPart1 = new WindMillPart("Windmill-wing-1", 1, "This is the first windmill wing.", 2, 2);
         PlaceableObject windMillPart2 = new WindMillPart("Windmill-wing-2", 2, "This is the second windmill wing.", 1, 2);
         PlaceableObject windMillPart3 = new WindMillPart("Windmill-wing-3", 3, "This is the third windmill wing.", 2, 1);
-        PlaceableObject windMillPart4 = new WindMillPart("Windmill-head", 4, "This is the head of the windmill. This is where the wings are connected.", 1, 0);
-        PlaceableObject windMillPart5 = new WindMillPart("Windmill-tower", 5, "This is the tower of the windmill. This is where the head is connected.", 1, 1);
-        PlaceableObject windMillPart6 = new WindMillPart("Windmill-foundation", 6, "This is the foundation of the windmill. This is where the tower is connected.", 1, 2);
+        PlaceableObject windMillPart4 = new WindMillPart("Windmill-motor", 4, "This is the head of the windmill. This is where the wings are connected.", 4, 4);
+        PlaceableObject windMillPart5 = new WindMillPart("Windmill-rod part 1", 5, "This is the tower of the windmill. This is where the head is connected.", 1, 1);
+        PlaceableObject windMillPart6 = new WindMillPart("Windmill-rod part 2", 6, "This is the foundation of the windmill. This is where the tower is connected.", 1, 2);
 
         this.player1 = new Player("Player 1", 6, 0, "/marcus.jpg");
 

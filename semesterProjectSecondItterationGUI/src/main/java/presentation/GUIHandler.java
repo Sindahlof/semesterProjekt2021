@@ -52,6 +52,24 @@ public class GUIHandler {
     private ImageView article6;
 
     @FXML
+    private ImageView wing1;
+
+    @FXML
+    private ImageView wing2;
+
+    @FXML
+    private ImageView wing3;
+
+    @FXML
+    private ImageView beamTop;
+
+    @FXML
+    private ImageView beamBelow;
+
+    @FXML
+    private ImageView engine;
+
+    @FXML
     private VBox quiz1;
 
     @FXML
@@ -104,6 +122,7 @@ public class GUIHandler {
 
     @FXML
     private Text inspect;
+
 
     private Game game;
     private GridPane currentRoom;
@@ -188,6 +207,12 @@ public class GUIHandler {
         this.items.put("Article-4", this.article4);
         this.items.put("Article-5", this.article5);
         this.items.put("Article-6", this.article6);
+        this.items.put("Windmill-wing-1", this.wing1);
+        this.items.put("Windmill-wing-2", this.wing2);
+        this.items.put("Windmill-wing-3", this.wing3);
+        this.items.put("Windmill-motor", this.engine);
+        this.items.put("Windmill-rod part 1", this.beamTop);
+        this.items.put("Windmill-rod part 2", this.beamBelow);
     }
 
     private void disableCurrentRoom() {
@@ -233,6 +258,7 @@ public class GUIHandler {
             this.quizs.get(quiz).setDisable(true);
             this.quizs.get(quiz).setVisible(false);
             enableCurrentRoom();
+            enableWindMillParts();
         }
     }
 
@@ -243,8 +269,10 @@ public class GUIHandler {
             this.quizs.get(quiz).setDisable(true);
             this.quizs.get(quiz).setVisible(false);
             enableCurrentRoom();
+            enableWindMillParts();
         }
     }
+
 
     public void c() {
         this.answer = "C";
@@ -253,6 +281,7 @@ public class GUIHandler {
             this.quizs.get(quiz).setDisable(true);
             this.quizs.get(quiz).setVisible(false);
             enableCurrentRoom();
+            enableWindMillParts();
         }
     }
 
@@ -285,7 +314,7 @@ public class GUIHandler {
             System.out.println("fejl 5");
         }
 
-        if (keyEvent.getCode() == KeyCode.E) { 
+        if (keyEvent.getCode() == KeyCode.E) {
             String s = game.exitRoom();
             if (s.equals("3")) {
                 disableCurrentRoom();
@@ -298,12 +327,12 @@ public class GUIHandler {
                 this.items.get(a).setDisable(false);
                 this.items.get(a).setVisible(true);
                 for (Node node : this.currentRoom.getChildren())
-                if (this.currentRoom.getColumnIndex(node) == this.game.getPlayer1().getPosistion().getX() &&  this.currentRoom.getRowIndex(node) == this.game.getPlayer1().getPosistion().getY()){
-                    node.setDisable(true);
-                    node.setVisible(false);
-                    this.player.setDisable(false);
-                    this.player.setVisible(true);
-                }
+                    if (this.currentRoom.getColumnIndex(node) == this.game.getPlayer1().getPosistion().getX() && this.currentRoom.getRowIndex(node) == this.game.getPlayer1().getPosistion().getY()) {
+                        node.setDisable(true);
+                        node.setVisible(false);
+                        this.player.setDisable(false);
+                        this.player.setVisible(true);
+                    }
             } else {
             }
         }
@@ -331,6 +360,16 @@ public class GUIHandler {
         }
     }
 
+    public void enableWindMillParts() {
+        if (this.game.getCurrentRoom().getQuizInRoom().isCompletion()) {
+            for (Node node : this.currentRoom.getChildren()) {
+                node.setDisable(false);
+                node.setVisible(true);
+            }
+        }
+
+    }
+
     public void clickGrid(javafx.scene.input.MouseEvent event) {
         Node clickedNode = event.getPickResult().getIntersectedNode();
         String id = clickedNode.getId();
@@ -338,6 +377,4 @@ public class GUIHandler {
         System.out.println(this.inspectItems.get(id).print());
         this.inspect.setText(this.inspectItems.get(id).print());
     }
-
-
 }

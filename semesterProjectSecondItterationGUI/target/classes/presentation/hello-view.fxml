@@ -49,7 +49,7 @@
          </VBox>
       </children>
    </AnchorPane>
-   <GridPane gridLinesVisible="true" layoutX="910.0" layoutY="310.0" onMouseClicked="#clickGrid" style="-fx-background-color: White;">
+   <GridPane gridLinesVisible="true" layoutX="910.0" layoutY="310.0" onMouseClicked="#clickGrid" style="-fx-background-color: black;">
      <columnConstraints>
          <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
        <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
@@ -62,34 +62,64 @@
        <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
      </rowConstraints>
       <children>
-         <ImageView fx:id="article1" disable="true" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <ImageView fx:id="article1" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@../images/articleDark1.png" />
             </image>
          </ImageView>
-         <ImageView fx:id="article2" disable="true" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="1">
+         <ImageView fx:id="article2" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
             <image>
                <Image url="@../images/articleLight1.png" />
             </image>
          </ImageView>
-         <ImageView fx:id="article3" disable="true" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="2">
+         <ImageView fx:id="article3" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
             <image>
                <Image url="@../images/articleDark2.png" />
             </image>
          </ImageView>
-         <ImageView fx:id="article4" disable="true" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.rowIndex="1">
+         <ImageView fx:id="article4" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
             <image>
                <Image url="@../images/articleLight2.png" />
             </image>
          </ImageView>
-         <ImageView fx:id="article5" disable="true" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <ImageView fx:id="article5" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
             <image>
                <Image url="@../images/articleDark3.png" />
             </image>
          </ImageView>
-         <ImageView fx:id="article6" disable="true" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+         <ImageView fx:id="article6" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
             <image>
                <Image url="@../images/articleLight3.png" />
+            </image>
+         </ImageView>
+         <ImageView fx:id="wing1" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
+            <image>
+               <Image url="@../images/wing1.png" />
+            </image>
+         </ImageView>
+         <ImageView fx:id="wing2" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <image>
+               <Image url="@../images/wing2.png" />
+            </image>
+         </ImageView>
+         <ImageView fx:id="wing3" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <image>
+               <Image url="@../images/wing3.png" />
+            </image>
+         </ImageView>
+         <ImageView fx:id="beamTop" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
+            <image>
+               <Image url="@../images/beamTop.png" />
+            </image>
+         </ImageView>
+         <ImageView fx:id="beamBelow" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <image>
+               <Image url="@../images/beamBelow.png" />
+            </image>
+         </ImageView>
+         <ImageView fx:id="engine" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <image>
+               <Image url="@../images/engine.png" />
             </image>
          </ImageView>
       </children>
@@ -150,6 +180,13 @@
        <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
        <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
      </rowConstraints>
+      <children>
+         <ImageView fx:id="wing11" disable="true" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <image>
+               <Image url="@../images/wing11.png" />
+            </image>
+         </ImageView>
+      </children>
    </GridPane>
    <GridPane fx:id="assemblyRoom" disable="true" focusTraversable="true" layoutX="183.0" layoutY="145.0" onKeyPressed="#keyHandler" style="-fx-background-color: white;" visible="false">
      <columnConstraints>
@@ -226,6 +263,13 @@
          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
       </rowConstraints>
+      <children>
+         <ImageView fx:id="Wing22" disable="true" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <image>
+               <Image url="@../images/wing22.png" />
+            </image>
+         </ImageView>
+      </children>
    </GridPane>
    <GridPane fx:id="restroom" disable="true" focusTraversable="true" layoutX="439.0" layoutY="284.0" onKeyPressed="#keyHandler" style="-fx-background-color: white;" visible="false">
       <columnConstraints>
@@ -243,6 +287,13 @@
          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
       </rowConstraints>
+      <children>
+         <ImageView fx:id="wing33" disable="true" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <image>
+               <Image url="@../images/wing33.png" />
+            </image>
+         </ImageView>
+      </children>
    </GridPane>
    <GridPane fx:id="volkswagenMechanic" disable="true" focusTraversable="true" layoutX="386.0" layoutY="250.0" onKeyPressed="#keyHandler" style="-fx-background-color: white;" visible="false">
       <columnConstraints>
@@ -267,6 +318,13 @@
          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
       </rowConstraints>
+      <children>
+         <ImageView fx:id="engine1" disable="true" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="4">
+            <image>
+               <Image url="@../images/engine1.png" />
+            </image>
+         </ImageView>
+      </children>
    </GridPane>
    <GridPane fx:id="playground" disable="true" focusTraversable="true" layoutX="386.0" layoutY="234.0" onKeyPressed="#keyHandler" style="-fx-background-color: white;" visible="false">
       <columnConstraints>
@@ -292,6 +350,13 @@
          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
       </rowConstraints>
+      <children>
+         <ImageView fx:id="beamTop1" disable="true" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <image>
+               <Image url="@../images/beamTop1.png" />
+            </image>
+         </ImageView>
+      </children>
    </GridPane>
    <GridPane fx:id="university" disable="true" focusTraversable="true" layoutX="401.0" layoutY="249.0" onKeyPressed="#keyHandler" style="-fx-background-color: white;" visible="false">
       <columnConstraints>
@@ -315,6 +380,13 @@
          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
       </rowConstraints>
+      <children>
+         <ImageView fx:id="beamBelow1" disable="true" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <image>
+               <Image url="@../images/beamBelow1.png" />
+            </image>
+         </ImageView>
+      </children>
    </GridPane>
    <GridPane fx:id="townSquare_" disable="true" focusTraversable="true" layoutX="184.0" layoutY="145.0" onKeyPressed="#keyHandler" style="-fx-background-color: white;" visible="false">
       <columnConstraints>

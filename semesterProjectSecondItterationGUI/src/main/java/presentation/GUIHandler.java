@@ -33,7 +33,22 @@ public class GUIHandler {
     private ImageView article1;
 
     @FXML
-    private HBox Quiz1;
+    private VBox quiz1;
+
+    @FXML
+    private VBox quiz2;
+
+    @FXML
+    private VBox quiz3;
+
+    @FXML
+    private VBox quiz4;
+
+    @FXML
+    private VBox quiz5;
+
+    @FXML
+    private VBox quiz6;
 
     @FXML
     private GridPane assemblyRoom;
@@ -76,7 +91,7 @@ public class GUIHandler {
     private HashMap<String, ImageView> items;
     private Play play;
     private String answer;
-    private HashMap<String,HBox> quizs;
+    private HashMap<String, VBox> quizs;
     private String quiz;
 
 
@@ -110,21 +125,26 @@ public class GUIHandler {
     private void addAllRooms() {
         this.rooms.put("secretary Office", this.secretaryOffice);
         this.rooms.put("Mayor Office", this.mayorOffice);
-        this.rooms.put("green fields",this.assemblyRoom);
+        this.rooms.put("green fields", this.assemblyRoom);
         this.rooms.put("Harbor", this.harbor1);
-        this.rooms.put("public restroom",this.restroom);
-        this.rooms.put("volkswagen mechanic",this.volkswagenMechanic);
-        this.rooms.put("playground",this.playground);
-        this.rooms.put("university of Engineering and Science",this.university);
-        this.rooms.put("town square",this.townSquare_);
-        this.rooms.put("park",this.park_);
-        this.rooms.put("clover St",this.cloverSt_);
-        this.rooms.put("harbor",this.harbor2);
-        this.rooms.put("queens St",this.queensST);
+        this.rooms.put("public restroom", this.restroom);
+        this.rooms.put("volkswagen mechanic", this.volkswagenMechanic);
+        this.rooms.put("playground", this.playground);
+        this.rooms.put("university of Engineering and Science", this.university);
+        this.rooms.put("town square", this.townSquare_);
+        this.rooms.put("park", this.park_);
+        this.rooms.put("clover St", this.cloverSt_);
+        this.rooms.put("harbor", this.harbor2);
+        this.rooms.put("queens St", this.queensST);
     }
 
-    private  void addAllQuizs(){
-        this.quizs.put("1",this.Quiz1);
+    private void addAllQuizs() {
+        this.quizs.put("1", this.quiz1);
+        this.quizs.put("2", this.quiz2);
+        this.quizs.put("3", this.quiz3);
+        this.quizs.put("4", this.quiz4);
+        this.quizs.put("5", this.quiz5);
+        this.quizs.put("6", this.quiz6);
     }
 
     private void addAllItems() {
@@ -141,7 +161,7 @@ public class GUIHandler {
         this.currentRoom.setDisable(true);
     }
 
-    private void enableCurrentRoom(){
+    private void enableCurrentRoom() {
         this.currentRoom.setVisible(true);
         this.currentRoom.setDisable(false);
     }
@@ -175,7 +195,7 @@ public class GUIHandler {
     public void a() {
         this.answer = "A";
         this.play.quizHandler(this.game.getCurrentRoom().getQuizInRoom(), this.game, this.answer);
-        if (this.game.getCurrentRoom().getQuizInRoom().isCompletion()){
+        if (this.game.getCurrentRoom().getQuizInRoom().isCompletion()) {
             this.quizs.get(quiz).setDisable(true);
             this.quizs.get(quiz).setVisible(false);
             enableCurrentRoom();
@@ -185,7 +205,7 @@ public class GUIHandler {
     public void b() {
         this.answer = "B";
         this.play.quizHandler(this.game.getCurrentRoom().getQuizInRoom(), this.game, this.answer);
-        if (this.game.getCurrentRoom().getQuizInRoom().isCompletion()){
+        if (this.game.getCurrentRoom().getQuizInRoom().isCompletion()) {
             this.quizs.get(quiz).setDisable(true);
             this.quizs.get(quiz).setVisible(false);
             enableCurrentRoom();
@@ -195,7 +215,7 @@ public class GUIHandler {
     public void c() {
         this.answer = "C";
         this.play.quizHandler(this.game.getCurrentRoom().getQuizInRoom(), this.game, this.answer);
-        if (this.game.getCurrentRoom().getQuizInRoom().isCompletion()){
+        if (this.game.getCurrentRoom().getQuizInRoom().isCompletion()) {
             this.quizs.get(quiz).setDisable(true);
             this.quizs.get(quiz).setVisible(false);
             enableCurrentRoom();
@@ -249,14 +269,14 @@ public class GUIHandler {
         if (keyEvent.getCode() == KeyCode.SPACE) {
             this.quiz = game.getCurrentRoom().getQuizInRoom().getDescription();
 
-            if (!(this.game.getCurrentRoom().getQuizInRoom().isCompletion())){
+            if (!(this.game.getCurrentRoom().getQuizInRoom().isCompletion())) {
                 disableCurrentRoom();
                 this.quizs.get(this.quiz).setDisable(false);
                 this.quizs.get(this.quiz).setVisible(true);
             }
         }
 
-        if (keyEvent.getCode() == KeyCode.ESCAPE){
+        if (keyEvent.getCode() == KeyCode.ESCAPE) {
             this.quizs.get(this.quiz).setVisible(false);
             this.quizs.get(this.quiz).setDisable(true);
             enableCurrentRoom();

@@ -119,16 +119,6 @@
        <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
      </rowConstraints>
    </GridPane>
-   <HBox fx:id="Quiz1" disable="true" layoutX="428.0" layoutY="320.0" prefHeight="100.0" prefWidth="200.0" spacing="58.0" visible="false">
-      <children>
-         <Button fx:id="A" mnemonicParsing="false" onAction="#a" text="A." />
-         <Button fx:id="B" mnemonicParsing="false" onAction="#b" text="B." />
-         <Button fx:id="C" mnemonicParsing="false" onAction="#c" text="C." />
-      </children>
-      <padding>
-         <Insets left="2.0" top="36.0" />
-      </padding>
-   </HBox>
    <GridPane fx:id="assemblyRoom" disable="true" focusTraversable="true" layoutX="183.0" layoutY="145.0" onKeyPressed="#keyHandler" style="-fx-background-color: white;" visible="false">
      <columnConstraints>
        <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
@@ -464,4 +454,217 @@
          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
       </rowConstraints>
    </GridPane>
+   <VBox fx:id="quiz1" disable="true" layoutX="424.0" layoutY="244.0" style="-fx-background-color: white;" visible="false">
+      <children>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&#10;Questien:&#10;What percentage of global electricity production came from green energy sources in 2020?&#10;" textAlignment="CENTER" wrappingWidth="200.244140625">
+            <VBox.margin>
+               <Insets left="5.0" right="5.0" />
+            </VBox.margin>
+         </Text>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="A.         31%&#10;B.         20%&#10;C.         29%" wrappingWidth="187.36328125">
+            <VBox.margin>
+               <Insets left="10.0" />
+            </VBox.margin>
+         </Text>
+         <HBox prefHeight="100.0" prefWidth="200.0" spacing="18.0">
+            <children>
+               <Button fx:id="A" mnemonicParsing="false" onAction="#a" prefHeight="55.0" prefWidth="55.0" text="A.">
+                  <HBox.margin>
+                     <Insets left="10.0" />
+                  </HBox.margin>
+               </Button>
+               <Button fx:id="B" mnemonicParsing="false" onAction="#b" prefHeight="55.0" prefWidth="55.0" text="B." />
+               <Button fx:id="C" mnemonicParsing="false" onAction="#c" prefHeight="55.0" prefWidth="55.0" text="C.">
+                  <HBox.margin>
+                     <Insets right="10.0" />
+                  </HBox.margin>
+               </Button>
+            </children>
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+            <padding>
+               <Insets top="25.0" />
+            </padding>
+         </HBox>
+      </children>
+   </VBox>
+   <VBox fx:id="quiz2" disable="true" layoutX="431.0" layoutY="208.0" style="-fx-background-color: white;" visible="false">
+      <children>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&#10;Questien:&#10;What is sustainable energy?&#10;" textAlignment="CENTER" wrappingWidth="200.244140625">
+            <VBox.margin>
+               <Insets left="5.0" right="5.0" />
+            </VBox.margin>
+         </Text>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="A. &#10; Energy that will not be replenished in a short timescale&#10;&#10;B.&#10;Energy that is replenished in a short timescale&#10;&#10;C. &#10; Energy that we can’t produce yet" textAlignment="CENTER" wrappingWidth="187.36328125">
+            <VBox.margin>
+               <Insets left="10.0" />
+            </VBox.margin>
+         </Text>
+         <HBox prefHeight="100.0" prefWidth="200.0" spacing="18.0">
+            <children>
+               <Button fx:id="A1" mnemonicParsing="false" onAction="#a" prefHeight="55.0" prefWidth="55.0" text="A.">
+                  <HBox.margin>
+                     <Insets left="10.0" />
+                  </HBox.margin>
+               </Button>
+               <Button fx:id="B1" mnemonicParsing="false" onAction="#b" prefHeight="55.0" prefWidth="55.0" text="B." />
+               <Button fx:id="C1" mnemonicParsing="false" onAction="#c" prefHeight="55.0" prefWidth="55.0" text="C.">
+                  <HBox.margin>
+                     <Insets right="10.0" />
+                  </HBox.margin>
+               </Button>
+            </children>
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+            <padding>
+               <Insets top="25.0" />
+            </padding>
+         </HBox>
+      </children>
+   </VBox>
+   <VBox fx:id="quiz3" disable="true" layoutX="431.0" layoutY="231.0" style="-fx-background-color: white;" visible="false">
+      <children>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&#10;Questien:&#10;How much will the green transition cost in Denmark?&#10;" textAlignment="CENTER" wrappingWidth="200.244140625">
+            <VBox.margin>
+               <Insets left="5.0" right="5.0" />
+            </VBox.margin>
+         </Text>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="A. 26-30 billion kroner &#10;&#10;B. 21-25 billion kroner&#10;&#10;C. 16-20 billion kroner&#10;" wrappingWidth="187.36328125">
+            <VBox.margin>
+               <Insets left="10.0" />
+            </VBox.margin>
+         </Text>
+         <HBox prefHeight="100.0" prefWidth="200.0" spacing="18.0">
+            <children>
+               <Button fx:id="A11" mnemonicParsing="false" onAction="#a" prefHeight="55.0" prefWidth="55.0" text="A.">
+                  <HBox.margin>
+                     <Insets left="10.0" />
+                  </HBox.margin>
+               </Button>
+               <Button fx:id="B11" mnemonicParsing="false" onAction="#b" prefHeight="55.0" prefWidth="55.0" text="B." />
+               <Button fx:id="C11" mnemonicParsing="false" onAction="#c" prefHeight="55.0" prefWidth="55.0" text="C.">
+                  <HBox.margin>
+                     <Insets right="10.0" />
+                  </HBox.margin>
+               </Button>
+            </children>
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+            <padding>
+               <Insets top="25.0" />
+            </padding>
+         </HBox>
+      </children>
+   </VBox>
+   <VBox fx:id="quiz4" disable="true" layoutX="441.0" layoutY="241.0" style="-fx-background-color: white;" visible="false">
+      <children>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&#10;Questien:&#10;What are some of the drawbacks of current energy production?&#10;" textAlignment="CENTER" wrappingWidth="200.244140625">
+            <VBox.margin>
+               <Insets left="5.0" right="5.0" />
+            </VBox.margin>
+         </Text>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="A. Pollution&#10;&#10;B. Not enough energy is created&#10;&#10;C. Not enough room&#10;" wrappingWidth="187.36328125">
+            <VBox.margin>
+               <Insets left="10.0" />
+            </VBox.margin>
+         </Text>
+         <HBox prefHeight="100.0" prefWidth="200.0" spacing="18.0">
+            <children>
+               <Button fx:id="A111" mnemonicParsing="false" onAction="#a" prefHeight="55.0" prefWidth="55.0" text="A.">
+                  <HBox.margin>
+                     <Insets left="10.0" />
+                  </HBox.margin>
+               </Button>
+               <Button fx:id="B111" mnemonicParsing="false" onAction="#b" prefHeight="55.0" prefWidth="55.0" text="B." />
+               <Button fx:id="C111" mnemonicParsing="false" onAction="#c" prefHeight="55.0" prefWidth="55.0" text="C.">
+                  <HBox.margin>
+                     <Insets right="10.0" />
+                  </HBox.margin>
+               </Button>
+            </children>
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+            <padding>
+               <Insets top="25.0" />
+            </padding>
+         </HBox>
+      </children>
+   </VBox>
+   <VBox fx:id="quiz5" disable="true" layoutX="451.0" layoutY="251.0" style="-fx-background-color: white;" visible="false">
+      <children>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&#10;Questien:&#10;How much did green energy production increase globally in 2020?&#10;" textAlignment="CENTER" wrappingWidth="200.244140625">
+            <VBox.margin>
+               <Insets left="5.0" right="5.0" />
+            </VBox.margin>
+         </Text>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="A. 320 GW&#10;&#10;B. 280 GW&#10;&#10;C. 240 GW&#10;" wrappingWidth="187.36328125">
+            <VBox.margin>
+               <Insets left="10.0" />
+            </VBox.margin>
+         </Text>
+         <HBox prefHeight="100.0" prefWidth="200.0" spacing="18.0">
+            <children>
+               <Button fx:id="A1111" mnemonicParsing="false" onAction="#a" prefHeight="55.0" prefWidth="55.0" text="A.">
+                  <HBox.margin>
+                     <Insets left="10.0" />
+                  </HBox.margin>
+               </Button>
+               <Button fx:id="B1111" mnemonicParsing="false" onAction="#b" prefHeight="55.0" prefWidth="55.0" text="B." />
+               <Button fx:id="C1111" mnemonicParsing="false" onAction="#c" prefHeight="55.0" prefWidth="55.0" text="C.">
+                  <HBox.margin>
+                     <Insets right="10.0" />
+                  </HBox.margin>
+               </Button>
+            </children>
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+            <padding>
+               <Insets top="25.0" />
+            </padding>
+         </HBox>
+      </children>
+   </VBox>
+   <VBox fx:id="quiz6" disable="true" layoutX="461.0" layoutY="261.0" style="-fx-background-color: white;" visible="false">
+      <children>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&#10;Questien:&#10;How is sustainable energy produced?&#10;" textAlignment="CENTER" wrappingWidth="200.244140625">
+            <VBox.margin>
+               <Insets left="5.0" right="5.0" />
+            </VBox.margin>
+         </Text>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="A. Coal power plants&#10;&#10;B. Nuclear power plants&#10;&#10;C. Wind power plants&#10;" wrappingWidth="187.36328125">
+            <VBox.margin>
+               <Insets left="10.0" />
+            </VBox.margin>
+         </Text>
+         <HBox prefHeight="100.0" prefWidth="200.0" spacing="18.0">
+            <children>
+               <Button fx:id="A11111" mnemonicParsing="false" onAction="#a" prefHeight="55.0" prefWidth="55.0" text="A.">
+                  <HBox.margin>
+                     <Insets left="10.0" />
+                  </HBox.margin>
+               </Button>
+               <Button fx:id="B11111" mnemonicParsing="false" onAction="#b" prefHeight="55.0" prefWidth="55.0" text="B." />
+               <Button fx:id="C11111" mnemonicParsing="false" onAction="#c" prefHeight="55.0" prefWidth="55.0" text="C.">
+                  <HBox.margin>
+                     <Insets right="10.0" />
+                  </HBox.margin>
+               </Button>
+            </children>
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+            <padding>
+               <Insets top="25.0" />
+            </padding>
+         </HBox>
+      </children>
+   </VBox>
+   <opaqueInsets>
+      <Insets left="10.0" />
+   </opaqueInsets>
 </AnchorPane>

@@ -47,11 +47,11 @@ public class Game //her "skabes" klassen Game
         String[] answers6 = {"A. Coal power plants", "B. Nuclear power plants", "C. Wind power plants"};
 
         Quiz quiz1 = new Quiz("What percentage of global electricity production came from green energy sources in 2020? ", answers1, "C", "1");
-        Quiz quiz2 = new Quiz("What is sustainable energy?", answers2, "B", "Sustainable energy");
-        Quiz quiz3 = new Quiz("How much will the green transition cost in Denmark?", answers3, "A", "Green transition cost");
-        Quiz quiz4 = new Quiz("What are some of the drawbacks of current energy production?", answers4, "A", "drawbacks of our energy production");
-        Quiz quiz5 = new Quiz("How much did green energy production increase globally in 2020?", answers5, "B", "Green energy production");
-        Quiz quiz6 = new Quiz("How is sustainable energy produced?", answers6, "C", "Sustainable energy production");
+        Quiz quiz2 = new Quiz("What is sustainable energy?", answers2, "B", "2");
+        Quiz quiz3 = new Quiz("How much will the green transition cost in Denmark?", answers3, "A", "3");
+        Quiz quiz4 = new Quiz("What are some of the drawbacks of current energy production?", answers4, "A", "4");
+        Quiz quiz5 = new Quiz("How much did green energy production increase globally in 2020?", answers5, "B", "5");
+        Quiz quiz6 = new Quiz("How is sustainable energy produced?", answers6, "C", "6");
 
         PlaceableObject information1 = new Information("Article-1", "" +
                 "This article is about green energy sources in 2020." +

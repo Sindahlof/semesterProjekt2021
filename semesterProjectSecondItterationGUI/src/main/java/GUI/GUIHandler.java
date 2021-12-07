@@ -1,4 +1,4 @@
-package presentation;
+package GUI;
 
 import domain.*;
 import javafx.fxml.FXML;

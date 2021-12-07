@@ -8,6 +8,6 @@ module presentation.javafxexample {
     requires javafx.graphics;
     requires java.desktop;
 
-    opens presentation to javafx.fxml;
-    exports presentation;
+    opens GUI to javafx.fxml;
+    exports GUI;
 }

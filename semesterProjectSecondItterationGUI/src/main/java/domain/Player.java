@@ -11,10 +11,10 @@ public class Player extends PlaceableObject {
     private int health;
     private Image image;
 
-    public Player(String playerName, int y, int x,String absoultePath) {
+    public Player(String playerName, int y, int x) {
         super(playerName, y, x);
         health = 3;
-        this.image = new Image(absoultePath);
+        //this.image = new Image(absoultePath);
     }
 
     public int getHealth() {

@@ -23,8 +23,7 @@ public class GUIHandler {
     @FXML
     private GridPane secretaryOffice;
 
-    @FXML
-    private GridPane mayorOffice;
+
 
     @FXML
     private AnchorPane titleScreen;
@@ -49,6 +48,9 @@ public class GUIHandler {
 
     @FXML
     private VBox quiz6;
+
+    @FXML
+    private GridPane mayorOffice;
 
     @FXML
     private GridPane assemblyRoom;
@@ -83,11 +85,40 @@ public class GUIHandler {
     @FXML
     private GridPane queensST;
 
+    @FXML
+    private ImageView mayorOfficeBG;
+
+    @FXML
+    private ImageView SecretaryRoomBG;
+
+    @FXML
+    private ImageView harbor1BG;
+
+    @FXML
+    private ImageView restroomBG;
+
+    @FXML
+    private ImageView playgroundBG;
+
+    @FXML
+    private ImageView parkBG;
+
+    @FXML
+    private ImageView cloverStBG;
+
+    @FXML
+    private ImageView queensSTBG;
+
+    @FXML
+    private ImageView assemblyRoomBG;
+
     private Game game;
     private GridPane currentRoom;
+    private ImageView currentBackgroundImage;
     private PrintGrid grid;
     private ImageView player;
     private HashMap<String, GridPane> rooms;
+    private HashMap<String, ImageView> roomBackground;
     private HashMap<String, ImageView> items;
     private Play play;
     private String answer;
@@ -101,6 +132,7 @@ public class GUIHandler {
         this.player = new ImageView(game.getPlayer1().getImage());
         this.player.setFitHeight(30);
         this.player.setFitWidth(30);
+        this.roomBackground = new HashMap<>();
         this.rooms = new HashMap<>();
         this.items = new HashMap<>();
         this.quizs = new HashMap<>();
@@ -108,14 +140,19 @@ public class GUIHandler {
         addAllRooms();
         addAllItems();
         addAllQuizs();
+        addAllBackGrounds();
         this.titleScreen.setDisable(false);
         this.titleScreen.setVisible(true);
     }
 
-    private void changeRoom(GridPane pane) {
+    private void changeRoom(GridPane pane, ImageView image) {
         this.currentRoom = pane;
+        this.currentBackgroundImage = image;
         this.currentRoom.setVisible(true);
         this.currentRoom.setDisable(false);
+        this.currentBackgroundImage.setVisible(true);
+        this.currentBackgroundImage.setDisable(false);
+        this.currentRoom.toFront();
         int x = game.getPlayer1().getPosistion().getX();
         int y = game.getPlayer1().getPosistion().getY();
         this.currentRoom.add(this.player, x, y);
@@ -138,6 +175,22 @@ public class GUIHandler {
         this.rooms.put("queens St", this.queensST);
     }
 
+    private void addAllBackGrounds() {
+        this.roomBackground.put("Mayor Office", this.mayorOfficeBG);
+        this.roomBackground.put("secretary Office", this.SecretaryRoomBG);
+        this.roomBackground.put("green fields", this.assemblyRoomBG);
+        this.roomBackground.put("Harbor", this.harbor1BG);
+        this.roomBackground.put("public restroom", this.restroomBG);
+        //this.roomBackground.put("volkswagen mechanic", this.volkswagenMechanic);
+        this.roomBackground.put("playground", this.playgroundBG);
+        //this.roomBackground.put("university of Engineering and Science", this.university);
+        //this.roomBackground.put("town square", this.townSquare_);
+        this.roomBackground.put("park", this.parkBG);
+        this.roomBackground.put("clover St", this.cloverStBG);
+        this.roomBackground.put("harbor", this.harbor1BG);
+        this.roomBackground.put("queens St", this.queensSTBG);
+    }
+
     private void addAllQuizs() {
         this.quizs.put("1", this.quiz1);
         this.quizs.put("2", this.quiz2);
@@ -156,9 +209,12 @@ public class GUIHandler {
         this.items.put("Article-6",);*/
     }
 
+
     private void disableCurrentRoom() {
         this.currentRoom.setVisible(false);
         this.currentRoom.setDisable(true);
+        this.currentBackgroundImage.setVisible(false);
+        this.currentBackgroundImage.setDisable(true);
     }
 
     private void enableCurrentRoom() {
@@ -175,26 +231,26 @@ public class GUIHandler {
         startGame();
         disableTitleScreen();
         this.game.getPlayer1().setHealth(10);
-        changeRoom(this.mayorOffice);
+        changeRoom(this.mayorOffice,this.mayorOfficeBG);
     }
 
     public void medium() {
         startGame();
         disableTitleScreen();
         this.game.getPlayer1().setHealth(5);
-        changeRoom(this.mayorOffice);
+        changeRoom(this.mayorOffice,this.mayorOfficeBG);
     }
 
     public void hard() {
         startGame();
         disableTitleScreen();
         this.game.getPlayer1().setHealth(2);
-        changeRoom(this.mayorOffice);
+        changeRoom(this.mayorOffice,this.mayorOfficeBG);
     }
 
     public void a() {
         this.answer = "A";
-        this.play.quizHandler(this.game.getCurrentRoom().getQuizInRoom(), this.game, this.answer);
+        getQuizHandler();
         if (this.game.getCurrentRoom().getQuizInRoom().isCompletion()) {
             this.quizs.get(quiz).setDisable(true);
             this.quizs.get(quiz).setVisible(false);
@@ -204,7 +260,7 @@ public class GUIHandler {
 
     public void b() {
         this.answer = "B";
-        this.play.quizHandler(this.game.getCurrentRoom().getQuizInRoom(), this.game, this.answer);
+        getQuizHandler();
         if (this.game.getCurrentRoom().getQuizInRoom().isCompletion()) {
             this.quizs.get(quiz).setDisable(true);
             this.quizs.get(quiz).setVisible(false);
@@ -214,12 +270,16 @@ public class GUIHandler {
 
     public void c() {
         this.answer = "C";
-        this.play.quizHandler(this.game.getCurrentRoom().getQuizInRoom(), this.game, this.answer);
+        getQuizHandler();
         if (this.game.getCurrentRoom().getQuizInRoom().isCompletion()) {
             this.quizs.get(quiz).setDisable(true);
             this.quizs.get(quiz).setVisible(false);
             enableCurrentRoom();
         }
+    }
+
+    private void getQuizHandler() {
+        this.play.quizHandler(this.game.getCurrentRoom().getQuizInRoom(), this.game, this.answer);
     }
 
     @FXML
@@ -255,7 +315,8 @@ public class GUIHandler {
             String s = game.exitRoom();
             if (s.equals("3")) {
                 disableCurrentRoom();
-                changeRoom(this.rooms.get(game.getCurrentRoom().getShortDescription()));
+                String room = game.getCurrentRoom().getShortDescription();
+                changeRoom(this.rooms.get(room),this.roomBackground.get(room));
                 System.out.println(game.getCurrentRoom().getShortDescription());
             }
             String a = game.getCurrentRoom().collectObject(game.getPlayerInventory(), game.getPlayer1());

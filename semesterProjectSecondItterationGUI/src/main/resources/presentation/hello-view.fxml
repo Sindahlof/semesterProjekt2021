@@ -2,8 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,65 +14,65 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="738.0" maxWidth="1055.0" minHeight="620.0" minWidth="560.0" prefHeight="738.0" prefWidth="1055.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.GUIHandler">
-   <AnchorPane fx:id="titleScreen" focusTraversable="true" layoutX="238.0" layoutY="225.0" prefHeight="200.0" prefWidth="200.0">
-      <children>
-         <VBox focusTraversable="true" style="-fx-background-color: White;">
-            <children>
-               <TextField alignment="CENTER" text="Welcome to World of Power!">
+    <AnchorPane fx:id="titleScreen" focusTraversable="true" layoutX="240.0" layoutY="244.0" prefHeight="244.0" prefWidth="580.0">
+        <children>
+            <VBox focusTraversable="true" prefHeight="244.0" prefWidth="580.0" style="-fx-background-color: White;">
+                <children>
+               <Text fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to World of Power!" textAlignment="CENTER" wrappingWidth="580.0">
                   <font>
-                     <Font name="Comic Sans MS Bold" size="20.0" />
+                     <Font size="20.0" />
                   </font>
-               </TextField>
-               <TextArea prefHeight="120.0" prefWidth="581.0" text="World of Power is a game about the UN's 7th world goal; Affordable and clean energy. &#10;You have been tasked by the mayor to help assemble a brand-new state of the art windmill. &#10;To do so you’ll have to walk around the city and collect the necessary parts. &#10;These parts will be visible after you have answered a quiz. &#10;You can gather information about the quiz’ by collecting and inspecting articles throughout the town. &#10;">
-                  <padding>
-                     <Insets top="5.0" />
-                  </padding>
-               </TextArea>
-               <TextField alignment="CENTER" text="To start the game please choose one of the following difficulties:">
-                  <padding>
-                     <Insets bottom="5.0" top="5.0" />
-                  </padding>
-               </TextField>
-               <HBox focusTraversable="true" prefHeight="100.0" prefWidth="200.0" spacing="145.0">
-                  <children>
-                     <Button mnemonicParsing="false" onAction="#easy" prefHeight="100.0" prefWidth="100.0" text="Easy" />
-                     <Button mnemonicParsing="false" onAction="#medium" prefHeight="100.0" prefWidth="100.0" text="Medium" />
-                     <Button mnemonicParsing="false" onAction="#hard" prefHeight="100.0" prefWidth="100.0" text="Hard" />
-                  </children>
-                  <padding>
-                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                  </padding>
-               </HBox>
-            </children>
-         </VBox>
-      </children>
-   </AnchorPane>
-   <GridPane gridLinesVisible="true" layoutX="910.0" layoutY="310.0" style="-fx-background-color: White;">
-     <columnConstraints>
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-       <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-       <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-     </columnConstraints>
-     <rowConstraints>
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-       <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-       <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-       <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-     </rowConstraints>
-      <children>
-         <ImageView fx:id="article1" disable="true" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" visible="false">
-            <image>
-               <Image url="@../images/sindahl.jpg" />
-            </image>
-         </ImageView>
-      </children>
-   </GridPane>
-   <Text fill="WHITE" layoutX="910.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inventory" textAlignment="CENTER" wrappingWidth="90.0">
-      <font>
-         <Font size="21.0" />
-      </font>
-   </Text>
-    <GridPane fx:id="mayorOffice" disable="true" focusTraversable="true" layoutX="408.0" layoutY="239.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#keyHandler" style="-fx-background-color: white;" visible="false">
+               </Text>
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="World of Power is a game about the UN's 7th world goal; Affordable and clean energy.&#10;You have been tasked by the mayor to help assemble a brand-new state of the art windmill. &#10;To do so you’ll have to walk around the city and collect the necessary parts. &#10;These parts will be visible after you have answered a quiz. &#10;You can gather information about the quiz’ by collecting and inspecting articles throughout the town. " textAlignment="CENTER" wrappingWidth="580.0">
+                  <VBox.margin>
+                     <Insets bottom="10.0" top="10.0" />
+                  </VBox.margin>
+               </Text>
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="To start the game please choose one of the following difficulties:" textAlignment="CENTER" wrappingWidth="579.21435546875">
+                  <font>
+                     <Font size="13.0" />
+                  </font>
+               </Text>
+                    <HBox focusTraversable="true" prefHeight="100.0" prefWidth="200.0" spacing="145.0">
+                        <children>
+                            <Button mnemonicParsing="false" onAction="#easy" prefHeight="100.0" prefWidth="100.0" text="Easy" />
+                            <Button mnemonicParsing="false" onAction="#medium" prefHeight="100.0" prefWidth="100.0" text="Medium" />
+                            <Button mnemonicParsing="false" onAction="#hard" prefHeight="100.0" prefWidth="100.0" text="Hard" />
+                        </children>
+                        <padding>
+                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                        </padding>
+                    </HBox>
+                </children>
+            </VBox>
+        </children>
+    </AnchorPane>
+    <GridPane gridLinesVisible="true" layoutX="910.0" layoutY="310.0" style="-fx-background-color: White;">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+        <children>
+            <ImageView fx:id="article1" disable="true" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                <image>
+                    <Image url="@../images/sindahl.jpg" />
+                </image>
+            </ImageView>
+        </children>
+    </GridPane>
+    <Text fill="WHITE" layoutX="910.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inventory" textAlignment="CENTER" wrappingWidth="90.0">
+        <font>
+            <Font size="21.0" />
+        </font>
+    </Text>
+    <GridPane fx:id="mayorOffice" disable="true" focusTraversable="true" layoutX="408.0" layoutY="239.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#keyHandler" visible="false">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
@@ -99,572 +97,622 @@
             <Insets />
         </opaqueInsets>
     </GridPane>
-   <GridPane fx:id="secretaryOffice" disable="true" focusTraversable="true" layoutX="423.0" layoutY="254.0" onKeyPressed="#keyHandler" style="-fx-background-color: White;" visible="false">
-     <columnConstraints>
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-       <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-       <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-     </columnConstraints>
-     <rowConstraints>
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-       <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-       <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-       <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-     </rowConstraints>
-   </GridPane>
-   <GridPane fx:id="assemblyRoom" disable="true" focusTraversable="true" layoutX="183.0" layoutY="145.0" onKeyPressed="#keyHandler" style="-fx-background-color: white;" visible="false">
-     <columnConstraints>
-       <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-       <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-     </columnConstraints>
-     <rowConstraints>
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-       <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-       <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-       <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-     </rowConstraints>
-   </GridPane>
-   <GridPane fx:id="harbor1" disable="true" focusTraversable="true" layoutX="273.0" layoutY="224.0" onKeyPressed="#keyHandler" style="-fx-background-color: white;" visible="false">
-      <columnConstraints>
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-      </columnConstraints>
-      <rowConstraints>
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      </rowConstraints>
-   </GridPane>
-   <GridPane fx:id="restroom" disable="true" focusTraversable="true" layoutX="439.0" layoutY="284.0" onKeyPressed="#keyHandler" style="-fx-background-color: white;" visible="false">
-      <columnConstraints>
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-      </columnConstraints>
-      <rowConstraints>
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      </rowConstraints>
-   </GridPane>
-   <GridPane fx:id="volkswagenMechanic" disable="true" focusTraversable="true" layoutX="386.0" layoutY="250.0" onKeyPressed="#keyHandler" style="-fx-background-color: white;" visible="false">
-      <columnConstraints>
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-      </columnConstraints>
-      <rowConstraints>
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      </rowConstraints>
-   </GridPane>
-   <GridPane fx:id="playground" disable="true" focusTraversable="true" layoutX="386.0" layoutY="234.0" onKeyPressed="#keyHandler" style="-fx-background-color: white;" visible="false">
-      <columnConstraints>
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-      </columnConstraints>
-      <rowConstraints>
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      </rowConstraints>
-   </GridPane>
-   <GridPane fx:id="university" disable="true" focusTraversable="true" layoutX="401.0" layoutY="249.0" onKeyPressed="#keyHandler" style="-fx-background-color: white;" visible="false">
-      <columnConstraints>
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-      </columnConstraints>
-      <rowConstraints>
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      </rowConstraints>
-   </GridPane>
-   <GridPane fx:id="townSquare_" disable="true" focusTraversable="true" layoutX="184.0" layoutY="145.0" onKeyPressed="#keyHandler" style="-fx-background-color: white;" visible="false">
-      <columnConstraints>
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-      </columnConstraints>
-      <rowConstraints>
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      </rowConstraints>
-   </GridPane>
-   <GridPane fx:id="park_" disable="true" focusTraversable="true" layoutX="266.0" layoutY="205.0" onKeyPressed="#keyHandler" style="-fx-background-color: white;" visible="false">
-      <columnConstraints>
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-      </columnConstraints>
-      <rowConstraints>
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      </rowConstraints>
-   </GridPane>
-   <GridPane fx:id="cloverSt_" disable="true" focusTraversable="true" layoutX="258.0" layoutY="235.0" onKeyPressed="#keyHandler" style="-fx-background-color: white;" visible="false">
-      <columnConstraints>
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-      </columnConstraints>
-      <rowConstraints>
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      </rowConstraints>
-   </GridPane>
-   <GridPane fx:id="harbor2" disable="true" focusTraversable="true" layoutX="356.0" layoutY="189.0" onKeyPressed="#keyHandler" style="-fx-background-color: white;" visible="false">
-      <columnConstraints>
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-      </columnConstraints>
-      <rowConstraints>
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      </rowConstraints>
-   </GridPane>
-   <GridPane fx:id="queensST" disable="true" focusTraversable="true" layoutX="303.0" layoutY="249.0" onKeyPressed="#keyHandler" style="-fx-background-color: white;" visible="false">
-      <columnConstraints>
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-         <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
-      </columnConstraints>
-      <rowConstraints>
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      </rowConstraints>
-   </GridPane>
-   <VBox fx:id="quiz1" disable="true" layoutX="424.0" layoutY="244.0" style="-fx-background-color: white;" visible="false">
-      <children>
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&#10;Questien:&#10;What percentage of global electricity production came from green energy sources in 2020?&#10;" textAlignment="CENTER" wrappingWidth="200.244140625">
-            <VBox.margin>
-               <Insets left="5.0" right="5.0" />
-            </VBox.margin>
-         </Text>
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="A.         31%&#10;B.         20%&#10;C.         29%" wrappingWidth="187.36328125">
-            <VBox.margin>
-               <Insets left="10.0" />
-            </VBox.margin>
-         </Text>
-         <HBox prefHeight="100.0" prefWidth="200.0" spacing="18.0">
-            <children>
-               <Button fx:id="A" mnemonicParsing="false" onAction="#a" prefHeight="55.0" prefWidth="55.0" text="A.">
-                  <HBox.margin>
-                     <Insets left="10.0" />
-                  </HBox.margin>
-               </Button>
-               <Button fx:id="B" mnemonicParsing="false" onAction="#b" prefHeight="55.0" prefWidth="55.0" text="B." />
-               <Button fx:id="C" mnemonicParsing="false" onAction="#c" prefHeight="55.0" prefWidth="55.0" text="C.">
-                  <HBox.margin>
-                     <Insets right="10.0" />
-                  </HBox.margin>
-               </Button>
-            </children>
-            <opaqueInsets>
-               <Insets />
-            </opaqueInsets>
-            <padding>
-               <Insets top="25.0" />
-            </padding>
-         </HBox>
-      </children>
-   </VBox>
-   <VBox fx:id="quiz2" disable="true" layoutX="431.0" layoutY="208.0" style="-fx-background-color: white;" visible="false">
-      <children>
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&#10;Questien:&#10;What is sustainable energy?&#10;" textAlignment="CENTER" wrappingWidth="200.244140625">
-            <VBox.margin>
-               <Insets left="5.0" right="5.0" />
-            </VBox.margin>
-         </Text>
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="A. &#10; Energy that will not be replenished in a short timescale&#10;&#10;B.&#10;Energy that is replenished in a short timescale&#10;&#10;C. &#10; Energy that we can’t produce yet" textAlignment="CENTER" wrappingWidth="187.36328125">
-            <VBox.margin>
-               <Insets left="10.0" />
-            </VBox.margin>
-         </Text>
-         <HBox prefHeight="100.0" prefWidth="200.0" spacing="18.0">
-            <children>
-               <Button fx:id="A1" mnemonicParsing="false" onAction="#a" prefHeight="55.0" prefWidth="55.0" text="A.">
-                  <HBox.margin>
-                     <Insets left="10.0" />
-                  </HBox.margin>
-               </Button>
-               <Button fx:id="B1" mnemonicParsing="false" onAction="#b" prefHeight="55.0" prefWidth="55.0" text="B." />
-               <Button fx:id="C1" mnemonicParsing="false" onAction="#c" prefHeight="55.0" prefWidth="55.0" text="C.">
-                  <HBox.margin>
-                     <Insets right="10.0" />
-                  </HBox.margin>
-               </Button>
-            </children>
-            <opaqueInsets>
-               <Insets />
-            </opaqueInsets>
-            <padding>
-               <Insets top="25.0" />
-            </padding>
-         </HBox>
-      </children>
-   </VBox>
-   <VBox fx:id="quiz3" disable="true" layoutX="431.0" layoutY="231.0" style="-fx-background-color: white;" visible="false">
-      <children>
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&#10;Questien:&#10;How much will the green transition cost in Denmark?&#10;" textAlignment="CENTER" wrappingWidth="200.244140625">
-            <VBox.margin>
-               <Insets left="5.0" right="5.0" />
-            </VBox.margin>
-         </Text>
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="A. 26-30 billion kroner &#10;&#10;B. 21-25 billion kroner&#10;&#10;C. 16-20 billion kroner&#10;" wrappingWidth="187.36328125">
-            <VBox.margin>
-               <Insets left="10.0" />
-            </VBox.margin>
-         </Text>
-         <HBox prefHeight="100.0" prefWidth="200.0" spacing="18.0">
-            <children>
-               <Button fx:id="A11" mnemonicParsing="false" onAction="#a" prefHeight="55.0" prefWidth="55.0" text="A.">
-                  <HBox.margin>
-                     <Insets left="10.0" />
-                  </HBox.margin>
-               </Button>
-               <Button fx:id="B11" mnemonicParsing="false" onAction="#b" prefHeight="55.0" prefWidth="55.0" text="B." />
-               <Button fx:id="C11" mnemonicParsing="false" onAction="#c" prefHeight="55.0" prefWidth="55.0" text="C.">
-                  <HBox.margin>
-                     <Insets right="10.0" />
-                  </HBox.margin>
-               </Button>
-            </children>
-            <opaqueInsets>
-               <Insets />
-            </opaqueInsets>
-            <padding>
-               <Insets top="25.0" />
-            </padding>
-         </HBox>
-      </children>
-   </VBox>
-   <VBox fx:id="quiz4" disable="true" layoutX="441.0" layoutY="241.0" style="-fx-background-color: white;" visible="false">
-      <children>
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&#10;Questien:&#10;What are some of the drawbacks of current energy production?&#10;" textAlignment="CENTER" wrappingWidth="200.244140625">
-            <VBox.margin>
-               <Insets left="5.0" right="5.0" />
-            </VBox.margin>
-         </Text>
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="A. Pollution&#10;&#10;B. Not enough energy is created&#10;&#10;C. Not enough room&#10;" wrappingWidth="187.36328125">
-            <VBox.margin>
-               <Insets left="10.0" />
-            </VBox.margin>
-         </Text>
-         <HBox prefHeight="100.0" prefWidth="200.0" spacing="18.0">
-            <children>
-               <Button fx:id="A111" mnemonicParsing="false" onAction="#a" prefHeight="55.0" prefWidth="55.0" text="A.">
-                  <HBox.margin>
-                     <Insets left="10.0" />
-                  </HBox.margin>
-               </Button>
-               <Button fx:id="B111" mnemonicParsing="false" onAction="#b" prefHeight="55.0" prefWidth="55.0" text="B." />
-               <Button fx:id="C111" mnemonicParsing="false" onAction="#c" prefHeight="55.0" prefWidth="55.0" text="C.">
-                  <HBox.margin>
-                     <Insets right="10.0" />
-                  </HBox.margin>
-               </Button>
-            </children>
-            <opaqueInsets>
-               <Insets />
-            </opaqueInsets>
-            <padding>
-               <Insets top="25.0" />
-            </padding>
-         </HBox>
-      </children>
-   </VBox>
-   <VBox fx:id="quiz5" disable="true" layoutX="451.0" layoutY="251.0" style="-fx-background-color: white;" visible="false">
-      <children>
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&#10;Questien:&#10;How much did green energy production increase globally in 2020?&#10;" textAlignment="CENTER" wrappingWidth="200.244140625">
-            <VBox.margin>
-               <Insets left="5.0" right="5.0" />
-            </VBox.margin>
-         </Text>
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="A. 320 GW&#10;&#10;B. 280 GW&#10;&#10;C. 240 GW&#10;" wrappingWidth="187.36328125">
-            <VBox.margin>
-               <Insets left="10.0" />
-            </VBox.margin>
-         </Text>
-         <HBox prefHeight="100.0" prefWidth="200.0" spacing="18.0">
-            <children>
-               <Button fx:id="A1111" mnemonicParsing="false" onAction="#a" prefHeight="55.0" prefWidth="55.0" text="A.">
-                  <HBox.margin>
-                     <Insets left="10.0" />
-                  </HBox.margin>
-               </Button>
-               <Button fx:id="B1111" mnemonicParsing="false" onAction="#b" prefHeight="55.0" prefWidth="55.0" text="B." />
-               <Button fx:id="C1111" mnemonicParsing="false" onAction="#c" prefHeight="55.0" prefWidth="55.0" text="C.">
-                  <HBox.margin>
-                     <Insets right="10.0" />
-                  </HBox.margin>
-               </Button>
-            </children>
-            <opaqueInsets>
-               <Insets />
-            </opaqueInsets>
-            <padding>
-               <Insets top="25.0" />
-            </padding>
-         </HBox>
-      </children>
-   </VBox>
-   <VBox fx:id="quiz6" disable="true" layoutX="461.0" layoutY="261.0" style="-fx-background-color: white;" visible="false">
-      <children>
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&#10;Questien:&#10;How is sustainable energy produced?&#10;" textAlignment="CENTER" wrappingWidth="200.244140625">
-            <VBox.margin>
-               <Insets left="5.0" right="5.0" />
-            </VBox.margin>
-         </Text>
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="A. Coal power plants&#10;&#10;B. Nuclear power plants&#10;&#10;C. Wind power plants&#10;" wrappingWidth="187.36328125">
-            <VBox.margin>
-               <Insets left="10.0" />
-            </VBox.margin>
-         </Text>
-         <HBox prefHeight="100.0" prefWidth="200.0" spacing="18.0">
-            <children>
-               <Button fx:id="A11111" mnemonicParsing="false" onAction="#a" prefHeight="55.0" prefWidth="55.0" text="A.">
-                  <HBox.margin>
-                     <Insets left="10.0" />
-                  </HBox.margin>
-               </Button>
-               <Button fx:id="B11111" mnemonicParsing="false" onAction="#b" prefHeight="55.0" prefWidth="55.0" text="B." />
-               <Button fx:id="C11111" mnemonicParsing="false" onAction="#c" prefHeight="55.0" prefWidth="55.0" text="C.">
-                  <HBox.margin>
-                     <Insets right="10.0" />
-                  </HBox.margin>
-               </Button>
-            </children>
-            <opaqueInsets>
-               <Insets />
-            </opaqueInsets>
-            <padding>
-               <Insets top="25.0" />
-            </padding>
-         </HBox>
-      </children>
-   </VBox>
-   <opaqueInsets>
-      <Insets left="10.0" />
-   </opaqueInsets>
+   <ImageView fx:id="mayorOfficeBG" disable="true" fitHeight="240.0" fitWidth="240.0" layoutX="408.0" layoutY="239.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" visible="false">
+      <image>
+         <Image url="@../images/Mayor_Office.png" />
+      </image>
+   </ImageView>
+    <GridPane fx:id="secretaryOffice" disable="true" focusTraversable="true" layoutX="423.0" layoutY="254.0" onKeyPressed="#keyHandler" visible="false">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+    </GridPane>
+   <ImageView fx:id="SecretaryRoomBG" disable="true" fitHeight="210.0" fitWidth="210.0" layoutX="423.0" layoutY="254.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" visible="false">
+      <image>
+         <Image url="@../images/Secretary_Room.png" />
+      </image>
+   </ImageView>
+    <GridPane fx:id="assemblyRoom" disable="true" focusTraversable="true" layoutX="183.0" layoutY="145.0" onKeyPressed="#keyHandler" visible="false">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+    </GridPane>
+   <ImageView fx:id="assemblyRoomBG" disable="true" fitHeight="450.0" fitWidth="690.0" layoutX="183.0" layoutY="145.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" visible="false">
+      <image>
+         <Image url="@../images/Assemble_Room.png" />
+      </image>
+   </ImageView>
+    <GridPane fx:id="harbor1" disable="true" focusTraversable="true" layoutX="273.0" layoutY="224.0" onKeyPressed="#keyHandler" visible="false">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+    </GridPane>
+   <ImageView fx:id="harbor1BG" disable="true" fitHeight="270.0" fitWidth="510.0" layoutX="273.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <image>
+         <Image url="@../images/Harbor_St.png" />
+      </image>
+   </ImageView>
+    <GridPane fx:id="restroom" disable="true" focusTraversable="true" layoutX="439.0" layoutY="284.0" onKeyPressed="#keyHandler" visible="false">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+    </GridPane>
+   <ImageView fx:id="restroomBG" disable="true" fitHeight="150.0" fitWidth="180.0" layoutX="439.0" layoutY="284.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <image>
+         <Image url="@../images/Restroom.png" />
+      </image>
+   </ImageView>
+    <GridPane fx:id="volkswagenMechanic" disable="true" focusTraversable="true" layoutX="386.0" layoutY="250.0" onKeyPressed="#keyHandler" visible="false">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+    </GridPane>
+    <GridPane fx:id="playground" disable="true" focusTraversable="true" layoutX="386.0" layoutY="234.0" onKeyPressed="#keyHandler" visible="false">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+    </GridPane>
+   <ImageView fx:id="playgroundBG" disable="true" fitHeight="270.0" fitWidth="300.0" layoutX="386.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <image>
+         <Image url="@../images/Playground.png" />
+      </image>
+   </ImageView>
+    <GridPane fx:id="university" disable="true" focusTraversable="true" layoutX="401.0" layoutY="249.0" onKeyPressed="#keyHandler" visible="false">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+    </GridPane>
+    <GridPane fx:id="townSquare_" disable="true" focusTraversable="true" layoutX="184.0" layoutY="145.0" onKeyPressed="#keyHandler" visible="false">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+    </GridPane>
+    <GridPane fx:id="park_" disable="true" focusTraversable="true" layoutX="266.0" layoutY="205.0" onKeyPressed="#keyHandler" visible="false">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+    </GridPane>
+   <ImageView fx:id="parkBG" disable="true" fitHeight="330.0" fitWidth="540.0" layoutX="266.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <image>
+         <Image url="@../images/The_Park.png" />
+      </image>
+   </ImageView>
+    <GridPane fx:id="cloverSt_" disable="true" focusTraversable="true" layoutX="258.0" layoutY="235.0" onKeyPressed="#keyHandler" visible="false">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+    </GridPane>
+   <ImageView fx:id="cloverStBG" disable="true" fitHeight="270.0" fitWidth="540.0" layoutX="258.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <image>
+         <Image url="@../images/Clover_St.png" />
+      </image>
+   </ImageView>
+    <GridPane fx:id="harbor2" disable="true" focusTraversable="true" layoutX="356.0" layoutY="189.0" onKeyPressed="#keyHandler" visible="false">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+    </GridPane>
+   <ImageView fx:id="harbor2BG" disable="true" fitHeight="360.0" fitWidth="360.0" layoutX="356.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <image>
+         <Image url="@../images/Harbor.png" />
+      </image>
+   </ImageView>
+    <GridPane fx:id="queensST" disable="true" focusTraversable="true" layoutX="303.0" layoutY="249.0" onKeyPressed="#keyHandler" visible="false">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+    </GridPane>
+   <ImageView fx:id="queensSTBG" disable="true" fitHeight="240.0" fitWidth="450.0" layoutX="303.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <image>
+         <Image url="@../images/Queens_St.png" />
+      </image>
+   </ImageView>
+    <VBox fx:id="quiz1" disable="true" layoutX="424.0" layoutY="244.0" style="-fx-background-color: white;" visible="false">
+        <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&#10;Questien:&#10;What percentage of global electricity production came from green energy sources in 2020?&#10;" textAlignment="CENTER" wrappingWidth="200.244140625">
+                <VBox.margin>
+                    <Insets left="5.0" right="5.0" />
+                </VBox.margin>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="A.         31%&#10;B.         20%&#10;C.         29%" wrappingWidth="187.36328125">
+                <VBox.margin>
+                    <Insets left="10.0" />
+                </VBox.margin>
+            </Text>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="18.0">
+                <children>
+                    <Button fx:id="A" mnemonicParsing="false" onAction="#a" prefHeight="55.0" prefWidth="55.0" text="A.">
+                        <HBox.margin>
+                            <Insets left="10.0" />
+                        </HBox.margin>
+                    </Button>
+                    <Button fx:id="B" mnemonicParsing="false" onAction="#b" prefHeight="55.0" prefWidth="55.0" text="B." />
+                    <Button fx:id="C" mnemonicParsing="false" onAction="#c" prefHeight="55.0" prefWidth="55.0" text="C.">
+                        <HBox.margin>
+                            <Insets right="10.0" />
+                        </HBox.margin>
+                    </Button>
+                </children>
+                <opaqueInsets>
+                    <Insets />
+                </opaqueInsets>
+                <padding>
+                    <Insets top="25.0" />
+                </padding>
+            </HBox>
+        </children>
+    </VBox>
+    <VBox fx:id="quiz2" disable="true" layoutX="431.0" layoutY="208.0" style="-fx-background-color: white;" visible="false">
+        <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&#10;Questien:&#10;What is sustainable energy?&#10;" textAlignment="CENTER" wrappingWidth="200.244140625">
+                <VBox.margin>
+                    <Insets left="5.0" right="5.0" />
+                </VBox.margin>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="A. &#10; Energy that will not be replenished in a short timescale&#10;&#10;B.&#10;Energy that is replenished in a short timescale&#10;&#10;C. &#10; Energy that we can’t produce yet" textAlignment="CENTER" wrappingWidth="187.36328125">
+                <VBox.margin>
+                    <Insets left="10.0" />
+                </VBox.margin>
+            </Text>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="18.0">
+                <children>
+                    <Button fx:id="A1" mnemonicParsing="false" onAction="#a" prefHeight="55.0" prefWidth="55.0" text="A.">
+                        <HBox.margin>
+                            <Insets left="10.0" />
+                        </HBox.margin>
+                    </Button>
+                    <Button fx:id="B1" mnemonicParsing="false" onAction="#b" prefHeight="55.0" prefWidth="55.0" text="B." />
+                    <Button fx:id="C1" mnemonicParsing="false" onAction="#c" prefHeight="55.0" prefWidth="55.0" text="C.">
+                        <HBox.margin>
+                            <Insets right="10.0" />
+                        </HBox.margin>
+                    </Button>
+                </children>
+                <opaqueInsets>
+                    <Insets />
+                </opaqueInsets>
+                <padding>
+                    <Insets top="25.0" />
+                </padding>
+            </HBox>
+        </children>
+    </VBox>
+    <VBox fx:id="quiz3" disable="true" layoutX="431.0" layoutY="231.0" style="-fx-background-color: white;" visible="false">
+        <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&#10;Questien:&#10;How much will the green transition cost in Denmark?&#10;" textAlignment="CENTER" wrappingWidth="200.244140625">
+                <VBox.margin>
+                    <Insets left="5.0" right="5.0" />
+                </VBox.margin>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="A. 26-30 billion kroner &#10;&#10;B. 21-25 billion kroner&#10;&#10;C. 16-20 billion kroner&#10;" wrappingWidth="187.36328125">
+                <VBox.margin>
+                    <Insets left="10.0" />
+                </VBox.margin>
+            </Text>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="18.0">
+                <children>
+                    <Button fx:id="A11" mnemonicParsing="false" onAction="#a" prefHeight="55.0" prefWidth="55.0" text="A.">
+                        <HBox.margin>
+                            <Insets left="10.0" />
+                        </HBox.margin>
+                    </Button>
+                    <Button fx:id="B11" mnemonicParsing="false" onAction="#b" prefHeight="55.0" prefWidth="55.0" text="B." />
+                    <Button fx:id="C11" mnemonicParsing="false" onAction="#c" prefHeight="55.0" prefWidth="55.0" text="C.">
+                        <HBox.margin>
+                            <Insets right="10.0" />
+                        </HBox.margin>
+                    </Button>
+                </children>
+                <opaqueInsets>
+                    <Insets />
+                </opaqueInsets>
+                <padding>
+                    <Insets top="25.0" />
+                </padding>
+            </HBox>
+        </children>
+    </VBox>
+    <VBox fx:id="quiz4" disable="true" layoutX="441.0" layoutY="241.0" style="-fx-background-color: white;" visible="false">
+        <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&#10;Questien:&#10;What are some of the drawbacks of current energy production?&#10;" textAlignment="CENTER" wrappingWidth="200.244140625">
+                <VBox.margin>
+                    <Insets left="5.0" right="5.0" />
+                </VBox.margin>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="A. Pollution&#10;&#10;B. Not enough energy is created&#10;&#10;C. Not enough room&#10;" wrappingWidth="187.36328125">
+                <VBox.margin>
+                    <Insets left="10.0" />
+                </VBox.margin>
+            </Text>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="18.0">
+                <children>
+                    <Button fx:id="A111" mnemonicParsing="false" onAction="#a" prefHeight="55.0" prefWidth="55.0" text="A.">
+                        <HBox.margin>
+                            <Insets left="10.0" />
+                        </HBox.margin>
+                    </Button>
+                    <Button fx:id="B111" mnemonicParsing="false" onAction="#b" prefHeight="55.0" prefWidth="55.0" text="B." />
+                    <Button fx:id="C111" mnemonicParsing="false" onAction="#c" prefHeight="55.0" prefWidth="55.0" text="C.">
+                        <HBox.margin>
+                            <Insets right="10.0" />
+                        </HBox.margin>
+                    </Button>
+                </children>
+                <opaqueInsets>
+                    <Insets />
+                </opaqueInsets>
+                <padding>
+                    <Insets top="25.0" />
+                </padding>
+            </HBox>
+        </children>
+    </VBox>
+    <VBox fx:id="quiz5" disable="true" layoutX="451.0" layoutY="251.0" style="-fx-background-color: white;" visible="false">
+        <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&#10;Questien:&#10;How much did green energy production increase globally in 2020?&#10;" textAlignment="CENTER" wrappingWidth="200.244140625">
+                <VBox.margin>
+                    <Insets left="5.0" right="5.0" />
+                </VBox.margin>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="A. 320 GW&#10;&#10;B. 280 GW&#10;&#10;C. 240 GW&#10;" wrappingWidth="187.36328125">
+                <VBox.margin>
+                    <Insets left="10.0" />
+                </VBox.margin>
+            </Text>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="18.0">
+                <children>
+                    <Button fx:id="A1111" mnemonicParsing="false" onAction="#a" prefHeight="55.0" prefWidth="55.0" text="A.">
+                        <HBox.margin>
+                            <Insets left="10.0" />
+                        </HBox.margin>
+                    </Button>
+                    <Button fx:id="B1111" mnemonicParsing="false" onAction="#b" prefHeight="55.0" prefWidth="55.0" text="B." />
+                    <Button fx:id="C1111" mnemonicParsing="false" onAction="#c" prefHeight="55.0" prefWidth="55.0" text="C.">
+                        <HBox.margin>
+                            <Insets right="10.0" />
+                        </HBox.margin>
+                    </Button>
+                </children>
+                <opaqueInsets>
+                    <Insets />
+                </opaqueInsets>
+                <padding>
+                    <Insets top="25.0" />
+                </padding>
+            </HBox>
+        </children>
+    </VBox>
+    <VBox fx:id="quiz6" disable="true" layoutX="461.0" layoutY="261.0" style="-fx-background-color: white;" visible="false">
+        <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&#10;Questien:&#10;How is sustainable energy produced?&#10;" textAlignment="CENTER" wrappingWidth="200.244140625">
+                <VBox.margin>
+                    <Insets left="5.0" right="5.0" />
+                </VBox.margin>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="A. Coal power plants&#10;&#10;B. Nuclear power plants&#10;&#10;C. Wind power plants&#10;" wrappingWidth="187.36328125">
+                <VBox.margin>
+                    <Insets left="10.0" />
+                </VBox.margin>
+            </Text>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="18.0">
+                <children>
+                    <Button fx:id="A11111" mnemonicParsing="false" onAction="#a" prefHeight="55.0" prefWidth="55.0" text="A.">
+                        <HBox.margin>
+                            <Insets left="10.0" />
+                        </HBox.margin>
+                    </Button>
+                    <Button fx:id="B11111" mnemonicParsing="false" onAction="#b" prefHeight="55.0" prefWidth="55.0" text="B." />
+                    <Button fx:id="C11111" mnemonicParsing="false" onAction="#c" prefHeight="55.0" prefWidth="55.0" text="C.">
+                        <HBox.margin>
+                            <Insets right="10.0" />
+                        </HBox.margin>
+                    </Button>
+                </children>
+                <opaqueInsets>
+                    <Insets />
+                </opaqueInsets>
+                <padding>
+                    <Insets top="25.0" />
+                </padding>
+            </HBox>
+        </children>
+    </VBox>
+    <opaqueInsets>
+        <Insets left="10.0" />
+    </opaqueInsets>
 </AnchorPane>

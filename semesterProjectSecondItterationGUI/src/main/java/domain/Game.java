@@ -2,8 +2,6 @@ package domain;
 
 import javafx.scene.layout.GridPane;
 
-import java.util.HashMap;
-
 public class Game //her "skabes" klassen Game
 {
     //der laves 2 attributter, deres datatyper er taget fra andre klasser
@@ -26,7 +24,6 @@ public class Game //her "skabes" klassen Game
     private PlaceableObject windMillPart4;
     private PlaceableObject windMillPart5;
     private PlaceableObject windMillPart6;
-
 
 
     public Game() { //constructor Game defineres
@@ -53,7 +50,7 @@ public class Game //her "skabes" klassen Game
         GridPane harbor_st = new GridPane();
 
 
-        Room startingRoom, quizRoom1, quizRoom2, quizRoom3, quizRoom4, quizRoom5, quizRoom6, townSquare, park, cloverSt, harborST, queensSt, filler;
+        Room startingRoom, quizRoom1, quizRoom2, quizRoom3, quizRoom4, quizRoom5, quizRoom6, townSquare, park, cloverSt, harborST, queensSt;
         String[] answers1 = {"A. 31%", "B. 20%", "C. 29%"};
         String[] answers2 = {"A. Energy that will not be replenished in a short timescale", "B. Energy that is replenished in a short timescale", "C. Energy that we can’t produce yet"};
         String[] answers3 = {"A. 26-30 billion kroner", "B. 21-25 billion kroner", "C. 16-20 billion kroner"};
@@ -101,7 +98,7 @@ public class Game //her "skabes" klassen Game
         this.windMillPart5 = new WindMillPart("Windmill-rod part 1", 5, "This is the top rod of the windmill.", 1, 1);
         this.windMillPart6 = new WindMillPart("Windmill-rod part 2", 6, "This is the bottom rod and foundation of the windmill.", 1, 2);
 
-        this.player1 = new Player("Player 1", 6, 0,"/player.png");
+        this.player1 = new Player("Player 1", 6, 0, "/player.png");
 
         this.assembleRoom = new Room("green fields", "on a lush green field perfect for assembling a windmill.", 15, 23, assemblyRoom);
         startingRoom = new Room("Mayor Office", "at the mayor office.", 8, 8, Room);
@@ -323,27 +320,27 @@ public class Game //her "skabes" klassen Game
         return this.playerInventory;
     }
 
-    public PlaceableObject getInformation1 (){
+    public PlaceableObject getInformation1() {
         return this.information1;
     }
 
-    public PlaceableObject getInformation2 (){
+    public PlaceableObject getInformation2() {
         return this.information2;
     }
 
-    public PlaceableObject getInformation3 (){
+    public PlaceableObject getInformation3() {
         return this.information3;
     }
 
-    public PlaceableObject getInformation4 (){
+    public PlaceableObject getInformation4() {
         return this.information4;
     }
 
-    public PlaceableObject getInformation5 (){
+    public PlaceableObject getInformation5() {
         return this.information5;
     }
 
-    public PlaceableObject getInformation6 (){
+    public PlaceableObject getInformation6() {
         return this.information6;
     }
 

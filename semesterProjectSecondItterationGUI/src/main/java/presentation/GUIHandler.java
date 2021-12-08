@@ -4,28 +4,39 @@ import domain.*;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
-import org.controlsfx.control.spreadsheet.Grid;
-import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import textUI.Play;
 import textUI.PrintGrid;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class GUIHandler {
+
+    @FXML
+    public AnchorPane lose;
+    @FXML
+    public AnchorPane win;
+    @FXML
+    public AnchorPane window;
+
+    @FXML
+    public Text health;
+
+    @FXML
+    public Button closeButton;
+
     @FXML
     private AnchorPane titleScreen;
+
+    @FXML
+    private AnchorPane info;
 
     @FXML
     private AnchorPane inventory;
@@ -193,7 +204,7 @@ public class GUIHandler {
         this.inspectItems = new HashMap<>();
         addAllRooms();
         addAllItems();
-        addAllQuizs();
+        addAllQuiz();
         addAllInspectItems();
         addAllBackGrounds();
         this.titleScreen.setDisable(false);
@@ -248,7 +259,7 @@ public class GUIHandler {
         this.roomBackground.put("queens St", this.queensSTBG);
     }
 
-    private void addAllQuizs() {
+    private void addAllQuiz() {
         this.quizs.put("Electricity production", this.quiz1);
         this.quizs.put("Sustainable energy", this.quiz2);
         this.quizs.put("Green transition cost", this.quiz3);
@@ -310,63 +321,44 @@ public class GUIHandler {
 
     public void easy() {
         startGame();
-        disableTitleScreen();
         this.game.getPlayer1().setHealth(10);
-        changeRoom(this.mayorOffice, this.mayorOfficeBG);
-        this.inventory.setDisable(false);
-        this.inventory.setVisible(true);
+        swapScenes();
+        this.health.setText("" + this.game.getPlayer1().getHealth());
     }
 
     public void medium() {
         startGame();
-        disableTitleScreen();
         this.game.getPlayer1().setHealth(5);
-        changeRoom(this.mayorOffice, this.mayorOfficeBG);
-        this.inventory.setDisable(false);
-        this.inventory.setVisible(true);
+        swapScenes();
+        this.health.setText("" + this.game.getPlayer1().getHealth());
     }
 
     public void hard() {
         startGame();
-        disableTitleScreen();
         this.game.getPlayer1().setHealth(2);
-        changeRoom(this.mayorOffice, this.mayorOfficeBG);
-        this.inventory.setDisable(false);
-        this.inventory.setVisible(true);
+        swapScenes();
+        this.health.setText("" + this.game.getPlayer1().getHealth());
     }
 
     public void a() {
         this.answer = "A";
         getQuizHandler();
-        if (this.game.getCurrentRoom().getQuizInRoom().isCompletion()) {
-            this.quizs.get(quiz).setDisable(true);
-            this.quizs.get(quiz).setVisible(false);
-            enableCurrentRoom();
-            enableWindMillParts();
-        }
-        if (this.game.getPlayer1().getHealth() <= 0) {
-            endgame();
-        }
     }
 
     public void b() {
         this.answer = "B";
         getQuizHandler();
-        if (this.game.getCurrentRoom().getQuizInRoom().isCompletion()) {
-            this.quizs.get(quiz).setDisable(true);
-            this.quizs.get(quiz).setVisible(false);
-            enableCurrentRoom();
-            enableWindMillParts();
-        }
-        if (this.game.getPlayer1().getHealth() <= 0) {
-            endgame();
-        }
     }
 
 
     public void c() {
         this.answer = "C";
         getQuizHandler();
+    }
+
+    private void getQuizHandler() {
+        this.play.quizHandler(this.game.getCurrentRoom().getQuizInRoom(), this.game, this.answer);
+        this.health.setText("" + this.game.getPlayer1().getHealth());
         if (this.game.getCurrentRoom().getQuizInRoom().isCompletion()) {
             this.quizs.get(quiz).setDisable(true);
             this.quizs.get(quiz).setVisible(false);
@@ -376,10 +368,6 @@ public class GUIHandler {
         if (this.game.getPlayer1().getHealth() <= 0) {
             endgame();
         }
-    }
-
-    private void getQuizHandler() {
-        this.play.quizHandler(this.game.getCurrentRoom().getQuizInRoom(), this.game, this.answer);
     }
 
     @FXML
@@ -416,7 +404,7 @@ public class GUIHandler {
                 System.out.println(this.currentRoom.getId());
             }
             String a = game.getCurrentRoom().collectObject(game.getPlayerInventory(), game.getPlayer1());
-            if (!(a == "df")) {
+            if (!(a.equals("df"))) {
                 System.out.println(a);
                 this.items.get(a).setDisable(false);
                 this.items.get(a).setVisible(true);
@@ -427,20 +415,29 @@ public class GUIHandler {
                         this.player.setDisable(false);
                         this.player.setVisible(true);
                     }
-            } else {
             }
         }
 
         if (keyEvent.getCode() == KeyCode.SPACE) {
-            this.quiz = game.getCurrentRoom().getQuizInRoom().getDescription();
+            if (!(this.game.getCurrentRoom().getQuizInRoom() == null)) {
+                this.quiz = game.getCurrentRoom().getQuizInRoom().getDescription();
 
-            if (!(this.game.getCurrentRoom().getQuizInRoom().isCompletion())) {
-                disableCurrentRoom();
-                this.quizs.get(this.quiz).setDisable(false);
-                this.quizs.get(this.quiz).setVisible(true);
+                if (!(this.game.getCurrentRoom().getQuizInRoom().isCompletion())) {
+                    disableCurrentRoom();
+                    this.quizs.get(this.quiz).setDisable(false);
+                    this.quizs.get(this.quiz).setVisible(true);
+                }
+            }
+
+            if (this.currentRoom.equals(this.assemblyRoom)){
+                int i = this.game.successfulAssemble();
+                if (i == 1){
+                    victory();
+                }else if(i == 2){
+                    this.roomDescription.setText("You have not collected all windmill-parts");
+                }
             }
         }
-
 
         game.getCurrentRoom().constructGrid(game.getPlayer1());
         System.out.println(this.grid.printGrid(game));
@@ -474,9 +471,34 @@ public class GUIHandler {
         }
     }
 
-    public void endgame() {
-        System.out.println("Player be dead yo");
+    private void endgame() {
         this.quizs.get(quiz).setDisable(true);
         this.quizs.get(quiz).setVisible(false);
+        this.info.setVisible(false);
+        this.inventory.setVisible(false);
+        this.lose.setDisable(false);
+        this.lose.setVisible(true);
+    }
+
+    private void victory(){
+        disableCurrentRoom();
+        this.info.setVisible(false);
+        this.inventory.setVisible(false);
+        this.win.setDisable(false);
+        this.win.setVisible(true);
+
+    }
+
+    private void swapScenes() {
+        disableTitleScreen();
+        changeRoom(this.mayorOffice, this.mayorOfficeBG);
+        this.inventory.setVisible(true);
+        this.inventory.setDisable(false);
+        this.info.setVisible(true);
+    }
+
+    public void quit() {
+        Stage stage = (Stage) this.window.getScene().getWindow();
+        stage.close();
     }
 }

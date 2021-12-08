@@ -42,7 +42,7 @@ public class Game //her "skabes" klassen Game
         GridPane secretaryOffice = new GridPane();
         GridPane Room = new GridPane();
         GridPane assemblyRoom = new GridPane();
-        GridPane harbor1 = new GridPane();
+        GridPane harbor = new GridPane();
         GridPane volkswagenMechanic = new GridPane();
         GridPane playground = new GridPane();
         GridPane university = new GridPane();
@@ -50,10 +50,10 @@ public class Game //her "skabes" klassen Game
         GridPane park_ = new GridPane();
         GridPane cloverSt_ = new GridPane();
         GridPane queenST = new GridPane();
-        GridPane harbor2 = new GridPane();
+        GridPane harbor_st = new GridPane();
 
 
-        Room startingRoom, quizRoom1, quizRoom2, quizRoom3, quizRoom4, quizRoom5, quizRoom6, townSquare, park, cloverSt, harbor, queensSt, filler;
+        Room startingRoom, quizRoom1, quizRoom2, quizRoom3, quizRoom4, quizRoom5, quizRoom6, townSquare, park, cloverSt, harborST, queensSt, filler;
         String[] answers1 = {"A. 31%", "B. 20%", "C. 29%"};
         String[] answers2 = {"A. Energy that will not be replenished in a short timescale", "B. Energy that is replenished in a short timescale", "C. Energy that we can’t produce yet"};
         String[] answers3 = {"A. 26-30 billion kroner", "B. 21-25 billion kroner", "C. 16-20 billion kroner"};
@@ -101,12 +101,12 @@ public class Game //her "skabes" klassen Game
         this.windMillPart5 = new WindMillPart("Windmill-rod part 1", 5, "This is the top rod of the windmill.", 1, 1);
         this.windMillPart6 = new WindMillPart("Windmill-rod part 2", 6, "This is the bottom rod and foundation of the windmill.", 1, 2);
 
-        this.player1 = new Player("Player 1", 6, 0, "/marcus.jpg");
+        this.player1 = new Player("Player 1", 6, 0,"/player.png");
 
         this.assembleRoom = new Room("green fields", "on a lush green field perfect for assembling a windmill.", 15, 23, assemblyRoom);
         startingRoom = new Room("Mayor Office", "at the mayor office.", 8, 8, Room);
         quizRoom1 = new Room("secretary Office", "at the secretary office.", 7, 7, secretaryOffice);
-        quizRoom2 = new Room("Harbor", "at the harbor, there is a windmill part here complete the quiz to collect the part.", 9, 17, harbor1);
+        quizRoom2 = new Room("Harbor", "at the harbor, there is a windmill part here complete the quiz to collect the part.", 12, 12, harbor);
         quizRoom3 = new Room("public restroom", "at the public restroom, there is a windmill part here complete the quiz to collect the part. ", 5, 6, restroom);
         quizRoom4 = new Room("volkswagen mechanic", "at the Volkswagen mechanic, there is a windmill part here complete the quiz to collect the part.", 8, 10, volkswagenMechanic);
         quizRoom5 = new Room("playground", "at the Playground, there is a windmill part here complete the quiz to collect the part.", 9, 10, playground);
@@ -114,64 +114,64 @@ public class Game //her "skabes" klassen Game
         townSquare = new Room("town square", "at the town square.", 14, 23, townSquare_);
         park = new Room("park", "at the park.", 11, 18, park_);
         cloverSt = new Room("clover St", "at the Clover St.", 9, 18, cloverSt_);
-        harbor = new Room("harbor", "at the harbor.", 12, 12, harbor2);
+        harborST = new Room("harbor St", "at the harbor St", 9, 17, harbor_st);
         queensSt = new Room("queens St", "at the Queens St.", 8, 15, queenST);
 
 
         this.assembleRoom.setExit("south", queensSt);
 
         startingRoom.setExit("south", quizRoom1);
-        startingRoom.addObjectsInRoom(information1);
+        startingRoom.addObjectsInRoom(this.information1);
 
         quizRoom1.setExit("north", startingRoom);
         quizRoom1.setExit("south", townSquare);
         quizRoom1.setExit("west", cloverSt);
         quizRoom1.setExit("east", queensSt);
         quizRoom1.addQuizToRoom(quiz1);
-        quizRoom1.addObjectsInRoom(windMillPart1);
+        quizRoom1.addObjectsInRoom(this.windMillPart1);
 
         townSquare.setExit("south", quizRoom3);
         townSquare.setExit("north", quizRoom1);
-        townSquare.setExit("east", harbor);
+        townSquare.setExit("east", harborST);
         townSquare.setExit("west", park);
-        townSquare.addObjectsInRoom(information3);
+        townSquare.addObjectsInRoom(this.information3);
 
         cloverSt.setExit("east", quizRoom1);
         cloverSt.setExit("west", quizRoom4);
-        cloverSt.addObjectsInRoom(information4);
+        cloverSt.addObjectsInRoom(this.information4);
 
         quizRoom4.setExit("east", cloverSt);
         quizRoom4.addQuizToRoom(quiz4);
-        quizRoom4.addObjectsInRoom(windMillPart4);
+        quizRoom4.addObjectsInRoom(this.windMillPart4);
 
         queensSt.setExit("east", quizRoom6);
         queensSt.setExit("west", quizRoom1);
         queensSt.setExit("north", this.assembleRoom);
-        queensSt.addObjectsInRoom(information6);
+        queensSt.addObjectsInRoom(this.information6);
 
         quizRoom6.setExit("west", queensSt);
         quizRoom6.addQuizToRoom(quiz6);
-        quizRoom6.addObjectsInRoom(windMillPart6);
+        quizRoom6.addObjectsInRoom(this.windMillPart6);
 
-        harbor.setExit("west", townSquare);
-        harbor.setExit("east", quizRoom2);
-        harbor.addObjectsInRoom(information2);
+        harborST.setExit("west", townSquare);
+        harborST.setExit("east", quizRoom2);
+        harborST.addObjectsInRoom(this.information2);
 
-        quizRoom2.setExit("west", harbor);
-        quizRoom2.addObjectsInRoom(windMillPart2);
+        quizRoom2.setExit("west", harborST);
+        quizRoom2.addObjectsInRoom(this.windMillPart2);
         quizRoom2.addQuizToRoom(quiz2);
 
         park.setExit("west", quizRoom5);
         park.setExit("east", townSquare);
-        park.addObjectsInRoom(information5);
+        park.addObjectsInRoom(this.information5);
 
         quizRoom5.setExit("east", park);
         quizRoom5.addQuizToRoom(quiz5);
-        quizRoom5.addObjectsInRoom(windMillPart5);
+        quizRoom5.addObjectsInRoom(this.windMillPart5);
 
         quizRoom3.setExit("north", townSquare);
         quizRoom3.addQuizToRoom(quiz3);
-        quizRoom3.addObjectsInRoom(windMillPart3);
+        quizRoom3.addObjectsInRoom(this.windMillPart3);
 
         this.currentRoom = startingRoom;
         this.currentRoom.constructGrid(this.player1);

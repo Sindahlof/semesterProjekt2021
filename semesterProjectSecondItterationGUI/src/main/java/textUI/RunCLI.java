@@ -17,11 +17,8 @@ import java.io.FileNotFoundException;
 public class RunCLI {
     public static void main(String[] args) throws FileNotFoundException {
         Game game = new Game(); //laver et nyt objekt der herdder game
-       // Play play = new Play();
-        // play.play(game);
-
-        ImageView imp = new ImageView(game.getPlayer1().getImage());
-        System.out.println(imp);
+        Play play = new Play();
+        play.play(game);
 
     }
 }

@@ -229,6 +229,10 @@ public class Room // laver en ny klasse ved navn room
         return "You are " + this.description + "\n" + getExitString() + "." + printQuizInRoom() + checkPlayerPosition(player);
     }
 
+    public String getTitle(){
+        return "You are " + this.description + "\n" + getExitString() + "." + printQuizInRoom();
+    }
+
     public void setExit(String direction, Room neighbor) {//Method to add exit to the hashmap, which takes strings as keys which point at a room values
         this.exits.put(direction, neighbor);
     }

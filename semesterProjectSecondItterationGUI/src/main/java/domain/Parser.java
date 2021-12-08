@@ -34,8 +34,8 @@ public class Parser {
         // men returnerer også word2
     }
 
-    public void showCommands() //metode, der kalder på showAll-metoden
+    public String showCommands() //metode, der kalder på showAll-metoden
     {
-        commands.showAll();
+        return commands.showAll();
     }
 }

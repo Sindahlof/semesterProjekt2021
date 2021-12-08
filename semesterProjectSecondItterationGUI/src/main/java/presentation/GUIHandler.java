@@ -11,11 +11,11 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import org.controlsfx.control.spreadsheet.Grid;
+import javafx.scene.text.Text;
 import textUI.Play;
 import textUI.PrintGrid;
 
@@ -25,16 +25,13 @@ import java.util.HashMap;
 
 public class GUIHandler {
     @FXML
-    private GridPane secretaryOffice;
-
-    @FXML
-    private GridPane mayorOffice;
-
-    @FXML
     private AnchorPane titleScreen;
 
     @FXML
     private AnchorPane inventory;
+
+    @FXML
+    private Text roomDescription;
 
     @FXML
     private ImageView article1;
@@ -91,10 +88,16 @@ public class GUIHandler {
     private VBox quiz6;
 
     @FXML
+    private GridPane secretaryOffice;
+
+    @FXML
+    private GridPane mayorOffice;
+
+    @FXML
     private GridPane assemblyRoom;
 
     @FXML
-    private GridPane harbor1;
+    private GridPane harbor;
 
     @FXML
     private GridPane restroom;
@@ -118,7 +121,7 @@ public class GUIHandler {
     private GridPane cloverSt_;
 
     @FXML
-    private GridPane harbor2;
+    private GridPane harbor_st;
 
     @FXML
     private GridPane queensST;
@@ -126,12 +129,49 @@ public class GUIHandler {
     @FXML
     private Text inspect;
 
+    @FXML
+    private ImageView mayorOfficeBG;
+
+    @FXML
+    private ImageView SecretaryRoomBG;
+
+    @FXML
+    private ImageView harborBG;
+
+    @FXML
+    private ImageView harbor_stBG;
+
+    @FXML
+    private ImageView restroomBG;
+
+    @FXML
+    private ImageView playgroundBG;
+
+    @FXML
+    private ImageView parkBG;
+
+    @FXML
+    private ImageView cloverStBG;
+
+    @FXML
+    private ImageView queensSTBG;
+
+    @FXML
+    private ImageView assemblyRoomBG;
+    @FXML
+    private ImageView volkswagenMechanicBG;
+    @FXML
+    private ImageView townSquareBG;
+    @FXML
+    private ImageView universityBG;
 
     private Game game;
     private GridPane currentRoom;
+    private ImageView currentBackgroundImage;
     private PrintGrid grid;
     private ImageView player;
     private HashMap<String, GridPane> rooms;
+    private HashMap<String, ImageView> roomBackground;
     private HashMap<String, ImageView> items;
     private Play play;
     private String answer;
@@ -145,6 +185,7 @@ public class GUIHandler {
         this.player = new ImageView(game.getPlayer1().getImage());
         this.player.setFitHeight(30);
         this.player.setFitWidth(30);
+        this.roomBackground = new HashMap<>();
         this.rooms = new HashMap<>();
         this.items = new HashMap<>();
         this.quizs = new HashMap<>();
@@ -154,25 +195,32 @@ public class GUIHandler {
         addAllItems();
         addAllQuizs();
         addAllInspectItems();
+        addAllBackGrounds();
         this.titleScreen.setDisable(false);
         this.titleScreen.setVisible(true);
     }
 
-    private void changeRoom(GridPane pane) {
+    private void changeRoom(GridPane pane, ImageView image) {
         this.currentRoom = pane;
+        this.currentBackgroundImage = image;
         this.currentRoom.setVisible(true);
         this.currentRoom.setDisable(false);
+        this.currentBackgroundImage.setVisible(true);
+        this.currentBackgroundImage.setDisable(false);
+        this.currentRoom.toFront();
         int x = game.getPlayer1().getPosistion().getX();
         int y = game.getPlayer1().getPosistion().getY();
         this.currentRoom.add(this.player, x, y);
-        System.out.println(this.grid.printGrid(game));
+        this.roomDescription.setDisable(false);
+        this.roomDescription.setVisible(true);
+        this.roomDescription.setText(this.game.getCurrentRoom().getTitle());
     }
 
     private void addAllRooms() {
         this.rooms.put("secretary Office", this.secretaryOffice);
         this.rooms.put("Mayor Office", this.mayorOffice);
         this.rooms.put("green fields", this.assemblyRoom);
-        this.rooms.put("Harbor", this.harbor1);
+        this.rooms.put("Harbor", this.harbor);
         this.rooms.put("public restroom", this.restroom);
         this.rooms.put("volkswagen mechanic", this.volkswagenMechanic);
         this.rooms.put("playground", this.playground);
@@ -180,8 +228,24 @@ public class GUIHandler {
         this.rooms.put("town square", this.townSquare_);
         this.rooms.put("park", this.park_);
         this.rooms.put("clover St", this.cloverSt_);
-        this.rooms.put("harbor", this.harbor2);
+        this.rooms.put("harbor St", this.harbor_st);
         this.rooms.put("queens St", this.queensST);
+    }
+
+    private void addAllBackGrounds() {
+        this.roomBackground.put("Mayor Office", this.mayorOfficeBG);
+        this.roomBackground.put("secretary Office", this.SecretaryRoomBG);
+        this.roomBackground.put("green fields", this.assemblyRoomBG);
+        this.roomBackground.put("Harbor", this.harborBG);
+        this.roomBackground.put("public restroom", this.restroomBG);
+        this.roomBackground.put("volkswagen mechanic", this.volkswagenMechanicBG);
+        this.roomBackground.put("playground", this.playgroundBG);
+        this.roomBackground.put("university of Engineering and Science", this.universityBG);
+        this.roomBackground.put("town square", this.townSquareBG);
+        this.roomBackground.put("park", this.parkBG);
+        this.roomBackground.put("clover St", this.cloverStBG);
+        this.roomBackground.put("harbor St", this.harbor_stBG);
+        this.roomBackground.put("queens St", this.queensSTBG);
     }
 
     private void addAllQuizs() {
@@ -224,14 +288,19 @@ public class GUIHandler {
         this.items.put("Windmill-rod part 2", this.beamBelow);
     }
 
+
     private void disableCurrentRoom() {
         this.currentRoom.setVisible(false);
         this.currentRoom.setDisable(true);
+        this.currentBackgroundImage.setVisible(false);
+        this.currentBackgroundImage.setDisable(true);
     }
 
     private void enableCurrentRoom() {
         this.currentRoom.setVisible(true);
         this.currentRoom.setDisable(false);
+        this.currentBackgroundImage.setVisible(true);
+        this.currentBackgroundImage.setDisable(false);
     }
 
     private void disableTitleScreen() {
@@ -243,17 +312,16 @@ public class GUIHandler {
         startGame();
         disableTitleScreen();
         this.game.getPlayer1().setHealth(10);
-        changeRoom(this.mayorOffice);
+        changeRoom(this.mayorOffice, this.mayorOfficeBG);
         this.inventory.setDisable(false);
         this.inventory.setVisible(true);
-
     }
 
     public void medium() {
         startGame();
         disableTitleScreen();
         this.game.getPlayer1().setHealth(5);
-        changeRoom(this.mayorOffice);
+        changeRoom(this.mayorOffice, this.mayorOfficeBG);
         this.inventory.setDisable(false);
         this.inventory.setVisible(true);
     }
@@ -262,43 +330,56 @@ public class GUIHandler {
         startGame();
         disableTitleScreen();
         this.game.getPlayer1().setHealth(2);
-        changeRoom(this.mayorOffice);
+        changeRoom(this.mayorOffice, this.mayorOfficeBG);
         this.inventory.setDisable(false);
         this.inventory.setVisible(true);
     }
 
     public void a() {
         this.answer = "A";
-        this.play.quizHandler(this.game.getCurrentRoom().getQuizInRoom(), this.game, this.answer);
+        getQuizHandler();
         if (this.game.getCurrentRoom().getQuizInRoom().isCompletion()) {
             this.quizs.get(quiz).setDisable(true);
             this.quizs.get(quiz).setVisible(false);
             enableCurrentRoom();
             enableWindMillParts();
         }
+        if (this.game.getPlayer1().getHealth() <= 0) {
+            endgame();
+        }
     }
 
     public void b() {
         this.answer = "B";
-        this.play.quizHandler(this.game.getCurrentRoom().getQuizInRoom(), this.game, this.answer);
+        getQuizHandler();
         if (this.game.getCurrentRoom().getQuizInRoom().isCompletion()) {
             this.quizs.get(quiz).setDisable(true);
             this.quizs.get(quiz).setVisible(false);
             enableCurrentRoom();
             enableWindMillParts();
+        }
+        if (this.game.getPlayer1().getHealth() <= 0) {
+            endgame();
         }
     }
 
 
     public void c() {
         this.answer = "C";
-        this.play.quizHandler(this.game.getCurrentRoom().getQuizInRoom(), this.game, this.answer);
+        getQuizHandler();
         if (this.game.getCurrentRoom().getQuizInRoom().isCompletion()) {
             this.quizs.get(quiz).setDisable(true);
             this.quizs.get(quiz).setVisible(false);
             enableCurrentRoom();
             enableWindMillParts();
         }
+        if (this.game.getPlayer1().getHealth() <= 0) {
+            endgame();
+        }
+    }
+
+    private void getQuizHandler() {
+        this.play.quizHandler(this.game.getCurrentRoom().getQuizInRoom(), this.game, this.answer);
     }
 
     @FXML
@@ -307,35 +388,32 @@ public class GUIHandler {
             Command command = new Command(CommandWord.MOVE, "down");
             game.processCommand(command);
             this.currentRoom.setRowIndex(this.player, game.getPlayer1().getPosistion().getY());
-            System.out.println("fejl 2");
         }
 
         if (keyEvent.getCode() == KeyCode.W) {
             Command command = new Command(CommandWord.MOVE, "up");
             game.processCommand(command);
             this.currentRoom.setRowIndex(this.player, game.getPlayer1().getPosistion().getY());
-            System.out.println("fejl 3");
         }
 
         if (keyEvent.getCode() == KeyCode.A) {
             Command command = new Command(CommandWord.MOVE, "left");
             game.processCommand(command);
             this.currentRoom.setColumnIndex(this.player, game.getPlayer1().getPosistion().getX());
-            System.out.println("fejl 4");
         }
         if (keyEvent.getCode() == KeyCode.D) {
             Command command = new Command(CommandWord.MOVE, "right");
             game.processCommand(command);
             this.currentRoom.setColumnIndex(player, game.getPlayer1().getPosistion().getX());
-            System.out.println("fejl 5");
         }
 
         if (keyEvent.getCode() == KeyCode.E) {
             String s = game.exitRoom();
             if (s.equals("3")) {
                 disableCurrentRoom();
-                changeRoom(this.rooms.get(game.getCurrentRoom().getShortDescription()));
-                System.out.println(game.getCurrentRoom().getShortDescription());
+                String room = game.getCurrentRoom().getShortDescription();
+                changeRoom(this.rooms.get(room), this.roomBackground.get(room));
+                System.out.println(this.currentRoom.getId());
             }
             String a = game.getCurrentRoom().collectObject(game.getPlayerInventory(), game.getPlayer1());
             if (!(a == "df")) {
@@ -388,11 +466,17 @@ public class GUIHandler {
 
     public void clickGrid(javafx.scene.input.MouseEvent event) {
         Node clickedNode = event.getPickResult().getIntersectedNode();
-        if (!(clickedNode.getId()==null)){
+        if (!(clickedNode.getId() == null)) {
             String id = clickedNode.getId();
             System.out.println(id);
             System.out.println(this.inspectItems.get(id).print());
             this.inspect.setText(this.inspectItems.get(id).print());
         }
+    }
+
+    public void endgame() {
+        System.out.println("Player be dead yo");
+        this.quizs.get(quiz).setDisable(true);
+        this.quizs.get(quiz).setVisible(false);
     }
 }

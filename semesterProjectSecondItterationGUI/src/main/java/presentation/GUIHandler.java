@@ -34,6 +34,9 @@ public class GUIHandler {
     private AnchorPane titleScreen;
 
     @FXML
+    private AnchorPane inventory;
+
+    @FXML
     private ImageView article1;
 
     @FXML
@@ -197,6 +200,12 @@ public class GUIHandler {
         this.inspectItems.put("article4", this.game.getInformation4());
         this.inspectItems.put("article5", this.game.getInformation5());
         this.inspectItems.put("article6", this.game.getInformation6());
+        this.inspectItems.put("wing1", this.game.getWindMillPart1());
+        this.inspectItems.put("wing2", this.game.getWindMillPart2());
+        this.inspectItems.put("wing3", this.game.getWindMillPart3());
+        this.inspectItems.put("engine", this.game.getWindMillPart4());
+        this.inspectItems.put("beamTop", this.game.getWindMillPart5());
+        this.inspectItems.put("beamBelow", this.game.getWindMillPart6());
 
     }
 
@@ -235,6 +244,9 @@ public class GUIHandler {
         disableTitleScreen();
         this.game.getPlayer1().setHealth(10);
         changeRoom(this.mayorOffice);
+        this.inventory.setDisable(false);
+        this.inventory.setVisible(true);
+
     }
 
     public void medium() {
@@ -242,6 +254,8 @@ public class GUIHandler {
         disableTitleScreen();
         this.game.getPlayer1().setHealth(5);
         changeRoom(this.mayorOffice);
+        this.inventory.setDisable(false);
+        this.inventory.setVisible(true);
     }
 
     public void hard() {
@@ -249,6 +263,8 @@ public class GUIHandler {
         disableTitleScreen();
         this.game.getPlayer1().setHealth(2);
         changeRoom(this.mayorOffice);
+        this.inventory.setDisable(false);
+        this.inventory.setVisible(true);
     }
 
     public void a() {
@@ -372,9 +388,11 @@ public class GUIHandler {
 
     public void clickGrid(javafx.scene.input.MouseEvent event) {
         Node clickedNode = event.getPickResult().getIntersectedNode();
-        String id = clickedNode.getId();
-        System.out.println(id);
-        System.out.println(this.inspectItems.get(id).print());
-        this.inspect.setText(this.inspectItems.get(id).print());
+        if (!(clickedNode.getId()==null)){
+            String id = clickedNode.getId();
+            System.out.println(id);
+            System.out.println(this.inspectItems.get(id).print());
+            this.inspect.setText(this.inspectItems.get(id).print());
+        }
     }
 }

@@ -19,13 +19,18 @@ public class Game //her "skabes" klassen Game
     private PlaceableObject information4;
     private PlaceableObject information5;
     private PlaceableObject information6;
-    private HashMap<String,PlaceableObject> placeAbleItems;
+
+    private PlaceableObject windMillPart1;
+    private PlaceableObject windMillPart2;
+    private PlaceableObject windMillPart3;
+    private PlaceableObject windMillPart4;
+    private PlaceableObject windMillPart5;
+    private PlaceableObject windMillPart6;
 
 
 
     public Game() { //constructor Game defineres
         this.playerInventory = new Inventory(); //Initializer player's inventory
-        this.placeAbleItems = new HashMap<String,PlaceableObject>();
         createRooms();
         this.gameCompleted = false;
         this.dead = false;
@@ -66,41 +71,35 @@ public class Game //her "skabes" klassen Game
         this.information1 = new Information("Article-1", "" +
                 "This article is about green energy sources in 2020." +
                 "\nOnly 29% of the global energy production came from green energy sources in 2020. That rose from 27% in 2019.", 1, 2);
-        this.placeAbleItems.put("article1",this.information1);
         this.information2 = new Information("Article-6", "" +
                 "This article is about sustainable energy" +
                 "\nSustainable energy is when the energy you produce right now, will still be able to power the future generations without reducing the quality of life." +
                 "\nRenewable energy sources such as wind and solar are examples of sustainable energy sources.", 2, 1);
-        this.placeAbleItems.put("article2",this.information2);
         this.information3 = new Information("Article-3", "" +
                 "This article is about how much a green conversion will cost." +
                 "\nIt is estimated that a 70% green conversion by 2030 in Denmark will cost around 26-30 billion kroner. " +
                 "\nThe calculations are made by a think tank Cepos and in collaboration with Dansk Energi.", 1, 2);
-        this.placeAbleItems.put("article3",this.information3);
         this.information4 = new Information("Article-4", "" +
                 "This article is about the drawbacks of current energy production" +
                 "\nThe cons of burning coal to produce energy is that with burning coal comes a lot of pollution into the air. " +
                 "\nAnd by mining coal some byproducts like mercury and arsenic also get uncovered. " +
                 "\nAlso, the quantity of coal is finite, which means that we will run out of coal at some point if we keep mining coal. ", 1, 1);
-        this.placeAbleItems.put("article4",this.information4);
         this.information5 = new Information("Article-5", "" +
                 "This article is about how many deaths pollution causes." +
                 "\nEvery year, 2.5 million people worldwide die as a result of air pollution. " +
                 "\nThis makes pollution in particularly large cities from traffic and industry one of the most important environmental risk factors when it comes to human health. " +
                 "\nThis is how it sounds from 30 researchers from the USA, England, Italy, Japan and New Zealand, who are behind a new study. ", 4, 1);
-        this.placeAbleItems.put("article5",this.information5);
         this.information6 = new Information("Article-2", "" +
                 "This article is about sustainable energy sources" +
                 "\nSustainable energy comes from renewable sources. Renewable sources are things like sunlight, wind, water and geothermal." +
                 "\nThese are replenished in a timescale of a human lifetime, which means that they aren’t in limited supply." +
                 "\nThe most well-known renewable energy production technologies are hydropower, wind power, solar power and geothermal power. ", 2, 2);
-        this.placeAbleItems.put("article6",this.information6);
-        PlaceableObject windMillPart1 = new WindMillPart("Windmill-wing-1", 1, "This is the first windmill wing.", 2, 2);
-        PlaceableObject windMillPart2 = new WindMillPart("Windmill-wing-2", 2, "This is the second windmill wing.", 1, 2);
-        PlaceableObject windMillPart3 = new WindMillPart("Windmill-wing-3", 3, "This is the third windmill wing.", 2, 1);
-        PlaceableObject windMillPart4 = new WindMillPart("Windmill-motor", 4, "This is the head of the windmill. This is where the wings are connected.", 4, 4);
-        PlaceableObject windMillPart5 = new WindMillPart("Windmill-rod part 1", 5, "This is the tower of the windmill. This is where the head is connected.", 1, 1);
-        PlaceableObject windMillPart6 = new WindMillPart("Windmill-rod part 2", 6, "This is the foundation of the windmill. This is where the tower is connected.", 1, 2);
+        this.windMillPart1 = new WindMillPart("Windmill-wing-1", 1, "This is the first windmill wing.", 2, 2);
+        this.windMillPart2 = new WindMillPart("Windmill-wing-2", 2, "This is the second windmill wing.", 1, 2);
+        this.windMillPart3 = new WindMillPart("Windmill-wing-3", 3, "This is the third windmill wing.", 2, 1);
+        this.windMillPart4 = new WindMillPart("Windmill-motor", 4, "This is the motor of the windmill.", 4, 4);
+        this.windMillPart5 = new WindMillPart("Windmill-rod part 1", 5, "This is the top rod of the windmill.", 1, 1);
+        this.windMillPart6 = new WindMillPart("Windmill-rod part 2", 6, "This is the bottom rod and foundation of the windmill.", 1, 2);
 
         this.player1 = new Player("Player 1", 6, 0, "/marcus.jpg");
 
@@ -348,17 +347,27 @@ public class Game //her "skabes" klassen Game
         return this.information6;
     }
 
-
-    //public Information getPlaceableItem (String item){
-      //  System.out.println(item);
-        //return this.getPlaceableItem(item);
-    //}
-
-/*startingRoom.setExit("south", quizRoom1);
-
-    private String getDirection(){
-
-        this.getCurrentRoom().getExit(this.player1.)
+    public PlaceableObject getWindMillPart1() {
+        return windMillPart1;
     }
-*/
+
+    public PlaceableObject getWindMillPart2() {
+        return windMillPart2;
+    }
+
+    public PlaceableObject getWindMillPart3() {
+        return windMillPart3;
+    }
+
+    public PlaceableObject getWindMillPart4() {
+        return windMillPart4;
+    }
+
+    public PlaceableObject getWindMillPart5() {
+        return windMillPart5;
+    }
+
+    public PlaceableObject getWindMillPart6() {
+        return windMillPart6;
+    }
 }

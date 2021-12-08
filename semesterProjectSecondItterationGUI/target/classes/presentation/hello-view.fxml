@@ -350,7 +350,7 @@
     </GridPane>
     <ImageView fx:id="universityBG" disable="true" fitHeight="240.0" fitWidth="270.0" layoutX="401.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true" visible="false">
         <image>
-            <Image url="@../images/Restroom.png" />
+            <Image url="@../images/University.png" />
         </image>
     </ImageView>
     <GridPane fx:id="townSquare_" disable="true" focusTraversable="true" layoutX="184.0" layoutY="145.0" onKeyPressed="#keyHandler" visible="false">

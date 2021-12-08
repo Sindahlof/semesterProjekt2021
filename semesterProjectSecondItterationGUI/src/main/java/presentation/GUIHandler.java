@@ -265,6 +265,9 @@ public class GUIHandler {
             this.quizs.get(quiz).setVisible(false);
             enableCurrentRoom();
         }
+        if (this.game.getPlayer1().getHealth()<=0){
+            endgame();
+        }
     }
 
     public void b() {
@@ -275,6 +278,9 @@ public class GUIHandler {
             this.quizs.get(quiz).setVisible(false);
             enableCurrentRoom();
         }
+        if (this.game.getPlayer1().getHealth()<=0){
+            endgame();
+        }
     }
 
     public void c() {
@@ -284,6 +290,9 @@ public class GUIHandler {
             this.quizs.get(quiz).setDisable(true);
             this.quizs.get(quiz).setVisible(false);
             enableCurrentRoom();
+        }
+        if (this.game.getPlayer1().getHealth()<=0){
+            endgame();
         }
     }
 
@@ -351,6 +360,12 @@ public class GUIHandler {
 
         game.getCurrentRoom().constructGrid(game.getPlayer1());
         System.out.println(this.grid.printGrid(game));
+    }
+
+    public void endgame(){
+        System.out.println("Player be dead yo");
+        this.quizs.get(quiz).setDisable(true);
+        this.quizs.get(quiz).setVisible(false);
     }
 
 

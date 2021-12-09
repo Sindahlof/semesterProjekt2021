@@ -478,6 +478,9 @@ public class GUIHandler {
         this.inventory.setVisible(false);
         this.lose.setDisable(false);
         this.lose.setVisible(true);
+        this.inspect.setVisible(false);
+        this.inspect.setVisible(false);
+        this.inspect.setDisable(true);
     }
 
     private void victory(){
@@ -486,6 +489,8 @@ public class GUIHandler {
         this.inventory.setVisible(false);
         this.win.setDisable(false);
         this.win.setVisible(true);
+        this.inspect.setVisible(false);
+        this.inspect.setDisable(true);
 
     }
 

@@ -793,7 +793,10 @@
             </HBox>
         </children>
     </VBox>
-    <Text fx:id="inspect" fill="WHITE" layoutX="239.0" layoutY="629.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="581.0" />
+    <Text fx:id="inspect" fill="WHITE" layoutX="239.0" layoutY="629.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="581.0">
+      <font>
+         <Font size="14.0" />
+      </font></Text>
     <AnchorPane fx:id="inventory" disable="true" layoutX="891.0" layoutY="255.0" visible="false">
         <children>
             <Text fill="WHITE" layoutX="13.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inventory" textAlignment="CENTER" wrappingWidth="90.0">

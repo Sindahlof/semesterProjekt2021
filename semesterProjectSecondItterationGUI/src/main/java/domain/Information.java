@@ -14,8 +14,8 @@ public class Information extends PlaceableObject {
     }
 
     @Override
-    public void print() {
-        System.out.println(this.content);
+    public String print() {
+        return this.content;
     }
 
 }

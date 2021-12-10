@@ -6,6 +6,7 @@ public class Quiz {
 
     private String description;
     private String question;
+    private int quizUIHandler;
 
     //husk i filen hvor du bruger denne attribute at oprette arrayed
     // inden så du sætter det ind på answers plads i constructor
@@ -18,6 +19,8 @@ public class Quiz {
     //denne boolean bruges til at holde styr på om quizzen er blevet klaret
     private boolean completion;
 
+    int loop;
+
     //en String som der bruges .equals på længere nede
     private String quit;
 
@@ -28,44 +31,42 @@ public class Quiz {
         this.completion = false;
         this.description = description;
         this.quit = "QUIT";
+        this.loop = 0;
 
     }
 
-    private void printQuestion() {
-        System.out.println(this.question);
+    public String txtQuestion() {
+        return this.question;
     }
 
-    private void printAnswers() {
-        for (String answer : this.answers) System.out.println(answer);
-
+    public String txtAnswers() {
+        String text = " ";
+        for (String answer : this.answers){
+            text += answer + "\n ";
+        }
+        return text;
     }
 
-    public Player doQuiz(Player player) { //Method used to do the quiz it returns the players health
-        printQuestion();
-        printAnswers();
+    public Player doQuiz(Player player, String answer) { //Method used to do the quiz it returns the players health
 
-        while (true) {
-            System.out.print("Type A, B or C for your answer or type quit: \n>");
-            Scanner input = new Scanner(System.in); //Making a Scanner
-            String answer = input.next(); //chekker hvad der er blevet skrevet på input og læse
+           //Scanner input = new Scanner(System.in); //Making a Scanner
+            //String answer = input.next(); //chekker hvad der er blevet skrevet på input og læse
             // dette som en String
 
             if (answer.equalsIgnoreCase(this.answerKey)) { //true hvis input passer med answerKey
-                System.out.println("Your answer was correct!");
+                setQuizUIHandler(1);
                 this.completion = true; //Sætter completion til at være true så vi ved at quizen er klaret
                 return player; //Returner player
             } else if (answer.equalsIgnoreCase(this.quit)) { //chekker om man skriver quit og vil så stoppe quizzen
-                System.out.println("remember you can always return to this quiz later");
+                setQuizUIHandler(2);
                 return player;
             }
 
-            System.out.println("Your answer was wrong.");
             player.setHealth(player.getHealth() - 1); //Everytime you answer wrong the player losses 1 health
-            System.out.println("You have " + player.getHealth() + " left.");
             if (player.getHealth() == 0) { //Checks if the player has lost all his health. If true return player and stop the while loop
                 return player;
             }
-        }
+        return player;
     }
 
     public boolean isCompletion() {
@@ -75,4 +76,13 @@ public class Quiz {
     public String getDescription() {
         return this.description;
     }
+
+    public void setQuizUIHandler(int num) {
+        this.quizUIHandler = num;
+    }
+
+    public int getQuizUIHandler() {
+        return this.quizUIHandler;
+    }
+
 }

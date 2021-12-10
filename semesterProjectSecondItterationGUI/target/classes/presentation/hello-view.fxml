@@ -795,7 +795,7 @@
     </VBox>
     <Text fx:id="inspect" fill="WHITE" layoutX="224.0" layoutY="625.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="607.0">
       <font>
-         <Font size="17.0" />
+         <Font size="16.0" />
       </font>
    </Text>
     <AnchorPane fx:id="inventory" disable="true" layoutX="891.0" layoutY="255.0" visible="false">

@@ -795,7 +795,7 @@
     </VBox>
     <Text fx:id="inspect" fill="WHITE" layoutX="239.0" layoutY="629.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="581.0">
       <font>
-         <Font size="14.0" />
+         <Font size="18.0" />
       </font></Text>
     <AnchorPane fx:id="inventory" disable="true" layoutX="891.0" layoutY="255.0" visible="false">
         <children>
@@ -893,14 +893,14 @@
     </AnchorPane>
    <AnchorPane fx:id="info" disable="true" prefHeight="738.0" prefWidth="1055.0" visible="false">
       <children>
-          <Text fill="WHITE" layoutX="14.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Game Controls:" textAlignment="CENTER" wrappingWidth="164.0">
+          <Text fill="WHITE" layoutX="14.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Game Controls:" textAlignment="CENTER" wrappingWidth="164.0">
               <font>
-                  <Font size="21.0" />
+                  <Font size="22.0" />
               </font>
           </Text>
           <Text fill="WHITE" fontSmoothingType="LCD" layoutX="14.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Press &quot;W, A, S &amp; D&quot; to move your character around.&#10;&#10;Press &quot;E&quot; to use an exit or collect an item.&#10;&#10;Press &quot;SPACEBAR&quot; to do the quiz in the room if there is any. &#10;&#10;Press &quot;ESCAPE&quot; to abort a quiz.&#10;&#10;Click an item in your inventory to inspect it.&#10;&#10;Press &quot;SPACE&quot; to assemble the windmill if you are inside the assemble room.&#10;" wrappingWidth="164.0">
               <font>
-                  <Font size="14.0" />
+                  <Font size="16.0" />
               </font>
           </Text>
           <Text fill="WHITE" layoutX="282.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="World of Power!" textAlignment="CENTER" wrappingWidth="491.13671875">

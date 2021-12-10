@@ -793,10 +793,11 @@
             </HBox>
         </children>
     </VBox>
-    <Text fx:id="inspect" fill="WHITE" layoutX="239.0" layoutY="629.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="581.0">
+    <Text fx:id="inspect" fill="WHITE" layoutX="224.0" layoutY="625.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="607.0">
       <font>
-         <Font size="18.0" />
-      </font></Text>
+         <Font size="17.0" />
+      </font>
+   </Text>
     <AnchorPane fx:id="inventory" disable="true" layoutX="891.0" layoutY="255.0" visible="false">
         <children>
             <Text fill="WHITE" layoutX="13.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inventory" textAlignment="CENTER" wrappingWidth="90.0">
@@ -891,7 +892,7 @@
          </Text>
         </children>
     </AnchorPane>
-   <AnchorPane fx:id="info" prefHeight="738.0" prefWidth="1055.0">
+   <AnchorPane fx:id="info" disable="true" prefHeight="738.0" prefWidth="1055.0" visible="false">
       <children>
           <Text fill="WHITE" layoutX="14.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Game Controls:" textAlignment="CENTER" wrappingWidth="164.0">
               <font>

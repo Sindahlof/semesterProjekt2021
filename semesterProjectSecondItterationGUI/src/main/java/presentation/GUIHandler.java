@@ -264,7 +264,7 @@ public class GUIHandler {
         this.quizs.put("Sustainable energy", this.quiz2);
         this.quizs.put("Green transition cost", this.quiz3);
         this.quizs.put("Drawbacks of our energy production", this.quiz4);
-        this.quizs.put("Green energy production", this.quiz5);
+        this.quizs.put("Deaths due to pollution", this.quiz5);
         this.quizs.put("Sustainable energy production", this.quiz6);
     }
 
